@@ -1,0 +1,120 @@
+.footer {
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+  padding: 5rem 0 2rem;
+  margin-top: 6rem;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.footer__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--silver-light);
+  letter-spacing: 0.04em;
+}
+
+.footer__logo-company {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+.footer__tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.footer__motto {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--silver);
+  transition: color 0.2s ease;
+}
+
+.footer__links a:hover {
+  color: var(--gold);
+}
+
+.footer__contact-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__contact-lines p,
+.footer__contact-lines a {
+  font-size: 0.8rem;
+  color: var(--silver);
+  letter-spacing: 0.05em;
+  transition: color 0.2s ease;
+}
+
+.footer__contact-lines a:hover {
+  color: var(--gold);
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ─── MOBILE FOOTER ─────────────────────────── */
+@media (max-width: 768px) {
+  .footer { padding: 3.5rem 0 2rem; margin-top: 3rem; }
+  .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+}

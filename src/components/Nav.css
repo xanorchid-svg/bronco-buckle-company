@@ -1,0 +1,164 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  transition: all 0.4s ease;
+}
+
+.nav--scrolled {
+  background: rgba(15, 23, 32, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 0.85rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: opacity 0.2s ease;
+  z-index: 101;
+}
+
+.nav__logo:hover { opacity: 0.75; }
+
+.nav__logo-icon { flex-shrink: 0; }
+
+.nav__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nav__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--silver-light);
+  letter-spacing: 0.04em;
+}
+
+.nav__logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 3px;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav__link {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav__link:hover,
+.nav__link--active { color: var(--silver-light); }
+
+.nav__link:hover::after,
+.nav__link--active::after { width: 100%; }
+
+.nav__link--cta {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.5rem 1.2rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav__link--cta::after { display: none; }
+.nav__link--cta:hover { background: var(--gold); color: var(--black); }
+
+/* Hamburger */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--silver-light);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.nav__hamburger--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav__hamburger--open span:nth-child(2) { opacity: 0; }
+.nav__hamburger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.5rem; }
+  .nav--scrolled { padding: 0.75rem 1.5rem; }
+
+  .nav__hamburger { display: flex; }
+
+  .nav__links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--blue-deep);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 100;
+  }
+
+  .nav__links--open { display: flex; }
+
+  .nav__link {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+  }
+
+  .nav__link--cta {
+    padding: 0.85rem 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Hide text on mobile, show only icon */
+  .nav__logo-text { display: none; }
+}

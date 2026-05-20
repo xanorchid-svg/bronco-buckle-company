@@ -1,0 +1,100 @@
+.roar-title {
+  color: var(--gold-light);
+}
+
+.roar-hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--silver);
+  margin-top: 0.5rem;
+}
+
+.roar-body {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.roar-opening {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.roar-lead {
+  font-size: 1.2rem !important;
+  font-family: var(--font-display) !important;
+  font-style: italic;
+  color: var(--silver-light) !important;
+}
+
+.roar-parable {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 3rem;
+  padding: 3rem;
+  background: var(--blue-mid);
+  border-left: 2px solid var(--blue-accent);
+}
+
+.roar-parable__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.roar-moral {
+  font-style: italic;
+  color: var(--silver-light) !important;
+}
+
+.roar-closing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.roar-closing__words {
+  font-size: clamp(3rem, 6vw, 5rem) !important;
+  color: var(--gold);
+  line-height: 1.1 !important;
+}
+
+.roar-closing__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.roar-whisper {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--gold-light);
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .roar-parable {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .roar-closing {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─── MOBILE RUN2THEROAR ────────────────────── */
+@media (max-width: 768px) {
+  .roar-body { gap: 3rem; }
+  .roar-parable { grid-template-columns: 1fr; gap: 1.25rem; padding: 2rem 1.5rem; }
+  .roar-closing { grid-template-columns: 1fr; gap: 2rem; }
+  .roar-closing__words { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
+}
