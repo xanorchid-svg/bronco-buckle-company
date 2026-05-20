@@ -24,12 +24,12 @@
 .home-hero__overlay {
   position: absolute;
   inset: 0;
-  /* Blue tint across whole image for readability + bottom fade to body */
+  /* Heavier blue-dark tint for readability */
   background: linear-gradient(
     to bottom,
-    rgba(15, 23, 32, 0.45) 0%,
-    rgba(15, 23, 32, 0.35) 35%,
-    rgba(15, 23, 32, 0.55) 68%,
+    rgba(15, 23, 32, 0.72) 0%,
+    rgba(15, 23, 32, 0.58) 35%,
+    rgba(15, 23, 32, 0.68) 68%,
     var(--blue-deep)       100%
   );
 }
