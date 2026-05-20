@@ -14,6 +14,12 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
+    // Lock body scroll when menu is open
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  useEffect(() => {
     setMenuOpen(false);
     window.scrollTo(0, 0);
   }, [location]);
