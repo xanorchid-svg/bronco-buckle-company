@@ -33,7 +33,8 @@ export default function Home() {
           />
           <div className="home-hero__overlay" />
         </div>
-        <div className="home-hero__content container">
+        <div className="home-hero__content">
+          <div style={{ paddingLeft: '2rem', maxWidth: '680px' }}>
           <p className="overline">Dallas, Texas · Est. 2024</p>
           <h1 className="display home-hero__title">
             Hand-Crafted<br />
@@ -47,6 +48,7 @@ export default function Home() {
           <Link to="/contact" className="btn">
             <span>Begin Your Order</span>
           </Link>
+          </div>
         </div>
         <div className="home-hero__scroll">
           <span />
