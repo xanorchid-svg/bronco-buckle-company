@@ -30,8 +30,6 @@
   align-items: center;
   gap: 0.75rem;
   transition: opacity 0.2s ease;
-  z-index: 1001;
-  position: relative;
 }
 
 .nav__logo:hover { opacity: 0.75; }
@@ -132,20 +130,42 @@
 .nav__hamburger--open span:nth-child(2) { opacity: 0; }
 .nav__hamburger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* Spacer — keeps logo centered when hamburger is on the left */
+.nav__spacer { display: none; }
+
 /* ─── MOBILE OVERLAY ────────────────────────── */
-/* Rendered outside <nav> so it's never clipped or z-index'd under anything */
 .nav__mobile-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: 9999;
   background: var(--blue-deep);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
-  -webkit-overflow-scrolling: touch;
 }
+
+/* X close button — top right */
+.nav__mobile-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--silver-light);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.nav__mobile-close:hover { color: var(--gold); }
 
 .nav__mobile-links {
   display: flex;
@@ -173,20 +193,26 @@
   margin-top: 0.75rem;
 }
 
-.nav__mobile-hint {
-  position: absolute;
-  bottom: 2.5rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 768px) {
-  .nav               { padding: 1rem 1.5rem; }
-  .nav--scrolled     { padding: 0.75rem 1.5rem; }
-  .nav__hamburger    { display: flex; }
+  .nav           { padding: 1rem 1.5rem; }
+  .nav--scrolled { padding: 0.75rem 1.5rem; }
+
+  /* Show hamburger, hide desktop links, hide logo text */
+  .nav__hamburger      { display: flex; }
   .nav__links--desktop { display: none; }
-  .nav__logo-text    { display: none; }
+  .nav__logo-text      { display: none; }
+
+  /* Center logo using spacer trick:
+     hamburger (left) | logo (center) | spacer (right, same width as hamburger) */
+  .nav__spacer {
+    display: block;
+    width: 40px; /* same as hamburger button */
+  }
+
+  .nav__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
