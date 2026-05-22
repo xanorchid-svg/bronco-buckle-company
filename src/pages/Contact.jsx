@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
 
@@ -255,6 +256,11 @@ export default function Contact() {
 
   return (
     <div className="page inner-page">
+      <SEO
+        title="Inquire — Start Your Custom Order"
+        description="Ready to order your Bronco Buckles sterling silver belt buckle? Use our price calculator and send an inquiry. Custom buckles take 4-6 weeks. Dallas, Texas."
+        path="/contact"
+      />
       <div className="inner-hero inner-hero--short">
         <div className="inner-hero__bg">
           <img src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/1725566392796-38I40RYLNVW9DK5LUDXC/unsplash-image-LiY9rVmDGX4.jpg" alt="Inquire" />

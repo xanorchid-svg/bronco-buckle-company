@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
+import SEO from '../components/SEO';
 
 const testimonials = [
   {
@@ -23,6 +24,11 @@ const testimonials = [
 export default function Home() {
   return (
     <div className="page home">
+      <SEO
+        title="Hand-Crafted Sterling Silver Belt Buckles"
+        description="Bronco Buckles Company crafts hand-made sterling silver belt buckles and belts in Dallas, Texas. Custom initials, logos, and designs. From $1,275. Run2theRoar."
+        path="/"
+      />
 
       {/* Hero */}
       <section className="home-hero">

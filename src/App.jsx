@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,20 +13,22 @@ import './index.css';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/the-buckle" element={<TheBuckle />} />
-          <Route path="/the-belt" element={<TheBelt />} />
-          <Route path="/run2theroar" element={<Run2theRoar />} />
-          <Route path="/our-story" element={<OurStory />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<FAQ />} />
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Nav />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/the-buckle" element={<TheBuckle />} />
+            <Route path="/the-belt" element={<TheBelt />} />
+            <Route path="/run2theroar" element={<Run2theRoar />} />
+            <Route path="/our-story" element={<OurStory />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

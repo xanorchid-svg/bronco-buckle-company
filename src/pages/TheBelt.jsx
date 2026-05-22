@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './PageStyles.css';
+import SEO from '../components/SEO';
 
 const belts = [
   {
@@ -25,6 +26,11 @@ const belts = [
 export default function TheBelt() {
   return (
     <div className="page inner-page">
+      <SEO
+        title="The Belt — American Alligator, Cowhide & Bull Hide"
+        description="Pair your Bronco Buckles sterling silver buckle with an American alligator, cowhide, or condensed bull hide belt. Made to your specifications. Dallas, Texas."
+        path="/the-belt"
+      />
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img

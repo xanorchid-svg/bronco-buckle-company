@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import './PageStyles.css';
+import SEO from '../components/SEO';
 
 export default function TheBuckle() {
   return (
     <div className="page inner-page">
+      <SEO
+        title="The Buckle — Sterling Silver Belt Buckles"
+        description="Each Bronco Buckles buckle is hand-crafted in .925 sterling silver with your custom block initials or logo. Inspired by the Kalo Silver Shop. From $1,275. Dallas, Texas."
+        path="/the-buckle"
+      />
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img

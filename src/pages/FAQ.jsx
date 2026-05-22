@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PageStyles.css';
+import SEO from '../components/SEO';
 import './FAQ.css';
 
 const faqs = [
@@ -65,6 +66,11 @@ function FAQItem({ q, a, index }) {
 export default function FAQ() {
   return (
     <div className="page inner-page">
+      <SEO
+        title="FAQ — Frequently Asked Questions"
+        description="How to order a Bronco Buckles sterling silver belt buckle. Pricing, lead times, belt options, customization, and shipping. Everything you need to know."
+        path="/faq"
+      />
       <div className="inner-hero inner-hero--short">
         <div className="inner-hero__bg">
           <img

@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import './PageStyles.css';
+import SEO from '../components/SEO';
 
 export default function OurStory() {
   return (
     <div className="page inner-page">
+      <SEO
+        title="Our Story — A Father and His Two Sons"
+        description="Bronco Buckles Company was founded in Dallas, Texas in 2024 by a father and his two sons. Hand-crafted sterling silver belt buckles built to last a lifetime."
+        path="/our-story"
+      />
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img

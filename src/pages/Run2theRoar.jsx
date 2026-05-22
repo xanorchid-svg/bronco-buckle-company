@@ -1,9 +1,15 @@
 import './PageStyles.css';
+import SEO from '../components/SEO';
 import './Run2theRoar.css';
 
 export default function Run2theRoar() {
   return (
     <div className="page inner-page">
+      <SEO
+        title="Run2theRoar — The Philosophy"
+        description="Stamped on the back of every Bronco Buckles buckle: Run2theRoar. A reminder to face the day with fearlessness and intention. Read the story behind the motto."
+        path="/run2theroar"
+      />
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img
