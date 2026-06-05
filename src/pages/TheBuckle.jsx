@@ -78,6 +78,8 @@ export default function TheBuckle() {
         </div>
 
         <hr />
+
+        <div className="pricing-block">
           <p className="overline">Pricing</p>
           <div className="pricing-row">
             <span className="pricing-label">Standard Buckle (with initials)</span>
