@@ -46,15 +46,24 @@ export default function TheBelt() {
       </div>
 
       <div className="section container">
-        <div className="section-intro section--steel" style={{ padding: '3rem', margin: '0 -2rem 3rem' }}>
-          <p className="overline">The Foundation</p>
-          <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
-          <div className="divider" />
-          <p className="body-text">
-            We offer several belt options to pair with your Bronco Buckles buckle — each selected
-            for quality, longevity, and character. The belt is not an afterthought. It is
-            the other half of the piece.
-          </p>
+        <div className="section--steel two-col" style={{ padding: '3rem', margin: '0 -2rem 3rem', alignItems: 'center' }}>
+          <div>
+            <p className="overline">The Foundation</p>
+            <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
+            <div className="divider" />
+            <p className="body-text">
+              We offer several belt options to pair with your Bronco Buckles buckle — each selected
+              for quality, longevity, and character. The belt is not an afterthought. It is
+              the other half of the piece.
+            </p>
+          </div>
+          <div className="two-col__image">
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
+              alt="Bronco Buckle belt detail"
+              style={{ width: '100%', display: 'block' }}
+            />
+          </div>
         </div>
 
         <div className="belt-grid">

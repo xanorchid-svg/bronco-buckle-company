@@ -2,9 +2,14 @@
   color: var(--gold-light);
 }
 
+.roar-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
 .roar-numeral {
-  font-size: 1.3em;
-  color: var(--blue-light);
+  font-size: 1.56em;
+  color: #94aade;
   font-style: normal;
   display: inline-block;
   transform: translateY(0.04em);

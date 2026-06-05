@@ -30,14 +30,13 @@ function Calculator({ onBuildOrder }) {
   const [beltId,       setBeltId]       = useState('none');
   const [beltQty,      setBeltQty]      = useState(1);
   const [engraving,    setEngraving]    = useState(false);
-  const [engravingQty, setEngravingQty] = useState(1);
   const [applyTax,     setApplyTax]     = useState(false);
 
   const belt = PRICES.belts.find(b => b.id === beltId);
   const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
   const buckleTotal  = buckleQty * buckleUnitPrice;
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
-  const engravingTotal = engraving ? engravingQty * PRICES.engraving : 0;
+  const engravingTotal = engraving ? PRICES.engraving : 0;
   const subtotal     = buckleTotal + beltTotal + engravingTotal;
   const tax          = applyTax ? subtotal * PRICES.taxRate : 0;
   const total        = subtotal + tax;
@@ -46,7 +45,7 @@ function Calculator({ onBuildOrder }) {
     const lines = [];
     lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
-    if (engraving) lines.push(`${engravingQty}x Custom Engraving — ${formatCurrency(engravingTotal)}`);
+    if (engraving) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
     lines.push(`Estimated Total: ${formatCurrency(total)}`);
     return lines.join('\n');
@@ -139,13 +138,8 @@ function Calculator({ onBuildOrder }) {
           </button>
         </div>
         {engraving && (
-          <div className="calc__row" style={{ marginTop: '1.25rem' }}>
-            <label>Engraving Quantity</label>
-            <div className="calc__stepper">
-              <button onClick={() => setEngravingQty(Math.max(1, engravingQty - 1))}>−</button>
-              <span>{engravingQty}</span>
-              <button onClick={() => setEngravingQty(engravingQty + 1)}>+</button>
-            </div>
+          <div className="calc__row" style={{ marginTop: '0.5rem' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--gold)' }}>+$50 added to total</span>
           </div>
         )}
       </div>
@@ -178,7 +172,7 @@ function Calculator({ onBuildOrder }) {
         )}
         {engraving && (
           <div className="calc__total-row">
-            <span>Engraving ({engravingQty})</span>
+            <span>Engraving</span>
             <span>{formatCurrency(engravingTotal)}</span>
           </div>
         )}
@@ -308,7 +302,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="section container">
+      <div className="section container" style={{ paddingTop: '3rem' }}>
 
         {/* Process steps */}
         <div className="contact-steps-strip">

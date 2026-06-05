@@ -49,7 +49,7 @@ export default function Nav() {
       src="/logoBB.png"
       alt="Bronco Buckle Company"
       className="nav__logo-icon"
-      style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+      style={{ height: '38px', width: 'auto', mixBlendMode: 'screen', opacity: 0.95 }}
     />
   );
 
