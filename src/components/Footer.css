@@ -1,120 +1,122 @@
+/* ============================================
+   FOOTER — BRONCO BUCKLES
+   ============================================ */
+
 .footer {
-  background: var(--charcoal);
-  border-top: 1px solid var(--border);
-  padding: 5rem 0 2rem;
-  margin-top: 6rem;
+  background: var(--bg-deep);
+  border-top: var(--border-gold);
 }
 
-.footer__inner {
+.footer__top {
+  padding: 72px 0 56px;
+}
+
+.footer__top-inner {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Brand */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .footer__logo {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1.5rem;
+  height: 48px;
+  width: auto;
 }
 
-.footer__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.footer__logo-name {
+.footer__brand-name {
   font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--silver-light);
-  letter-spacing: 0.04em;
-}
-
-.footer__logo-company {
-  font-family: var(--font-body);
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 4px;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
 }
 
 .footer__tagline {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel-blue);
 }
 
-.footer__motto {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-style: italic;
+/* Nav */
+.footer__nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer__nav-heading {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--gold);
-  letter-spacing: 0.05em;
+  margin-bottom: 16px;
 }
 
-.footer__links {
+.footer__nav-col ul {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 10px;
 }
 
-.footer__links a {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  color: var(--silver);
+.footer__nav-col ul li,
+.footer__nav-col ul li a {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-decoration: none;
   transition: color 0.2s ease;
+  line-height: 1.4;
 }
 
-.footer__links a:hover {
-  color: var(--gold);
+.footer__nav-col ul li a:hover {
+  color: var(--text-primary);
 }
 
-.footer__contact-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.footer__contact-lines p,
-.footer__contact-lines a {
-  font-size: 0.8rem;
-  color: var(--silver);
-  letter-spacing: 0.05em;
-  transition: color 0.2s ease;
-}
-
-.footer__contact-lines a:hover {
-  color: var(--gold);
-}
-
+/* Bottom bar */
 .footer__bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
-  text-align: center;
+  border-top: var(--border-light);
+  padding: 20px 0;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footer__bottom p {
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: var(--text-muted);
-  text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-  .footer__inner {
+.footer__credit {
+  color: var(--steel-blue) !important;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer__top-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 48px;
+  }
+  .footer__nav {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* ─── MOBILE FOOTER ─────────────────────────── */
-@media (max-width: 768px) {
-  .footer { padding: 3.5rem 0 2rem; margin-top: 3rem; }
-  .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+@media (max-width: 600px) {
+  .footer__nav { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer__bottom-inner { flex-direction: column; gap: 8px; text-align: center; }
 }

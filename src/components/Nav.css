@@ -1,19 +1,24 @@
-/* ─── NAV BAR ───────────────────────────────── */
+/* ============================================
+   NAV — BRONCO BUCKLES SILVER & SLATE
+   ============================================ */
+
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  padding: 1.25rem 2rem;
-  transition: all 0.4s ease;
+  z-index: 100;
+  padding: 20px 48px;
+  transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+  background: transparent;
 }
 
 .nav--scrolled {
-  background: rgba(15, 23, 32, 0.96);
+  padding: 12px 48px;
+  background: rgba(22, 36, 58, 0.92);
   backdrop-filter: blur(12px);
-  padding: 0.85rem 2rem;
-  border-bottom: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.12);
 }
 
 .nav__inner {
@@ -24,87 +29,91 @@
   justify-content: space-between;
 }
 
-/* ─── LOGO ──────────────────────────────────── */
-.nav__logo {
+/* ---- Links ---- */
+
+.nav__links {
+  list-style: none;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  transition: opacity 0.2s ease;
-}
-
-.nav__logo:hover { opacity: 0.75; }
-.nav__logo-icon  { flex-shrink: 0; }
-
-.nav__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.nav__logo-name {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--silver-light);
-  letter-spacing: 0.04em;
-}
-
-.nav__logo-sub {
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 3px;
-}
-
-/* ─── DESKTOP LINKS ─────────────────────────── */
-.nav__links--desktop {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
+  gap: 36px;
 }
 
 .nav__link {
   font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: 0.68rem;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--silver);
-  transition: color 0.2s ease;
+  color: rgba(240, 236, 228, 0.75);
+  text-decoration: none;
   position: relative;
+  transition: color 0.25s ease;
+  padding-bottom: 2px;
 }
 
 .nav__link::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--gold);
+  background: var(--steel-blue);
   transition: width 0.3s ease;
 }
 
-.nav__link:hover,
-.nav__link--active { color: var(--silver-light); }
-
-.nav__link:hover::after,
-.nav__link--active::after { width: 100%; }
-
-.nav__link--cta {
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 0.5rem 1.2rem;
-  transition: background 0.2s ease, color 0.2s ease;
+.nav__link:hover {
+  color: var(--text-primary);
 }
 
-.nav__link--cta::after { display: none; }
-.nav__link--cta:hover  { background: var(--gold); color: var(--black); }
+.nav__link:hover::after,
+.nav__link--active::after {
+  width: 100%;
+}
 
-/* ─── HAMBURGER ─────────────────────────────── */
+.nav__link--active {
+  color: var(--text-primary);
+}
+
+/* Inquire CTA link */
+.nav__link--cta {
+  color: var(--gold-light);
+  border: 1px solid rgba(184, 146, 74, 0.4);
+  padding: 7px 18px 7px 18px;
+  transition: all 0.25s ease;
+}
+
+.nav__link--cta::after {
+  display: none;
+}
+
+.nav__link--cta:hover {
+  background: var(--gold);
+  color: var(--bg-primary);
+  border-color: var(--gold);
+}
+
+/* ---- Logo ---- */
+
+.nav__logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo {
+  height: 42px;
+  width: auto;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav__logo:hover {
+  opacity: 0.8;
+  transform: scale(0.97);
+}
+
+/* ---- Hamburger (mobile) ---- */
+
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -112,107 +121,114 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
-  position: relative;
+  padding: 6px;
+  z-index: 110;
 }
 
 .nav__hamburger span {
   display: block;
   width: 24px;
-  height: 1px;
-  background: var(--silver-light);
+  height: 1.5px;
+  background: var(--text-primary);
   transition: all 0.3s ease;
   transform-origin: center;
 }
 
-.nav__hamburger--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav__hamburger--open span:nth-child(2) { opacity: 0; }
-.nav__hamburger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-/* Spacer — keeps logo centered when hamburger is on the left */
-.nav__spacer { display: none; }
-
-/* ─── MOBILE OVERLAY ────────────────────────── */
-.nav__mobile-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: var(--blue-deep);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.nav__hamburger--open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav__hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__hamburger--open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* X close button — top right */
-.nav__mobile-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
+/* ---- Mobile Overlay ---- */
+
+.nav__mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deep);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px 48px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav__mobile-overlay--open {
+  transform: translateX(0);
+}
+
+.nav__mobile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: var(--border-gold);
+  margin-bottom: 48px;
+}
+
+.nav__close {
   background: none;
   border: none;
-  color: var(--silver-light);
-  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
   cursor: pointer;
-  padding: 0.5rem;
-  line-height: 1;
+  padding: 8px;
   transition: color 0.2s ease;
 }
 
-.nav__mobile-close:hover { color: var(--gold); }
+.nav__close:hover {
+  color: var(--text-primary);
+}
 
 .nav__mobile-links {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  gap: 8px;
+  flex: 1;
 }
 
 .nav__mobile-link {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
   font-weight: 400;
-  letter-spacing: 0.22em;
+  color: rgba(240, 236, 228, 0.65);
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(240, 236, 228, 0.06);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.nav__mobile-link:hover,
+.nav__mobile-link--active {
+  color: var(--gold-light);
+  padding-left: 12px;
+}
+
+.nav__mobile-footer {
+  padding-top: 32px;
+  border-top: var(--border-gold);
+}
+
+.nav__mobile-footer p {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--silver-light);
-  transition: color 0.2s ease;
+  color: var(--text-muted);
 }
 
-.nav__mobile-link:hover { color: var(--gold); }
+/* ---- Responsive ---- */
 
-.nav__mobile-link--cta {
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 0.85rem 2.5rem;
-  margin-top: 0.75rem;
-}
-
-/* ─── RESPONSIVE ────────────────────────────── */
-@media (max-width: 768px) {
-  .nav           { padding: 1rem 1.5rem; }
-  .nav--scrolled { padding: 0.75rem 1.5rem; }
-
-  /* Show hamburger, hide desktop links, hide logo text */
-  .nav__hamburger      { display: flex; }
-  .nav__links--desktop { display: none; }
-  .nav__logo-text      { display: none; }
-
-  /* Center logo using spacer trick:
-     hamburger (left) | logo (center) | spacer (right, same width as hamburger) */
-  .nav__spacer {
-    display: block;
-    width: 40px; /* same as hamburger button */
-  }
-
-  .nav__logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+@media (max-width: 900px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+  .nav { padding: 16px 24px; }
+  .nav--scrolled { padding: 12px 24px; }
 }

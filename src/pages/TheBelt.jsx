@@ -1,91 +1,123 @@
 import { Link } from 'react-router-dom';
-import './PageStyles.css';
 import SEO from '../components/SEO';
+import './PageStyles.css';
+import './TheBelt.css';
+
+const CDN = 'https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713';
+const heroImg = `${CDN}/6796795d-7074-4af8-a557-dff021ccad24/_DSF3499.jpeg`;
 
 const belts = [
   {
-    name: 'American Alligator',
-    price: '$625',
-    description: 'The finest option in our collection. American alligator leather, supple and distinctive, with a natural grain that deepens over time. An heirloom in its own right.',
-    note: 'Limited availability. Allow additional lead time.',
+    name: 'Alligator',
+    price: '$525 – $675',
+    priceNote: 'Standard / Custom',
+    description:
+      'The premium choice. Genuine American alligator leather, hand-selected for grain consistency and supple texture. A statement in itself — but one that knows when to be quiet.',
+    details: ['Genuine American alligator', 'Hand-selected grain', 'Brass or silver hardware', '1½" standard width', 'Custom sizing available'],
+    tier: 'premium',
   },
   {
     name: 'Cowhide',
-    price: '$150 – $450',
-    description: 'Three cowhide styles available, ranging from classic smooth to textured full-grain. Durable, versatile, and refined — the everyday companion to your buckle.',
-    note: 'Multiple finishes available. Discuss options at inquiry.',
+    price: '$150 – $350',
+    priceNote: 'Standard / Bridal',
+    description:
+      'Approachable, durable, and beautifully versatile. Smooth cowhide in standard and bridal grades — the bridal leather is finer-grained, more supple, and noticeably richer.',
+    details: ['Standard or bridal grade', 'Smooth finish', 'Multiple color options', '1½" standard width', 'Custom sizing available'],
+    tier: 'standard',
   },
   {
     name: 'Condensed Bull Hide',
-    price: 'Special Order',
-    description: 'For the man who wants something different. Dense, structured, and built to last decades. Available by special request.',
-    note: 'Contact us for pricing and availability.',
+    price: '$475',
+    priceNote: 'Single price',
+    description:
+      'A working belt with a refined character. Condensed bull hide has a density and rigidity that ages beautifully — developing a patina unique to the wearer over years of use.',
+    details: ['Condensed bull hide leather', 'Rich, structured feel', 'Develops personal patina', '1½" standard width', 'Custom sizing available'],
+    tier: 'mid',
   },
 ];
 
 export default function TheBelt() {
   return (
-    <div className="page inner-page">
+    <>
       <SEO
-        title="The Belt — American Alligator, Cowhide & Bull Hide"
-        description="Pair your Bronco Buckles sterling silver buckle with an American alligator, cowhide, or condensed bull hide belt. Made to your specifications. Dallas, Texas."
+        title="The Belt — Bronco Buckle Company"
+        description="Alligator, Cowhide, and Condensed Bull Hide belts, crafted to complement the Bronco sterling silver buckle."
         path="/the-belt"
       />
-      <div className="inner-hero">
-        <div className="inner-hero__bg">
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
-            alt="The Belt"
-          />
-          <div className="inner-hero__overlay" />
-        </div>
-        <div className="inner-hero__content container">
-          <p className="overline">American Alligator · Cowhide · Bull Hide</p>
-          <h1 className="display">The Belt</h1>
-        </div>
-      </div>
 
-      <div className="section container">
-        <div className="section-intro">
-          <p className="overline">The Foundation</p>
-          <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
-          <div className="divider" />
-          <p className="body-text">
-            We offer several belt options to pair with your Bronco Buckles buckle — each selected
-            for quality, longevity, and character. The belt is not an afterthought. It is
-            the other half of the piece.
+      {/* ── HERO ── */}
+      <section className="inner-hero">
+        <div
+          className="inner-hero__bg"
+          style={{ backgroundImage: `url(${heroImg})`, backgroundPosition: 'center 40%' }}
+        />
+        <div className="inner-hero__overlay" />
+        <div className="inner-hero__content">
+          <p className="eyebrow" style={{ color: 'var(--steel-blue-soft)' }}>
+            Alligator · Cowhide · Bull Hide
           </p>
+          <div className="gold-rule" />
+          <h1>The Belt</h1>
+          <p className="inner-hero__sub">Complete the look.</p>
         </div>
+      </section>
 
-        <div className="belt-grid">
-          {belts.map((belt, i) => (
-            <div key={i} className="belt-card">
-              <div className="belt-card__header">
-                <div>
-                  <p className="overline">{i === 0 ? 'Premium' : i === 1 ? 'Classic' : 'Special Order'}</p>
-                  <h3>{belt.name}</h3>
+      {/* ── INTRO ── */}
+      <section className="section-light">
+        <div className="container">
+          <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow" style={{ color: 'var(--steel-blue-dim)' }}>The Pairing</p>
+            <div className="steel-rule" style={{ margin: '16px auto' }} />
+            <h2 style={{ color: 'var(--text-dark)', marginBottom: '20px' }}>
+              Built for the Buckle
+            </h2>
+            <p style={{ color: 'var(--text-dark-mid)' }}>
+              Each belt is selected and sized to carry the Bronco Buckle — and to last
+              as long as the sterling silver it holds. Three leathers, three price points,
+              one intention: worthy of the buckle.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BELT OPTIONS ── */}
+      <section className="section-dark">
+        <div className="container">
+          <div className="belt-grid">
+            {belts.map((belt, i) => (
+              <div className={`belt-card belt-card--${belt.tier}`} key={i}>
+                <div className="belt-card__image img-placeholder" style={{ minHeight: '260px' }}>
+                  <span>{belt.name}</span>
+                  <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>Image coming soon</span>
                 </div>
-                <span className="belt-card__price">{belt.price}</span>
+                <div className="belt-card__body">
+                  <p className="eyebrow" style={{ color: belt.tier === 'premium' ? 'var(--gold)' : 'var(--steel-blue)' }}>
+                    {belt.tier === 'premium' ? 'Premium' : belt.tier === 'mid' ? 'Mid-Grade' : 'Standard'}
+                  </p>
+                  <h3 className="belt-card__name">{belt.name}</h3>
+                  <div className="belt-card__price">
+                    <span className="price-tag">{belt.price}</span>
+                    <span className="price-label">{belt.priceNote}</span>
+                  </div>
+                  <p className="belt-card__desc">{belt.description}</p>
+                  <ul className="belt-card__details">
+                    {belt.details.map((d, j) => (
+                      <li key={j}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="divider" style={{ margin: '1.2rem 0' }} />
-              <p className="body-text">{belt.description}</p>
-              <p className="belt-card__note">{belt.note}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '56px' }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', fontSize: '0.85rem' }}>
+              All belts are custom-ordered to your waist size. We'll confirm sizing on your order call.
+            </p>
+            <Link to="/contact" className="btn-primary">Inquire About a Belt</Link>
+          </div>
         </div>
+      </section>
 
-        <div className="pricing-block" style={{ marginTop: '4rem' }}>
-          <p className="pricing-note">All prices plus applicable sales tax. Belts are made to pair with your Bronco Buckles buckle and are sized to your specifications.</p>
-        </div>
-
-        <div className="page-cta">
-          <p className="overline">Ready to Start?</p>
-          <h2 className="headline">Find your perfect pair.</h2>
-          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}>
-            <span>Inquire Now</span>
-          </Link>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
