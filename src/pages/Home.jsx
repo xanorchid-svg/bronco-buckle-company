@@ -119,7 +119,7 @@ export default function Home() {
               <div className="home-product-card__text">
                 <p className="overline">Sterling Silver</p>
                 <h3>The Buckle</h3>
-                <p>From $1,275 · Custom initials · Hand-crafted</p>
+                <p>From $895 · Custom initials · Hand-crafted</p>
                 <span className="home-product-card__link">Learn More →</span>
               </div>
             </Link>
