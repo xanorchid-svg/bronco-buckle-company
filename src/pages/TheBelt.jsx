@@ -46,7 +46,7 @@ export default function TheBelt() {
       </div>
 
       <div className="section container">
-        <div className="section-intro">
+        <div className="section-intro section--steel" style={{ padding: '3rem', margin: '0 -2rem 3rem' }}>
           <p className="overline">The Foundation</p>
           <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
           <div className="divider" />

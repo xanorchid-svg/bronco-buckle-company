@@ -84,7 +84,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--gold);
+  background: #94aade;
   transition: width 0.3s ease;
 }
 

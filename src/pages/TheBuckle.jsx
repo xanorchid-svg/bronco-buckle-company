@@ -52,7 +52,8 @@ export default function TheBuckle() {
 
         <hr />
 
-        <div className="spec-grid">
+        <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem' }}>
+          <div className="spec-grid">
           <div className="spec-item">
             <p className="overline">Material</p>
             <h3>Sterling Silver</h3>
@@ -74,10 +75,9 @@ export default function TheBuckle() {
             <p className="body-text">Custom work takes time. We'll help you plan to meet your occasion.</p>
           </div>
         </div>
+        </div>
 
         <hr />
-
-        <div className="pricing-block">
           <p className="overline">Pricing</p>
           <div className="pricing-row">
             <span className="pricing-label">Standard Buckle (with initials)</span>
