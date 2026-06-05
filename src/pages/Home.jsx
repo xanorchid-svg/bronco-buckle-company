@@ -1,188 +1,183 @@
 import { Link } from 'react-router-dom';
-import SEO from '../components/SEO';
 import './Home.css';
-
-const SQUARESPACE_CDN = 'https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713';
-
-const heroImg    = `${SQUARESPACE_CDN}/1725566392796-38I40RYLNVW9DK5LUDXC/unsplash-image-LiY9rVmDGX4.jpg`;
-const brandImg   = `${SQUARESPACE_CDN}/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg`;
-const beltImg    = `${SQUARESPACE_CDN}/1725570831718-W0IX1ZMW0K9ZM8FOETYK/unsplash-image-iYmBencG_KY.jpg`;
+import SEO from '../components/SEO';
 
 const testimonials = [
-  { quote: "Great product! Enjoying my buckle & belt so much, I ordered ones for each of my boys. And secretly, I hope they embrace the message inscribed on the back and run2theroar.", author: "John H." },
-  { quote: "I wear my Bronco Buckle belt every day. It instantly became my favorite.", author: "Don W." },
-  { quote: "It's hard to find gifts these days for the guys in my life. Thanks Bronco Buckles for making it easy — something they'll cherish for years.", author: "Sally W." },
-  { quote: "A transplanted Texan in New York, I'm reminded of my Texas roots each time I wear my Bronco Buckle belt. Bonus: it's a conversation starter.", author: "Paul C." },
+  {
+    quote: "I ordered one for myself, then one for each of my boys. I hope they embrace the message inscribed on the back and run2theroar.",
+    name: "John H.",
+  },
+  {
+    quote: "I wear my Bronco Buckles belt every day. It instantly became my favorite.",
+    name: "Don W.",
+  },
+  {
+    quote: "It's hard to find a gift for the guys in my life. Thanks Bronco Buckles for making it easy — something they'll cherish for years.",
+    name: "Sally W.",
+  },
+  {
+    quote: "A transplanted Texan in New York, I'm reminded of my Texas roots each time I wear my Bronco Buckles belt. Bonus: it's a conversation starter.",
+    name: "Paul C.",
+  },
 ];
 
 export default function Home() {
   return (
-    <>
+    <div className="page home">
       <SEO
-        title="Bronco Buckle Company — Sterling Silver Belt Buckles"
-        description="Hand-crafted sterling silver belt buckles and belts from Dallas, Texas. Classic elegance, superb craftsmanship, defining sophistication."
+        title="Hand-Crafted Sterling Silver Belt Buckles"
+        description="Bronco Buckles Company crafts hand-made sterling silver belt buckles and belts in Dallas, Texas. Custom initials, logos, and designs. From $1,275. Run2theRoar."
         path="/"
       />
 
-      {/* ── HERO ── */}
+      {/* Hero */}
       <section className="home-hero">
-        <div
-          className="home-hero__bg"
-          style={{ backgroundImage: `url(${heroImg})` }}
-        />
-        <div className="home-hero__overlay" />
+        <div className="home-hero__bg">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg"
+            alt="Bronco Buckles — Sterling Silver"
+          />
+          <div className="home-hero__overlay" />
+        </div>
         <div className="home-hero__content">
-          <p className="eyebrow home-hero__eyebrow">Dallas, Texas · Sterling Silver</p>
-          <div className="gold-rule" style={{ margin: '16px auto 24px' }} />
-          <h1 className="home-hero__headline">
-            Classic Elegance.<br />
-            Superb Craftsmanship.
+          <div style={{ paddingLeft: '2rem', maxWidth: '680px' }}>
+          <p className="overline">Dallas, Texas · Est. 2024</p>
+          <h1 className="display home-hero__title">
+            Hand-Crafted<br />
+            <em>Sterling Silver</em><br />
+            Buckles & Belts
           </h1>
-          <p className="home-hero__sub">Defining Sophistication</p>
-          <div className="home-hero__actions">
-            <Link to="/the-buckle" className="btn-primary">The Buckle</Link>
-            <Link to="/contact" className="btn-steel">Inquire</Link>
+          <div className="divider" />
+          <p className="home-hero__sub">
+            For the man who dresses with intention.
+          </p>
+          <Link to="/contact" className="btn">
+            <span>Begin Your Order</span>
+          </Link>
           </div>
+        </div>
+        <div className="home-hero__scroll">
+          <span />
         </div>
       </section>
 
-      {/* ── BRAND STATEMENT ── */}
-      <section className="home-brand section-light">
+      {/* Brand Statement */}
+      <section className="section home-brand">
         <div className="container">
-          <div className="home-brand__grid">
+          <div className="home-brand__inner">
             <div className="home-brand__text">
-              <p className="eyebrow" style={{ color: 'var(--steel-blue-dim)' }}>The Story</p>
-              <div className="steel-rule" />
-              <h2 className="home-brand__heading">Inspired by the Masters</h2>
-              <p>
-                The Bronco Buckle Company's sterling silver buckles and belts reflect
-                timeless elegance inspired by the Kalo Silver Shop in Chicago — the
-                leading silversmith of the early 20th century.
+              <p className="overline">The Philosophy</p>
+              <h2 className="headline">Worn with jeans.<br />Worn with a suit.</h2>
+              <div className="divider" />
+              <p className="body-text">
+                Bronco Buckles draws its inspiration from the Kalo Silver Shop — the
+                leading silversmith of early 20th century Chicago. A light Western motif
+                carried with 21st century refinement. Your initials, hand-stamped. A piece
+                that belongs in any room you walk into.
               </p>
-              <p style={{ marginTop: '16px' }}>
-                From this inspiration, the Bronco Buckles were born — a design worn
-                equally with an everyday pair of jeans or with slacks and a suit. A
-                light Western motif with the subtle sophistication of a 21st century
-                gentleman.
-              </p>
-              <Link to="/our-story" className="btn-primary" style={{ marginTop: '32px' }}>
-                Our Story
+              <Link to="/the-buckle" className="btn" style={{ marginTop: '2rem' }}>
+                <span>View The Buckle</span>
               </Link>
             </div>
             <div className="home-brand__image">
-              <img src={brandImg} alt="Bronco Buckle sterling silver detail" />
-              <div className="home-brand__image-border" />
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
+                alt="Bronco Buckles detail"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── RUN2THEROAR STRIP ── */}
-      <div className="home-r2r-strip">
-        <div className="home-r2r-strip__inner">
-          <span className="home-r2r-strip__text">
-            Run<span className="run2-numeral">2</span>theRoar
-          </span>
-          <span className="home-r2r-strip__divider">—</span>
-          <span className="home-r2r-strip__sub">
-            Stamped on every buckle. A quiet encouragement.
-          </span>
-          <Link to="/run2theroar" className="home-r2r-strip__link">Read the story →</Link>
+      {/* Run2theRoar Callout */}
+      <section className="home-roar">
+        <div className="home-roar__inner container">
+          <p className="overline">Stamped on every buckle</p>
+          <h2 className="display home-roar__title"><em>Run2theRoar</em></h2>
+          <p className="home-roar__text body-text">
+            On the back of every buckle, a quiet reminder. Be fearless, assertive, and
+            intentional when facing the roar of the day. Not from it — toward it.
+          </p>
+          <Link to="/run2theroar" className="btn btn--light">
+            <span>Read the Story</span>
+          </Link>
         </div>
-      </div>
+      </section>
 
-      {/* ── PRODUCTS ── */}
-      <section className="home-products section-dark">
+      {/* Product Grid */}
+      <section className="section home-products">
         <div className="container">
-          <div className="home-products__header">
-            <p className="eyebrow">Handcrafted in Sterling Silver</p>
-            <div className="gold-rule" />
-            <h2>The Collection</h2>
-          </div>
           <div className="home-products__grid">
-
-            <div className="home-product-card">
+            <Link to="/the-buckle" className="home-product-card">
               <div className="home-product-card__image">
-                <img src="/buckle-standalone.png" alt="The Bronco Buckle — sterling silver" />
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/8a6b54b6-acac-431a-a7f3-8014f45c73ee/WhatsApp+Image+2024-10-14+at+21.31.46+%281%29.jpg"
+                  alt="The Buckle"
+                  style={{ objectPosition: 'center 20%' }}
+                />
               </div>
-              <div className="home-product-card__body">
-                <p className="eyebrow">The Centerpiece</p>
+              <div className="home-product-card__text">
+                <p className="overline">Sterling Silver</p>
                 <h3>The Buckle</h3>
-                <p>
-                  Hand-crafted in sterling silver. Block initials placed on the front.
-                  "Run<span className="run2-numeral" style={{ fontSize: '1.1em' }}>2</span>theRoar"
-                  stamped on the back. Custom engraving available.
-                </p>
-                <div className="home-product-card__price">
-                  <span className="price-tag">From $895</span>
-                </div>
-                <Link to="/the-buckle" className="btn-primary" style={{ marginTop: '20px' }}>
-                  View Details
-                </Link>
+                <p>From $1,275 · Custom initials · Hand-crafted</p>
+                <span className="home-product-card__link">Learn More →</span>
               </div>
-            </div>
+            </Link>
 
-            <div className="home-product-card">
+            <Link to="/the-belt" className="home-product-card">
               <div className="home-product-card__image">
-                <img src={beltImg} alt="Bronco Buckle leather belts" />
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg"
+                  alt="The Belt"
+                />
               </div>
-              <div className="home-product-card__body">
-                <p className="eyebrow">Complete the Look</p>
+              <div className="home-product-card__text">
+                <p className="overline">American Alligator · Cowhide</p>
                 <h3>The Belt</h3>
-                <p>
-                  Alligator, Cowhide, or Condensed Bull Hide — each belt is selected
-                  to complement the buckle and built to last a lifetime.
-                </p>
-                <div className="home-product-card__price">
-                  <span className="price-tag">From $150</span>
-                </div>
-                <Link to="/the-belt" className="btn-primary" style={{ marginTop: '20px' }}>
-                  View Options
-                </Link>
+                <p>From $150 · Multiple leathers · Made to pair</p>
+                <span className="home-product-card__link">Learn More →</span>
               </div>
-            </div>
-
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section className="home-testimonials section-card">
+      {/* Testimonials */}
+      <section className="section home-testimonials">
         <div className="container">
           <div className="home-testimonials__header">
-            <p className="eyebrow">From Our Customers</p>
-            <div className="gold-rule" />
-            <h2>Worn Every Day</h2>
+            <p className="overline">From Our Customers</p>
+            <h2 className="headline">What they're saying</h2>
+            <div className="divider--center divider" />
           </div>
           <div className="home-testimonials__grid">
             {testimonials.map((t, i) => (
-              <div className="testimonial" key={i}>
-                <p className="testimonial-text">"{t.quote}"</p>
-                <p className="testimonial-author">{t.author}</p>
+              <div key={i} className="testimonial-card">
+                <p className="testimonial-card__mark">"</p>
+                <p className="testimonial-card__quote">{t.quote}</p>
+                <p className="testimonial-card__name">— {t.name}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ── */}
-      <section className="home-cta section-deep">
-        <div className="container">
-          <div className="home-cta__inner">
-            <p className="eyebrow">Made for You</p>
-            <div className="gold-rule" />
-            <h2>Begin Your Order</h2>
-            <p className="home-cta__sub">
-              Every buckle is made to order. We'll call you to discuss specifications,
-              engraving, and delivery — because this piece is yours.
+      {/* CTA Strip */}
+      <section className="home-cta">
+        <div className="container home-cta__inner">
+          <div>
+            <p className="overline">Ready to Order?</p>
+            <h2 className="headline">Let's build yours.</h2>
+            <p className="body-text" style={{ marginTop: '0.75rem' }}>
+              Custom buckles take 4–6 weeks from start to finish.<br />Reach out and we'll guide you through every step.
             </p>
-            <Link to="/contact" className="btn-primary home-cta__btn">
-              Start an Inquiry
-            </Link>
           </div>
+          <Link to="/contact" className="btn">
+            <span>Get In Touch</span>
+          </Link>
         </div>
       </section>
 
-    </>
+    </div>
   );
 }

@@ -1,62 +1,281 @@
-/* ============================================
-   SHARED INNER PAGE STYLES — BRONCO BUCKLES
-   ============================================ */
-
-/* ---- Inner Page Hero ---- */
-
+/* ─── INNER PAGE HERO ───────────────────────── */
 .inner-hero {
-  min-height: 55vh;
   position: relative;
+  height: 60vh;
+  min-height: 420px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-end;
   overflow: hidden;
+}
+
+.inner-hero--tall {
+  height: 85vh;
+}
+
+.inner-hero--short {
+  height: 45vh;
+  min-height: 320px;
 }
 
 .inner-hero__bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 8s ease;
 }
 
-.inner-hero:hover .inner-hero__bg {
-  transform: scale(1.03);
+.inner-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: brightness(0.65) saturate(0.65);
 }
 
-/* Lighter overlay for inner pages */
+/* Single clean gradient — image clear at top, fades to body color at bottom */
 .inner-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    180deg,
-    rgba(22, 36, 58, 0.40) 0%,
-    rgba(22, 36, 58, 0.62) 60%,
-    rgba(22, 36, 58, 0.78) 100%
+    to bottom,
+    rgba(15, 23, 32, 0.1)  0%,
+    rgba(15, 23, 32, 0.05) 30%,
+    rgba(15, 23, 32, 0.55) 70%,
+    var(--blue-deep)       100%
+  );
+}
+
+.inner-hero__overlay--deep {
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 32, 0.05) 0%,
+    rgba(15, 23, 32, 0.02) 25%,
+    rgba(15, 23, 32, 0.45) 65%,
+    var(--blue-deep)       100%
   );
 }
 
 .inner-hero__content {
   position: relative;
   z-index: 2;
-  padding: 120px 24px 80px;
+  padding-bottom: 3.5rem;
 }
 
-.inner-hero__content h1 {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--text-primary);
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
-  margin-bottom: 12px;
+.inner-hero__content--center {
+  text-align: center;
+  padding-bottom: 5rem;
 }
 
-.inner-hero__sub {
+/* ─── TWO COLUMN ────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.two-col__image img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  filter: saturate(0.75) brightness(0.85);
+}
+
+/* ─── SPEC GRID ─────────────────────────────── */
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.spec-item h3 {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--silver-light);
+  margin: 0.4rem 0 0.6rem;
+}
+
+/* ─── PRICING ───────────────────────────────── */
+.pricing-block {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-row:last-of-type {
+  border-bottom: none;
+}
+
+.pricing-label {
+  font-size: 0.9rem;
+  color: var(--silver);
+  letter-spacing: 0.03em;
+}
+
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+}
+
+.pricing-note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── BELT GRID ─────────────────────────────── */
+.belt-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.belt-card {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.belt-card:hover {
+  border-color: var(--gold);
+}
+
+.belt-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.belt-card__header h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--silver-light);
+  margin-top: 0.3rem;
+}
+
+.belt-card__price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+
+.belt-card__note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
   font-style: italic;
-  color: rgba(240, 236, 228, 0.75);
-  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── SECTION INTRO ─────────────────────────── */
+.section-intro {
+  max-width: 620px;
+  margin-bottom: 3rem;
+}
+
+/* ─── PAGE CTA ──────────────────────────────── */
+.page-cta {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+/* ─── STORY ─────────────────────────────────── */
+.story-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.story-founding {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.story-founding__image img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: saturate(0.6) brightness(0.85);
+}
+
+.story-guarantee {
+  max-width: 720px;
+}
+
+.story-contact-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem;
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+}
+
+.story-link {
+  color: var(--gold);
+  transition: color 0.2s ease;
+  font-size: 1rem;
+}
+
+.story-link:hover {
+  color: var(--gold-light);
+}
+
+/* ─── RESPONSIVE ────────────────────────────── */
+@media (max-width: 768px) {
+  .two-col           { grid-template-columns: 1fr; gap: 2.5rem; }
+  .spec-grid         { grid-template-columns: 1fr; gap: 2rem; }
+  .story-founding    { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pricing-row       { flex-direction: column; gap: 0.3rem; }
+  .story-contact-strip { flex-direction: column; text-align: center; padding: 2rem; }
+}
+
+/* ─── MOBILE INNER PAGES ────────────────────── */
+@media (max-width: 768px) {
+  .inner-hero {
+    height: 50vh;
+    min-height: 320px;
+  }
+
+  .inner-hero--tall { height: 60vh; }
+  .inner-hero--short { height: 40vh; }
+
+  .inner-hero__content {
+    padding-bottom: 2.5rem;
+  }
+
+  .inner-hero__content .display {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .belt-card__header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .page-cta { margin-top: 3rem; padding-top: 3rem; }
+
+  .story-contact-strip {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
 }
