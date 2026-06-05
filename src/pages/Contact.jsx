@@ -6,15 +6,17 @@ import './Contact.css';
 
 // ─── PRICING DATA ────────────────────────────
 const PRICES = {
-  buckle: 1275,
-  customLogo: 125,
+  buckle: 895,
+  specialOrder: 530, // delta to get to 1425
   belts: [
-    { id: 'none',       label: 'No Belt',             price: 0 },
-    { id: 'cowhide-s',  label: 'Cowhide — Standard',  price: 150 },
-    { id: 'cowhide-m',  label: 'Cowhide — Mid-grade', price: 300 },
-    { id: 'cowhide-p',  label: 'Cowhide — Premium',   price: 450 },
-    { id: 'alligator',  label: 'American Alligator',  price: 625 },
+    { id: 'none',             label: 'No Belt',                   price: 0   },
+    { id: 'cowhide-s',        label: 'Cowhide — Standard',        price: 150 },
+    { id: 'cowhide-bridal',   label: 'Cowhide — Bridal',          price: 350 },
+    { id: 'bullhide',         label: 'Condensed Bull Hide',        price: 475 },
+    { id: 'alligator-std',    label: 'Alligator — Standard',      price: 525 },
+    { id: 'alligator-custom', label: 'Alligator — Custom',        price: 675 },
   ],
+  engraving: 50,
   taxRate: 0.0825,
 };
 
@@ -23,24 +25,28 @@ function formatCurrency(n) {
 }
 
 function Calculator({ onBuildOrder }) {
-  const [buckleQty,  setBuckleQty]  = useState(1);
-  const [customLogo, setCustomLogo] = useState(false);
-  const [beltId,     setBeltId]     = useState('none');
-  const [beltQty,    setBeltQty]    = useState(1);
-  const [applyTax,   setApplyTax]   = useState(false);
+  const [buckleQty,    setBuckleQty]    = useState(1);
+  const [specialOrder, setSpecialOrder] = useState(false);
+  const [beltId,       setBeltId]       = useState('none');
+  const [beltQty,      setBeltQty]      = useState(1);
+  const [engraving,    setEngraving]    = useState(false);
+  const [engravingQty, setEngravingQty] = useState(1);
+  const [applyTax,     setApplyTax]     = useState(false);
 
   const belt = PRICES.belts.find(b => b.id === beltId);
-
-  const buckleTotal = buckleQty * (PRICES.buckle + (customLogo ? PRICES.customLogo : 0));
-  const beltTotal   = beltId !== 'none' ? beltQty * belt.price : 0;
-  const subtotal    = buckleTotal + beltTotal;
-  const tax         = applyTax ? subtotal * PRICES.taxRate : 0;
-  const total       = subtotal + tax;
+  const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
+  const buckleTotal  = buckleQty * buckleUnitPrice;
+  const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
+  const engravingTotal = engraving ? engravingQty * PRICES.engraving : 0;
+  const subtotal     = buckleTotal + beltTotal + engravingTotal;
+  const tax          = applyTax ? subtotal * PRICES.taxRate : 0;
+  const total        = subtotal + tax;
 
   function buildSummary() {
     const lines = [];
-    lines.push(`${buckleQty}x Buckle${customLogo ? ' (custom logo/brand)' : ' (block initials)'} — ${formatCurrency(buckleQty * (PRICES.buckle + (customLogo ? PRICES.customLogo : 0)))}`);
+    lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
+    if (engraving) lines.push(`${engravingQty}x Custom Engraving — ${formatCurrency(engravingTotal)}`);
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
     lines.push(`Estimated Total: ${formatCurrency(total)}`);
     return lines.join('\n');
@@ -50,16 +56,15 @@ function Calculator({ onBuildOrder }) {
     <div className="calc">
       <p className="overline" style={{ marginBottom: '2rem' }}>Build Your Order</p>
 
-      {/* ── BUCKLE ── */}
+      {/* BUCKLE */}
       <div className="calc__section">
         <div className="calc__section-header">
           <div>
             <h3 className="calc__label">The Buckle</h3>
             <p className="calc__sublabel">Sterling silver, hand-crafted</p>
           </div>
-          <span className="calc__base-price">{formatCurrency(PRICES.buckle)} ea.</span>
+          <span className="calc__base-price">{formatCurrency(buckleUnitPrice)} ea.</span>
         </div>
-
         <div className="calc__row">
           <label>Quantity</label>
           <div className="calc__stepper">
@@ -68,26 +73,25 @@ function Calculator({ onBuildOrder }) {
             <button onClick={() => setBuckleQty(buckleQty + 1)}>+</button>
           </div>
         </div>
-
         <div className="calc__row">
           <div>
-            <label>Personalization</label>
-            <p className="calc__hint">Block initials included · Custom logo/brand +{formatCurrency(PRICES.customLogo)}</p>
+            <label>Order Type</label>
+            <p className="calc__hint">Standard $895 · Special Order $1,425</p>
           </div>
           <div className="calc__toggle-group">
             <button
-              className={`calc__toggle ${!customLogo ? 'calc__toggle--active' : ''}`}
-              onClick={() => setCustomLogo(false)}
-            >Block Initials</button>
+              className={`calc__toggle ${!specialOrder ? 'calc__toggle--active' : ''}`}
+              onClick={() => setSpecialOrder(false)}
+            >Standard</button>
             <button
-              className={`calc__toggle ${customLogo ? 'calc__toggle--active' : ''}`}
-              onClick={() => setCustomLogo(true)}
-            >Custom Logo</button>
+              className={`calc__toggle ${specialOrder ? 'calc__toggle--active' : ''}`}
+              onClick={() => setSpecialOrder(true)}
+            >Special Order</button>
           </div>
         </div>
       </div>
 
-      {/* ── BELT ── */}
+      {/* BELT */}
       <div className="calc__section">
         <div className="calc__section-header">
           <div>
@@ -95,7 +99,6 @@ function Calculator({ onBuildOrder }) {
             <p className="calc__sublabel">Optional — pairs with your buckle</p>
           </div>
         </div>
-
         <div className="calc__belt-options">
           {PRICES.belts.map(b => (
             <button
@@ -108,7 +111,6 @@ function Calculator({ onBuildOrder }) {
             </button>
           ))}
         </div>
-
         {beltId !== 'none' && (
           <div className="calc__row" style={{ marginTop: '1.25rem' }}>
             <label>Belt Quantity</label>
@@ -121,7 +123,34 @@ function Calculator({ onBuildOrder }) {
         )}
       </div>
 
-      {/* ── TAX ── */}
+      {/* ENGRAVING */}
+      <div className="calc__section">
+        <div className="calc__row">
+          <div>
+            <label>Custom Engraving</label>
+            <p className="calc__hint">Inscription on back of buckle · +{formatCurrency(PRICES.engraving)} each</p>
+          </div>
+          <button
+            className={`calc__tax-toggle ${engraving ? 'calc__tax-toggle--on' : ''}`}
+            onClick={() => setEngraving(!engraving)}
+            aria-label="Toggle engraving"
+          >
+            <span />
+          </button>
+        </div>
+        {engraving && (
+          <div className="calc__row" style={{ marginTop: '1.25rem' }}>
+            <label>Engraving Quantity</label>
+            <div className="calc__stepper">
+              <button onClick={() => setEngravingQty(Math.max(1, engravingQty - 1))}>−</button>
+              <span>{engravingQty}</span>
+              <button onClick={() => setEngravingQty(engravingQty + 1)}>+</button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* TAX */}
       <div className="calc__section calc__section--slim">
         <div className="calc__row">
           <label>Apply Texas Sales Tax (8.25%)</label>
@@ -135,7 +164,7 @@ function Calculator({ onBuildOrder }) {
         </div>
       </div>
 
-      {/* ── TOTALS ── */}
+      {/* TOTALS */}
       <div className="calc__totals">
         <div className="calc__total-row">
           <span>Buckles ({buckleQty})</span>
@@ -145,6 +174,12 @@ function Calculator({ onBuildOrder }) {
           <div className="calc__total-row">
             <span>Belts ({beltQty})</span>
             <span>{formatCurrency(beltTotal)}</span>
+          </div>
+        )}
+        {engraving && (
+          <div className="calc__total-row">
+            <span>Engraving ({engravingQty})</span>
+            <span>{formatCurrency(engravingTotal)}</span>
           </div>
         )}
         {applyTax && (
@@ -168,6 +203,7 @@ function Calculator({ onBuildOrder }) {
     </div>
   );
 }
+
 
 // ─── CONTACT FORM ────────────────────────────
 function ContactForm({ prefill }) {
@@ -278,7 +314,7 @@ export default function Contact() {
         <div className="contact-steps-strip">
           {[
             ['01', 'Build your order', 'Use the calculator to price out exactly what you want.'],
-            ['02', 'Send your inquiry', "We'll confirm your order details within one business day."],
+            ['02', 'Send your inquiry', "We'll call you personally to discuss your order — initials, engraving, belt size, and timeline. Nothing goes into production until you've said yes."],
             ['03', 'Crafting begins', "Your piece goes into production. 4\u20136 weeks start to finish."],
             ['04', 'It arrives', 'Sterling silver, stamped with your initials, ready to wear.'],
           ].map(([num, title, desc]) => (

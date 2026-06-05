@@ -45,12 +45,12 @@ export default function Nav() {
   ];
 
   const LogoIcon = () => (
-    <svg width="44" height="36" viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav__logo-icon">
-      <path d="M4 4 L4 32 L14 32 C19 32 22 29 22 25 C22 22 20 20 17.5 19 C19.5 18 21 16 21 13 C21 8.5 18 4 13 4 Z" fill="none" stroke="#b8924a" strokeWidth="2.2" strokeLinejoin="round"/>
-      <path d="M4 19 L14 19" stroke="#b8924a" strokeWidth="2.2"/>
-      <path d="M40 4 L40 32 L30 32 C25 32 22 29 22 25 C22 22 24 20 26.5 19 C24.5 18 23 16 23 13 C23 8.5 26 4 31 4 Z" fill="none" stroke="#b8924a" strokeWidth="2.2" strokeLinejoin="round"/>
-      <path d="M40 19 L30 19" stroke="#b8924a" strokeWidth="2.2"/>
-    </svg>
+    <img
+      src="/logo2_bb.png"
+      alt="Bronco Buckle Company"
+      className="nav__logo-icon"
+      style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+    />
   );
 
   return (

@@ -21,7 +21,7 @@ export default function Run2theRoar() {
         </div>
         <div className="inner-hero__content inner-hero__content--center container">
           <p className="overline">Stamped on Every Buckle</p>
-          <h1 className="display roar-title"><em>Run2theRoar</em></h1>
+          <h1 className="display roar-title"><em>Run<span className="roar-numeral">2</span>theRoar</em></h1>
         </div>
       </div>
 
@@ -30,7 +30,7 @@ export default function Run2theRoar() {
 
           <div className="roar-opening">
             <p className="roar-hero-sub" style={{ textAlign: 'center' }}>
-              A quiet instruction for the man who dresses with purpose.
+              A quiet encouragement for the man who dresses with purpose.
             </p>
             <p className="body-text roar-lead">
               On the back of each Bronco Buckles buckle is stamped a single phrase: <em>Run2theRoar.</em>

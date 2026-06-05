@@ -5,21 +5,21 @@ import SEO from '../components/SEO';
 const belts = [
   {
     name: 'American Alligator',
-    price: '$625',
+    price: '$525 – $675',
     description: 'The finest option in our collection. American alligator leather, supple and distinctive, with a natural grain that deepens over time. An heirloom in its own right.',
-    note: 'Limited availability. Allow additional lead time.',
+    note: 'Standard $525 · Custom $675. Limited availability. Allow additional lead time.',
   },
   {
     name: 'Cowhide',
-    price: '$150 – $450',
-    description: 'Three cowhide styles available, ranging from classic smooth to textured full-grain. Durable, versatile, and refined — the everyday companion to your buckle.',
-    note: 'Multiple finishes available. Discuss options at inquiry.',
+    price: '$150 – $350',
+    description: 'Two cowhide grades available — standard and bridal. The bridal grade is finer-grained, more supple, and noticeably richer. Durable, versatile, and refined.',
+    note: 'Standard $150 · Bridal $350. Discuss options at inquiry.',
   },
   {
     name: 'Condensed Bull Hide',
-    price: 'Special Order',
+    price: '$475',
     description: 'For the man who wants something different. Dense, structured, and built to last decades. Available by special request.',
-    note: 'Contact us for pricing and availability.',
+    note: 'Single price: $475.',
   },
 ];
 
