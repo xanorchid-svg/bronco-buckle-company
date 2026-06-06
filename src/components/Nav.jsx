@@ -49,7 +49,7 @@ export default function Nav() {
       src="/BB_logoe.svg"
       alt="BB"
       className="nav__logo-icon"
-      style={{ height: '38px', width: 'auto', mixBlendMode: 'screen' }}
+      style={{ height: '51px', width: 'auto', mixBlendMode: 'screen' }}
     />
   );
 
@@ -57,7 +57,6 @@ export default function Nav() {
     <>
       <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
         <div className="nav__inner">
-          {/* Hamburger — left on mobile */}
           <button
             className={`nav__hamburger ${menuOpen ? 'nav__hamburger--open' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -66,7 +65,6 @@ export default function Nav() {
             <span /><span /><span />
           </button>
 
-          {/* Logo — center on mobile, left on desktop */}
           <Link to="/" className="nav__logo">
             <LogoIcon />
             <span className="nav__logo-text">
@@ -75,7 +73,6 @@ export default function Nav() {
             </span>
           </Link>
 
-          {/* Desktop links */}
           <div className="nav__links--desktop">
             {links.map(link => (
               <Link
@@ -88,19 +85,16 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Spacer so logo stays centered on mobile when hamburger is left */}
           <div className="nav__spacer" />
         </div>
       </nav>
 
-      {/* Mobile menu overlay — outside nav, z-index 9999 */}
       {menuOpen && (
         <div
           className="nav__mobile-overlay"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Close button top-right */}
           <button
             className="nav__mobile-close"
             onClick={() => setMenuOpen(false)}
