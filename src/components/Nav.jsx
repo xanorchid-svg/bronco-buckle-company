@@ -46,10 +46,10 @@ export default function Nav() {
 
   const LogoIcon = () => (
     <img
-      src="/logoBB.png"
-      alt="Bronco Buckle Company"
+      src="/BB_logoe.svg"
+      alt="BB"
       className="nav__logo-icon"
-      style={{ height: '38px', width: 'auto', mixBlendMode: 'screen', opacity: 0.95 }}
+      style={{ height: '38px', width: 'auto', mixBlendMode: 'screen' }}
     />
   );
 
