@@ -130,12 +130,12 @@ export default function TheBuckle() {
 
         <div>
           <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             <div>
               <img
-                src="/buckle-standalone.png"
-                alt="Texas 2025 Standard Buckle"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--blue-mid)' }}
+                src="/buckle-texas-2025.png"
+                alt="Texas 2025 buckle — Run2theRoar engraving"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
             </div>
             <div>
@@ -149,13 +149,6 @@ export default function TheBuckle() {
               <img
                 src="/buckle-jj-silver.png"
                 alt="JJS custom sterling silver buckle"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
-              />
-            </div>
-            <div>
-              <img
-                src="/buckle-gallery-4.jpg"
-                alt="Bronco Buckles custom buckle"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
             </div>
