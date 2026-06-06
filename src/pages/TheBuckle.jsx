@@ -13,8 +13,8 @@ export default function TheBuckle() {
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/8a6b54b6-acac-431a-a7f3-8014f45c73ee/WhatsApp+Image+2024-10-14+at+21.31.46+%281%29.jpg"
-            alt="The Bronco Buckles Buckle"
+            src="/buckle-hero.png"
+            alt="The Bronco Buckles Buckle on a cowhide belt"
           />
           <div className="inner-hero__overlay" />
         </div>
@@ -130,7 +130,7 @@ export default function TheBuckle() {
 
         <div>
           <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
             <div>
               <img
                 src="/buckle-texas-2025.png"
@@ -149,6 +149,13 @@ export default function TheBuckle() {
               <img
                 src="/buckle-jj-silver.png"
                 alt="JJS custom sterling silver buckle"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
+              />
+            </div>
+            <div>
+              <img
+                src="/buckle-gallery-4.png"
+                alt="WHB buckle on cowhide belt"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
             </div>
