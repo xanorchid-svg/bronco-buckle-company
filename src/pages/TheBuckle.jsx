@@ -137,7 +137,6 @@ export default function TheBuckle() {
                 alt="Texas 2025 Standard Buckle"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--blue-mid)' }}
               />
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Standard</p>
             </div>
             <div>
               <img
@@ -145,7 +144,6 @@ export default function TheBuckle() {
                 alt="Brass initials buckles — MMC and MSL"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Brass Initials</p>
             </div>
             <div>
               <img
@@ -153,7 +151,6 @@ export default function TheBuckle() {
                 alt="JJS custom sterling silver buckle"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>JJS Custom</p>
             </div>
             <div>
               <img
@@ -161,7 +158,6 @@ export default function TheBuckle() {
                 alt="Bronco Buckles custom buckle"
                 style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
               />
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Custom</p>
             </div>
           </div>
         </div>
