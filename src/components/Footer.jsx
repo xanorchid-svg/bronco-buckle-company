@@ -12,7 +12,7 @@ export default function Footer() {
                 src="/BB_logoe.svg"
                 alt="BB"
                 className="footer__logo-icon"
-                style={{ height: '48px', width: 'auto', mixBlendMode: 'screen' }}
+                style={{ height: '66px', width: 'auto', mixBlendMode: 'screen' }}
               />
               <div className="footer__logo-text">
                 <span className="footer__logo-name">Bronco Buckles</span>

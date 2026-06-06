@@ -49,7 +49,7 @@ export default function Nav() {
       src="/BB_logoe.svg"
       alt="BB"
       className="nav__logo-icon"
-      style={{ height: '51px', width: 'auto', mixBlendMode: 'screen' }}
+      style={{ height: '66px', width: 'auto', mixBlendMode: 'screen' }}
     />
   );
 
