@@ -15,6 +15,7 @@ export default function TheBuckle() {
           <img
             src="/buckle-hero.png"
             alt="The Bronco Buckles Buckle on a cowhide belt"
+            style={{ objectPosition: 'center 60%' }}
           />
           <div className="inner-hero__overlay" />
         </div>
