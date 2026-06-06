@@ -7,7 +7,7 @@ export default function TheBuckle() {
     <div className="page inner-page">
       <SEO
         title="The Buckle — Sterling Silver Belt Buckles"
-        description="Each Bronco Buckles buckle is hand-crafted in .925 sterling silver with your custom block initials or logo. Inspired by the Kalo Silver Shop. From $1,275. Dallas, Texas."
+        description="Each Bronco Buckles buckle is hand-crafted in .925 sterling silver with your custom block initials or logo. Inspired by the Kalo Silver Shop. From $895. Dallas, Texas."
         path="/the-buckle"
       />
       <div className="inner-hero">
@@ -54,27 +54,27 @@ export default function TheBuckle() {
 
         <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem' }}>
           <div className="spec-grid">
-          <div className="spec-item">
-            <p className="overline">Material</p>
-            <h3>Sterling Silver</h3>
-            <p className="body-text">Pure .925 sterling, polished to a warm, lasting finish.</p>
+            <div className="spec-item">
+              <p className="overline">Material</p>
+              <h3>Sterling Silver</h3>
+              <p className="body-text">Pure .925 sterling, polished to a warm, lasting finish.</p>
+            </div>
+            <div className="spec-item">
+              <p className="overline">Personalization</p>
+              <h3>Block Initials</h3>
+              <p className="body-text">Your initials placed on the front of the buckle. Custom logos and brands also available.</p>
+            </div>
+            <div className="spec-item">
+              <p className="overline">Philosophy</p>
+              <h3>Run2theRoar</h3>
+              <p className="body-text">Stamped on the back of every buckle — a quiet reminder to face the day with courage and intention.</p>
+            </div>
+            <div className="spec-item">
+              <p className="overline">Timing</p>
+              <h3>4–6 Weeks</h3>
+              <p className="body-text">Custom work takes time. We'll help you plan to meet your occasion.</p>
+            </div>
           </div>
-          <div className="spec-item">
-            <p className="overline">Personalization</p>
-            <h3>Block Initials</h3>
-            <p className="body-text">Your initials placed on the front of the buckle. Custom logos and brands also available.</p>
-          </div>
-          <div className="spec-item">
-            <p className="overline">Philosophy</p>
-            <h3>Run2theRoar</h3>
-            <p className="body-text">Stamped on the back of every buckle — a quiet reminder to face the day with courage and intention.</p>
-          </div>
-          <div className="spec-item">
-            <p className="overline">Timing</p>
-            <h3>4–6 Weeks</h3>
-            <p className="body-text">Custom work takes time. We'll help you plan to meet your occasion.</p>
-          </div>
-        </div>
         </div>
 
         <hr />
@@ -117,8 +117,12 @@ export default function TheBuckle() {
               Additional $50 for engraving.
             </p>
           </div>
-          <div className="two-col__image" style={{ background: 'var(--blue-mid)', minHeight: '280px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <p className="overline" style={{ textAlign: 'center', opacity: 0.5 }}>Engraving image coming soon</p>
+          <div className="two-col__image">
+            <img
+              src="/buckle-engraving-back.png"
+              alt="Run2theRoar engraving on the back of a Bronco Buckles buckle"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
 
@@ -128,26 +132,36 @@ export default function TheBuckle() {
           <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
             <div>
-              <img src="/buckle-standalone.png" alt="Texas 2025 — Standard" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--blue-mid)' }} />
+              <img
+                src="/buckle-standalone.png"
+                alt="Texas 2025 Standard Buckle"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--blue-mid)' }}
+              />
               <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Standard</p>
             </div>
             <div>
-              <div style={{ width: '100%', aspectRatio: '3/4', background: 'var(--blue-mid)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <p className="overline" style={{ opacity: 0.4, fontSize: '0.6rem', textAlign: 'center', padding: '1rem' }}>JJS Custom — Image coming soon</p>
-              </div>
+              <img
+                src="/buckle-brass-initials.png"
+                alt="Brass initials buckles — MMC and MSL"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
+              />
+              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Brass Initials</p>
+            </div>
+            <div>
+              <img
+                src="/buckle-jj-silver.png"
+                alt="JJS custom sterling silver buckle"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
+              />
               <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>JJS Custom</p>
             </div>
             <div>
-              <div style={{ width: '100%', aspectRatio: '3/4', background: 'var(--blue-mid)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <p className="overline" style={{ opacity: 0.4, fontSize: '0.6rem', textAlign: 'center', padding: '1rem' }}>No-Black Finish — Image coming soon</p>
-              </div>
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>No-Black Finish</p>
-            </div>
-            <div>
-              <div style={{ width: '100%', aspectRatio: '3/4', background: 'var(--blue-mid)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <p className="overline" style={{ opacity: 0.4, fontSize: '0.6rem', textAlign: 'center', padding: '1rem' }}>Engraving — Image coming soon</p>
-              </div>
-              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Custom Engraving</p>
+              <img
+                src="/buckle-gallery-4.jpg"
+                alt="Bronco Buckles custom buckle"
+                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
+              />
+              <p className="overline" style={{ marginTop: '0.75rem', fontSize: '0.6rem' }}>Custom</p>
             </div>
           </div>
         </div>
