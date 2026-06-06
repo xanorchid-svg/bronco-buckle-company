@@ -17,7 +17,7 @@
   --blue-accent: #4a6fa5;
   --blue-light: #6b8fc2;
   --blue-steel: #94aade;
-  --blue-steel-bg: rgba(148, 170, 222, 0.08);
+  --blue-steel-bg: rgba(148, 170, 222, 0.13);
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Jost', sans-serif;
 }
@@ -105,7 +105,6 @@ h1, h2, h3, h4 {
 .section {
   padding: 6rem 0;
 }
-
 
 /* Divider */
 .divider {
@@ -195,6 +194,11 @@ body::after {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Inner pages — steel blue tint background */
+.inner-page .section {
+  background: rgba(148, 170, 222, 0.13);
+}
+
 /* Horizontal rule */
 hr {
   border: none;
@@ -214,9 +218,9 @@ hr {
 
 /* ── Steel-blue highlight section ──────────── */
 .section--steel {
-  background: linear-gradient(135deg, rgba(148, 170, 222, 0.07) 0%, rgba(74, 111, 165, 0.10) 100%);
-  border-top: 1px solid rgba(148, 170, 222, 0.15);
-  border-bottom: 1px solid rgba(148, 170, 222, 0.15);
+  background: linear-gradient(135deg, rgba(148, 170, 222, 0.12) 0%, rgba(74, 111, 165, 0.15) 100%);
+  border-top: 1px solid rgba(148, 170, 222, 0.2);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.2);
 }
 
 .steel-tag {

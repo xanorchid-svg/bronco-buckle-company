@@ -30,7 +30,6 @@
   filter: brightness(0.65) saturate(0.65);
 }
 
-/* Single clean gradient — image clear at top, fades to body color at bottom */
 .inner-hero__overlay {
   position: absolute;
   inset: 0;
@@ -96,8 +95,8 @@
 
 /* ─── PRICING ───────────────────────────────── */
 .pricing-block {
-  background: rgba(148, 170, 222, 0.07);
-  border: 1px solid rgba(148, 170, 222, 0.2);
+  background: rgba(148, 170, 222, 0.10);
+  border: 1px solid rgba(148, 170, 222, 0.22);
   padding: 2.5rem;
 }
 
@@ -141,8 +140,8 @@
 }
 
 .belt-card {
-  background: rgba(148, 170, 222, 0.07);
-  border: 1px solid rgba(148, 170, 222, 0.2);
+  background: rgba(148, 170, 222, 0.10);
+  border: 1px solid rgba(148, 170, 222, 0.22);
   padding: 2.5rem;
   transition: border-color 0.3s ease;
 }
@@ -190,7 +189,7 @@
 .page-cta {
   margin-top: 5rem;
   padding-top: 4rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(148, 170, 222, 0.2);
   text-align: center;
 }
 
@@ -225,8 +224,8 @@
   align-items: center;
   gap: 3rem;
   padding: 3rem;
-  background: var(--charcoal);
-  border: 1px solid var(--border);
+  background: rgba(148, 170, 222, 0.10);
+  border: 1px solid rgba(148, 170, 222, 0.22);
 }
 
 .story-link {
@@ -277,5 +276,20 @@
     flex-direction: column;
     text-align: center;
     padding: 2rem 1.5rem;
+  }
+
+  /* Mobile two-col images full width */
+  .two-col__image img {
+    aspect-ratio: 4/3;
+  }
+
+  /* Mobile belt card price wraps cleanly */
+  .belt-card__price {
+    font-size: 1.2rem;
+  }
+
+  /* Mobile pricing rows stack */
+  .pricing-label {
+    font-size: 0.85rem;
   }
 }
