@@ -8,14 +8,8 @@
   overflow: hidden;
 }
 
-.inner-hero--tall {
-  height: 85vh;
-}
-
-.inner-hero--short {
-  height: 45vh;
-  min-height: 320px;
-}
+.inner-hero--tall { height: 85vh; }
+.inner-hero--short { height: 45vh; min-height: 320px; }
 
 .inner-hero__bg {
   position: absolute;
@@ -87,7 +81,7 @@
 
 .spec-item h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: 400;
   color: var(--silver-light);
   margin: 0.4rem 0 0.6rem;
@@ -108,25 +102,23 @@
   border-bottom: 1px solid var(--border);
 }
 
-.pricing-row:last-of-type {
-  border-bottom: none;
-}
+.pricing-row:last-of-type { border-bottom: none; }
 
 .pricing-label {
-  font-size: 0.9rem;
+  font-size: 0.99rem;
   color: var(--silver);
   letter-spacing: 0.03em;
 }
 
 .pricing-price {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   color: var(--gold-light);
 }
 
 .pricing-note {
   margin-top: 1rem;
-  font-size: 0.75rem;
+  font-size: 0.825rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
 }
@@ -146,9 +138,7 @@
   transition: border-color 0.3s ease;
 }
 
-.belt-card:hover {
-  border-color: var(--gold);
-}
+.belt-card:hover { border-color: var(--gold); }
 
 .belt-card__header {
   display: flex;
@@ -158,7 +148,7 @@
 
 .belt-card__header h3 {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.98rem;
   font-weight: 400;
   color: var(--silver-light);
   margin-top: 0.3rem;
@@ -166,14 +156,14 @@
 
 .belt-card__price {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   color: var(--gold-light);
   white-space: nowrap;
 }
 
 .belt-card__note {
   margin-top: 1rem;
-  font-size: 0.75rem;
+  font-size: 0.825rem;
   font-style: italic;
   color: var(--text-muted);
   letter-spacing: 0.05em;
@@ -197,7 +187,7 @@
 .story-body {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 0;
 }
 
 .story-founding {
@@ -226,17 +216,16 @@
   padding: 3rem;
   background: var(--charcoal);
   border: 1px solid var(--border);
+  margin-top: 0;
 }
 
 .story-link {
   color: var(--gold);
   transition: color 0.2s ease;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
-.story-link:hover {
-  color: var(--gold-light);
-}
+.story-link:hover { color: var(--gold-light); }
 
 /* ─── RESPONSIVE ────────────────────────────── */
 @media (max-width: 768px) {
@@ -247,34 +236,16 @@
   .story-contact-strip { flex-direction: column; text-align: center; padding: 2rem; }
 }
 
-/* ─── MOBILE INNER PAGES ────────────────────── */
 @media (max-width: 768px) {
-  .inner-hero {
-    height: 50vh;
-    min-height: 320px;
-  }
-
+  .inner-hero { height: 50vh; min-height: 320px; }
   .inner-hero--tall { height: 60vh; }
   .inner-hero--short { height: 40vh; }
-
-  .inner-hero__content {
-    padding-bottom: 2.5rem;
-  }
-
-  .inner-hero__content .display {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-
-  .belt-card__header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
+  .inner-hero__content { padding-bottom: 2.5rem; }
+  .inner-hero__content .display { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .belt-card__header { flex-direction: column; gap: 0.5rem; }
   .page-cta { margin-top: 3rem; padding-top: 3rem; }
-
-  .story-contact-strip {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
+  .story-contact-strip { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .two-col__image img { aspect-ratio: 4/3; }
+  .belt-card__price { font-size: 1.32rem; }
+  .pricing-label { font-size: 0.88rem; }
 }

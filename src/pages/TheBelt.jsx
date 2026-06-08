@@ -34,7 +34,7 @@ export default function TheBelt() {
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
+            src="/belt-hero-new.png"
             alt="The Belt"
           />
           <div className="inner-hero__overlay" />
@@ -46,7 +46,9 @@ export default function TheBelt() {
       </div>
 
       <div className="section container">
-        <div className="section--steel two-col" style={{ padding: '3rem', margin: '0 -2rem 3rem', alignItems: 'center' }}>
+
+        {/* INTRO — cream */}
+        <div className="section--cream two-col" style={{ alignItems: 'center' }}>
           <div>
             <p className="overline">The Foundation</p>
             <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
@@ -59,32 +61,35 @@ export default function TheBelt() {
           </div>
           <div className="two-col__image">
             <img
-              src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
+              src="/belt-foundation-new.png"
               alt="Bronco Buckle belt detail"
               style={{ width: '100%', display: 'block' }}
             />
           </div>
         </div>
 
-        <div className="belt-grid">
-          {belts.map((belt, i) => (
-            <div key={i} className="belt-card">
-              <div className="belt-card__header">
-                <div>
-                  <p className="overline">{i === 0 ? 'Premium' : i === 1 ? 'Classic' : 'Special Order'}</p>
-                  <h3>{belt.name}</h3>
+        {/* BELT CARDS — dark */}
+        <div style={{ padding: '4rem 0' }}>
+          <div className="belt-grid">
+            {belts.map((belt, i) => (
+              <div key={i} className="belt-card">
+                <div className="belt-card__header">
+                  <div>
+                    <p className="overline">{i === 0 ? 'Premium' : i === 1 ? 'Classic' : 'Special Order'}</p>
+                    <h3>{belt.name}</h3>
+                  </div>
+                  <span className="belt-card__price">{belt.price}</span>
                 </div>
-                <span className="belt-card__price">{belt.price}</span>
+                <div className="divider" style={{ margin: '1.2rem 0' }} />
+                <p className="body-text">{belt.description}</p>
+                <p className="belt-card__note">{belt.note}</p>
               </div>
-              <div className="divider" style={{ margin: '1.2rem 0' }} />
-              <p className="body-text">{belt.description}</p>
-              <p className="belt-card__note">{belt.note}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="pricing-block" style={{ marginTop: '4rem' }}>
-          <p className="pricing-note">All prices plus applicable sales tax. Belts are made to pair with your Bronco Buckles buckle and are sized to your specifications.</p>
+          <div className="pricing-block" style={{ marginTop: '2rem' }}>
+            <p className="pricing-note">All prices plus applicable sales tax. Belts are made to pair with your Bronco Buckles buckle and are sized to your specifications.</p>
+          </div>
         </div>
 
         <div className="page-cta">
@@ -94,6 +99,7 @@ export default function TheBelt() {
             <span>Inquire Now</span>
           </Link>
         </div>
+
       </div>
     </div>
   );

@@ -10,7 +10,8 @@
   --silver-light: #e2dbd0;
   --gold: #b8924a;
   --gold-light: #d4aa6a;
-  --cream: #f5f0e8;
+  --cream: #f2ede4;
+  --cream-dark: #3a3530;
   --text-muted: #6a7480;
   --blue-deep: #0f1720;
   --blue-mid: #1a2535;
@@ -37,7 +38,7 @@ body {
   color: var(--silver-light);
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 16px;
+  font-size: 17.6px; /* 16px * 1.10 */
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   background-image: radial-gradient(ellipse at 20% 0%, rgba(26, 37, 53, 0.6) 0%, transparent 60%),
@@ -63,26 +64,26 @@ h1, h2, h3, h4 {
 }
 
 .display {
-  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-size: clamp(3.85rem, 8vw, 7.7rem);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 
 .headline {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.85rem);
   font-weight: 400;
 }
 
 .subhead {
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: clamp(1.43rem, 2.5vw, 1.98rem);
   font-weight: 300;
   font-style: italic;
 }
 
 .overline {
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.77rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -90,10 +91,22 @@ h1, h2, h3, h4 {
 }
 
 .body-text {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--silver);
 }
+
+/* Cream section body text overrides */
+.section--cream .body-text,
+.section--cream p { color: #3a3530; }
+
+.section--cream .overline { color: #8a6d38; }
+
+.section--cream h2,
+.section--cream h3,
+.section--cream .headline { color: #1a1a1a; }
+
+.section--cream .divider { background: var(--gold); }
 
 /* Layout */
 .container {
@@ -104,6 +117,12 @@ h1, h2, h3, h4 {
 
 .section {
   padding: 6rem 0;
+}
+
+.section--cream {
+  background: var(--cream);
+  padding: 6rem 2rem;
+  margin: 0 -2rem;
 }
 
 /* Divider */
@@ -122,7 +141,7 @@ h1, h2, h3, h4 {
 .btn {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.79rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -206,6 +225,10 @@ hr {
   .section {
     padding: 4rem 0;
   }
+  .section--cream {
+    padding: 4rem 1.5rem;
+    margin: 0 -1.5rem;
+  }
   .container {
     padding: 0 1.5rem;
   }
@@ -221,7 +244,7 @@ hr {
 .steel-tag {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.715rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;

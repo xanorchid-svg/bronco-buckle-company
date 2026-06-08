@@ -26,7 +26,9 @@ export default function TheBuckle() {
       </div>
 
       <div className="section container">
-        <div className="two-col">
+
+        {/* CRAFT — cream */}
+        <div className="section--cream two-col" style={{ marginBottom: '0' }}>
           <div className="two-col__text">
             <p className="overline">The Craft</p>
             <h2 className="headline">Made to your specifications.</h2>
@@ -51,8 +53,7 @@ export default function TheBuckle() {
           </div>
         </div>
 
-        <hr />
-
+        {/* SPEC GRID — dark steel tint */}
         <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem' }}>
           <div className="spec-grid">
             <div className="spec-item">
@@ -78,28 +79,28 @@ export default function TheBuckle() {
           </div>
         </div>
 
-        <hr />
-
-        <div className="pricing-block">
-          <p className="overline">Pricing</p>
-          <div className="pricing-row">
-            <span className="pricing-label">Standard Buckle (with initials)</span>
-            <span className="pricing-price">$895</span>
+        {/* PRICING — dark charcoal */}
+        <div style={{ padding: '4rem 0' }}>
+          <div className="pricing-block">
+            <p className="overline">Pricing</p>
+            <div className="pricing-row">
+              <span className="pricing-label">Standard Buckle (with initials)</span>
+              <span className="pricing-price">$895</span>
+            </div>
+            <div className="pricing-row">
+              <span className="pricing-label">Special Order (logos, brands, custom designs)</span>
+              <span className="pricing-price">$1,425</span>
+            </div>
+            <div className="pricing-row">
+              <span className="pricing-label">Custom Engraving (back of buckle)</span>
+              <span className="pricing-price">+$50</span>
+            </div>
+            <p className="pricing-note">Plus applicable sales tax.</p>
           </div>
-          <div className="pricing-row">
-            <span className="pricing-label">Special Order (logos, brands, custom designs)</span>
-            <span className="pricing-price">$1,425</span>
-          </div>
-          <div className="pricing-row">
-            <span className="pricing-label">Custom Engraving (back of buckle)</span>
-            <span className="pricing-price">+$50</span>
-          </div>
-          <p className="pricing-note">Plus applicable sales tax.</p>
         </div>
 
-        <hr />
-
-        <div className="two-col" style={{ alignItems: 'flex-start' }}>
+        {/* ENGRAVING — cream */}
+        <div className="section--cream two-col" style={{ alignItems: 'flex-start' }}>
           <div className="two-col__text">
             <p className="overline">Personal Touch</p>
             <h2 className="headline">The Engraving</h2>
@@ -127,9 +128,8 @@ export default function TheBuckle() {
           </div>
         </div>
 
-        <hr />
-
-        <div>
+        {/* GALLERY — dark */}
+        <div style={{ padding: '4rem 0' }}>
           <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
             <div>
@@ -170,6 +170,7 @@ export default function TheBuckle() {
             <span>Begin Your Order</span>
           </Link>
         </div>
+
       </div>
     </div>
   );
