@@ -33,10 +33,7 @@ export default function TheBelt() {
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">
-          <img
-            src="/belt-hero-new.png"
-            alt="The Belt"
-          />
+          <img src="/belt-hero-new.png" alt="The Belt" />
           <div className="inner-hero__overlay" />
         </div>
         <div className="inner-hero__content container">
@@ -47,8 +44,8 @@ export default function TheBelt() {
 
       <div className="section container">
 
-        {/* INTRO — cream */}
-        <div className="section--cream two-col" style={{ alignItems: 'center' }}>
+        {/* INTRO — steel light */}
+        <div className="section--steel-light two-col" style={{ alignItems: 'center' }}>
           <div>
             <p className="overline">The Foundation</p>
             <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
@@ -60,15 +57,11 @@ export default function TheBelt() {
             </p>
           </div>
           <div className="two-col__image">
-            <img
-              src="/belt-foundation-new.png"
-              alt="Bronco Buckle belt detail"
-              style={{ width: '100%', display: 'block' }}
-            />
+            <img src="/belt-foundation-new.png" alt="Bronco Buckle belt detail" style={{ width: '100%', display: 'block' }} />
           </div>
         </div>
 
-        {/* BELT CARDS — dark */}
+        {/* BELT CARDS — dark charcoal */}
         <div style={{ padding: '4rem 0' }}>
           <div className="belt-grid">
             {belts.map((belt, i) => (
@@ -86,7 +79,6 @@ export default function TheBelt() {
               </div>
             ))}
           </div>
-
           <div className="pricing-block" style={{ marginTop: '2rem' }}>
             <p className="pricing-note">All prices plus applicable sales tax. Belts are made to pair with your Bronco Buckles buckle and are sized to your specifications.</p>
           </div>
@@ -95,9 +87,7 @@ export default function TheBelt() {
         <div className="page-cta">
           <p className="overline">Ready to Start?</p>
           <h2 className="headline">Find your perfect pair.</h2>
-          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}>
-            <span>Inquire Now</span>
-          </Link>
+          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}><span>Inquire Now</span></Link>
         </div>
 
       </div>

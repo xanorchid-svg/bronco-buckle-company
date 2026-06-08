@@ -12,11 +12,7 @@ export default function TheBuckle() {
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">
-          <img
-            src="/buckle-hero.png"
-            alt="The Bronco Buckles Buckle on a cowhide belt"
-            style={{ objectPosition: 'center 60%' }}
-          />
+          <img src="/buckle-hero.png" alt="The Bronco Buckles Buckle on a cowhide belt" style={{ objectPosition: 'center 60%' }} />
           <div className="inner-hero__overlay" />
         </div>
         <div className="inner-hero__content container">
@@ -27,8 +23,8 @@ export default function TheBuckle() {
 
       <div className="section container">
 
-        {/* CRAFT — cream */}
-        <div className="section--cream two-col" style={{ marginBottom: '0' }}>
+        {/* CRAFT — steel light */}
+        <div className="section--steel-light two-col">
           <div className="two-col__text">
             <p className="overline">The Craft</p>
             <h2 className="headline">Made to your specifications.</h2>
@@ -46,14 +42,11 @@ export default function TheBuckle() {
             </p>
           </div>
           <div className="two-col__image">
-            <img
-              src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg"
-              alt="Buckle detail"
-            />
+            <img src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg" alt="Buckle detail" />
           </div>
         </div>
 
-        {/* SPEC GRID — dark steel tint */}
+        {/* SPEC GRID — dark steel */}
         <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem' }}>
           <div className="spec-grid">
             <div className="spec-item">
@@ -79,7 +72,7 @@ export default function TheBuckle() {
           </div>
         </div>
 
-        {/* PRICING — dark charcoal */}
+        {/* PRICING — charcoal dark */}
         <div style={{ padding: '4rem 0' }}>
           <div className="pricing-block">
             <p className="overline">Pricing</p>
@@ -99,8 +92,8 @@ export default function TheBuckle() {
           </div>
         </div>
 
-        {/* ENGRAVING — cream */}
-        <div className="section--cream two-col" style={{ alignItems: 'flex-start' }}>
+        {/* ENGRAVING — steel mid */}
+        <div className="section--steel-mid two-col" style={{ alignItems: 'flex-start' }}>
           <div className="two-col__text">
             <p className="overline">Personal Touch</p>
             <h2 className="headline">The Engraving</h2>
@@ -120,11 +113,7 @@ export default function TheBuckle() {
             </p>
           </div>
           <div className="two-col__image">
-            <img
-              src="/buckle-engraving-back.png"
-              alt="Run2theRoar engraving on the back of a Bronco Buckles buckle"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
+            <img src="/buckle-engraving-back.png" alt="Run2theRoar engraving on the back of a Bronco Buckles buckle" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 
@@ -132,43 +121,17 @@ export default function TheBuckle() {
         <div style={{ padding: '4rem 0' }}>
           <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
-            <div>
-              <img
-                src="/buckle-texas-2025.png"
-                alt="Texas 2025 buckle — Run2theRoar engraving"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
-              />
-            </div>
-            <div>
-              <img
-                src="/buckle-brass-initials.png"
-                alt="Brass initials buckles — MMC and MSL"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
-              />
-            </div>
-            <div>
-              <img
-                src="/buckle-jj-silver.png"
-                alt="JJS custom sterling silver buckle"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
-              />
-            </div>
-            <div>
-              <img
-                src="/buckle-gallery-4.png"
-                alt="WHB buckle on cowhide belt"
-                style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }}
-              />
-            </div>
+            <div><img src="/buckle-texas-2025.png" alt="Texas 2025 buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-brass-initials.png" alt="Brass initials buckles" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-jj-silver.png" alt="JJS custom sterling silver buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-gallery-4.png" alt="WHB buckle on cowhide belt" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
           </div>
         </div>
 
         <div className="page-cta">
           <p className="overline">Ready to Start?</p>
           <h2 className="headline">Let's build your buckle.</h2>
-          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}>
-            <span>Begin Your Order</span>
-          </Link>
+          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}><span>Begin Your Order</span></Link>
         </div>
 
       </div>

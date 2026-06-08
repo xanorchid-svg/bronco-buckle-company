@@ -10,8 +10,7 @@
   --silver-light: #e2dbd0;
   --gold: #b8924a;
   --gold-light: #d4aa6a;
-  --cream: #f2ede4;
-  --cream-dark: #3a3530;
+  --cream: #f5f0e8;
   --text-muted: #6a7480;
   --blue-deep: #0f1720;
   --blue-mid: #1a2535;
@@ -19,6 +18,8 @@
   --blue-light: #6b8fc2;
   --blue-steel: #94aade;
   --blue-steel-bg: rgba(148, 170, 222, 0.08);
+  --blue-steel-mid: rgba(148, 170, 222, 0.13);
+  --blue-steel-light: rgba(148, 170, 222, 0.18);
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Jost', sans-serif;
 }
@@ -29,33 +30,23 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--blue-deep);
   color: var(--silver-light);
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 17.6px; /* 16px * 1.10 */
+  font-size: 17.6px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   background-image: radial-gradient(ellipse at 20% 0%, rgba(26, 37, 53, 0.6) 0%, transparent 60%),
                     radial-gradient(ellipse at 80% 100%, rgba(15, 23, 32, 0.4) 0%, transparent 50%);
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Typography */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 400;
@@ -96,32 +87,28 @@ h1, h2, h3, h4 {
   color: var(--silver);
 }
 
-/* Cream section body text overrides */
-.section--cream .body-text,
-.section--cream p { color: #3a3530; }
-
-.section--cream .overline { color: #8a6d38; }
-
-.section--cream h2,
-.section--cream h3,
-.section--cream .headline { color: #1a1a1a; }
-
-.section--cream .divider { background: var(--gold); }
-
-/* Layout */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.section {
-  padding: 6rem 0;
+.section { padding: 6rem 0; }
+
+/* ── Steel tint sections — light to mid ─────── */
+.section--steel-light {
+  background: var(--blue-steel-light);
+  border-top: 1px solid rgba(148, 170, 222, 0.2);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.2);
+  padding: 5rem 2rem;
+  margin: 0 -2rem;
 }
 
-.section--cream {
-  background: var(--cream);
-  padding: 6rem 2rem;
+.section--steel-mid {
+  background: var(--blue-steel-mid);
+  border-top: 1px solid rgba(148, 170, 222, 0.18);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.18);
+  padding: 5rem 2rem;
   margin: 0 -2rem;
 }
 
@@ -133,9 +120,7 @@ h1, h2, h3, h4 {
   margin: 1.5rem 0;
 }
 
-.divider--center {
-  margin: 1.5rem auto;
-}
+.divider--center { margin: 1.5rem auto; }
 
 /* Buttons */
 .btn {
@@ -165,9 +150,7 @@ h1, h2, h3, h4 {
   z-index: 0;
 }
 
-.btn:hover::before {
-  transform: translateX(0);
-}
+.btn:hover::before { transform: translateX(0); }
 
 .btn span {
   position: relative;
@@ -175,24 +158,17 @@ h1, h2, h3, h4 {
   transition: color 0.3s ease;
 }
 
-.btn:hover span {
-  color: var(--black);
-}
+.btn:hover span { color: var(--black); }
 
 .btn--light {
   border-color: var(--silver-light);
   color: var(--silver-light);
 }
 
-.btn--light::before {
-  background: var(--silver-light);
-}
+.btn--light::before { background: var(--silver-light); }
+.btn--light:hover span { color: var(--black); }
 
-.btn--light:hover span {
-  color: var(--black);
-}
-
-/* Noise texture overlay */
+/* Noise texture */
 body::after {
   content: '';
   position: fixed;
@@ -203,42 +179,31 @@ body::after {
   opacity: 0.4;
 }
 
-/* Page transitions */
-.page {
-  animation: fadeIn 0.5s ease;
-}
+.page { animation: fadeIn 0.5s ease; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Horizontal rule */
 hr {
   border: none;
   border-top: 1px solid var(--border);
   margin: 4rem 0;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .section {
-    padding: 4rem 0;
-  }
-  .section--cream {
-    padding: 4rem 1.5rem;
-    margin: 0 -1.5rem;
-  }
-  .container {
-    padding: 0 1.5rem;
-  }
+  .section { padding: 4rem 0; }
+  .section--steel-light,
+  .section--steel-mid { padding: 3rem 1.5rem; margin: 0 -1.5rem; }
+  .container { padding: 0 1.5rem; }
 }
 
 /* ── Steel-blue highlight section ──────────── */
 .section--steel {
-  background: linear-gradient(135deg, rgba(148, 170, 222, 0.07) 0%, rgba(74, 111, 165, 0.10) 100%);
-  border-top: 1px solid rgba(148, 170, 222, 0.15);
-  border-bottom: 1px solid rgba(148, 170, 222, 0.15);
+  background: linear-gradient(135deg, rgba(148, 170, 222, 0.09) 0%, rgba(74, 111, 165, 0.12) 100%);
+  border-top: 1px solid rgba(148, 170, 222, 0.18);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.18);
 }
 
 .steel-tag {

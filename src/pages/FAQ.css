@@ -5,28 +5,16 @@
   align-items: start;
 }
 
-.faq-intro {
-  position: sticky;
-  top: 6rem;
-}
-
-.faq-list {
-  display: flex;
-  flex-direction: column;
-}
+.faq-intro { position: sticky; top: 6rem; }
+.faq-list { display: flex; flex-direction: column; }
 
 .faq-item {
-  border-bottom: 1px solid rgba(58, 53, 48, 0.2);
+  border-bottom: 1px solid rgba(148, 170, 222, 0.2);
   transition: border-color 0.3s ease;
 }
 
-.faq-item:first-child {
-  border-top: 1px solid rgba(58, 53, 48, 0.2);
-}
-
-.faq-item--open {
-  border-color: var(--gold);
-}
+.faq-item:first-child { border-top: 1px solid rgba(148, 170, 222, 0.2); }
+.faq-item--open { border-color: var(--gold); }
 
 .faq-item__q {
   display: flex;
@@ -38,17 +26,12 @@
   cursor: pointer;
   padding: 1.5rem 0;
   text-align: left;
-  color: #2a2520;
+  color: var(--silver-light);
   transition: color 0.2s ease;
 }
 
-.faq-item__q:hover {
-  color: #1a1a1a;
-}
-
-.faq-item--open .faq-item__q {
-  color: #1a1a1a;
-}
+.faq-item__q:hover { color: var(--cream); }
+.faq-item--open .faq-item__q { color: var(--cream); }
 
 .faq-item__num {
   font-family: var(--font-display);
@@ -59,9 +42,7 @@
   line-height: 1;
 }
 
-.faq-item--open .faq-item__num {
-  opacity: 1;
-}
+.faq-item--open .faq-item__num { opacity: 1; }
 
 .faq-item__text {
   font-family: var(--font-display);
@@ -88,28 +69,11 @@
   padding: 0 0 0 3.25rem;
 }
 
-.faq-item--open .faq-item__a {
-  max-height: 300px;
-  padding: 0 0 1.75rem 3.25rem;
-}
-
-/* Answer text on cream background */
-.faq-item__a .body-text {
-  color: #3a3530;
-}
+.faq-item--open .faq-item__a { max-height: 300px; padding: 0 0 1.75rem 3.25rem; }
 
 @media (max-width: 768px) {
-  .faq-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .faq-intro {
-    position: static;
-  }
-}
-
-@media (max-width: 768px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .faq-intro { position: static; }
   .faq-item__text { font-size: 1rem; }
   .faq-item__a { padding: 0 0 0 2.25rem; }
   .faq-item--open .faq-item__a { padding: 0 0 1.5rem 2.25rem; max-height: 400px; }

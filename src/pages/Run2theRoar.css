@@ -1,11 +1,5 @@
-.roar-title {
-  color: var(--gold-light);
-}
-
-.roar-title em {
-  font-style: italic;
-  color: var(--gold-light);
-}
+.roar-title { color: var(--gold-light); }
+.roar-title em { font-style: italic; color: var(--gold-light); }
 
 .roar-numeral {
   font-size: 1.56em;
@@ -16,7 +10,6 @@
   line-height: 1;
 }
 
-/* Slightly smaller version for inline body text */
 .roar-numeral--inline {
   font-size: 1.3em;
   color: #94aade;
@@ -26,7 +19,6 @@
   line-height: 1;
 }
 
-/* Lighter hero overlay */
 .inner-hero__overlay--lighter {
   position: absolute;
   inset: 0;
@@ -35,7 +27,7 @@
     rgba(15, 23, 32, 0.05) 0%,
     rgba(15, 23, 32, 0.02) 25%,
     rgba(15, 23, 32, 0.38) 65%,
-    var(--blue-deep)       100%
+    var(--blue-deep) 100%
   );
 }
 
@@ -43,7 +35,7 @@
   font-family: var(--font-display);
   font-size: 1.32rem;
   font-style: italic;
-  color: #3a3530;
+  color: var(--silver-light);
   margin-top: 0.5rem;
 }
 
@@ -59,15 +51,13 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin: 0 -2rem;
-  padding: 4rem 2rem;
 }
 
 .roar-lead {
   font-size: 1.32rem !important;
   font-family: var(--font-display) !important;
   font-style: italic;
-  color: #3a3530 !important;
+  color: var(--silver-light) !important;
 }
 
 .roar-parable {
@@ -96,9 +86,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  padding-bottom: 3rem;
-  margin: 0 -2rem;
-  padding: 4rem 2rem;
 }
 
 .roar-closing__words {
@@ -117,14 +104,13 @@
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-style: italic;
-  color: var(--gold);
+  color: var(--gold-light);
   margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
-  .roar-opening { margin: 0 -1.5rem; padding: 3rem 1.5rem; }
-  .roar-parable { grid-template-columns: 1fr; gap: 1.5rem; margin: 0 -1.5rem; padding: 2rem 1.5rem; }
-  .roar-closing { grid-template-columns: 1fr; gap: 2rem; margin: 0 -1.5rem; padding: 3rem 1.5rem; }
+  .roar-parable { grid-template-columns: 1fr; gap: 1.25rem; padding: 2rem 1.5rem; margin: 0 -1.5rem; }
+  .roar-closing { grid-template-columns: 1fr; gap: 2rem; }
   .roar-closing__words { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
   .roar-body { gap: 0; }
 }

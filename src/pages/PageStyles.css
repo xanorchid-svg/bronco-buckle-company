@@ -11,10 +11,7 @@
 .inner-hero--tall { height: 85vh; }
 .inner-hero--short { height: 45vh; min-height: 320px; }
 
-.inner-hero__bg {
-  position: absolute;
-  inset: 0;
-}
+.inner-hero__bg { position: absolute; inset: 0; }
 
 .inner-hero__bg img {
   width: 100%;
@@ -46,16 +43,8 @@
   );
 }
 
-.inner-hero__content {
-  position: relative;
-  z-index: 2;
-  padding-bottom: 3.5rem;
-}
-
-.inner-hero__content--center {
-  text-align: center;
-  padding-bottom: 5rem;
-}
+.inner-hero__content { position: relative; z-index: 2; padding-bottom: 3.5rem; }
+.inner-hero__content--center { text-align: center; padding-bottom: 5rem; }
 
 /* ─── TWO COLUMN ────────────────────────────── */
 .two-col {
@@ -73,11 +62,7 @@
 }
 
 /* ─── SPEC GRID ─────────────────────────────── */
-.spec-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 
 .spec-item h3 {
   font-family: var(--font-display);
@@ -103,33 +88,12 @@
 }
 
 .pricing-row:last-of-type { border-bottom: none; }
-
-.pricing-label {
-  font-size: 0.99rem;
-  color: var(--silver);
-  letter-spacing: 0.03em;
-}
-
-.pricing-price {
-  font-family: var(--font-display);
-  font-size: 1.65rem;
-  color: var(--gold-light);
-}
-
-.pricing-note {
-  margin-top: 1rem;
-  font-size: 0.825rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-}
+.pricing-label { font-size: 0.99rem; color: var(--silver); letter-spacing: 0.03em; }
+.pricing-price { font-family: var(--font-display); font-size: 1.65rem; color: var(--gold-light); }
+.pricing-note { margin-top: 1rem; font-size: 0.825rem; color: var(--text-muted); letter-spacing: 0.05em; }
 
 /* ─── BELT GRID ─────────────────────────────── */
-.belt-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
+.belt-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 3rem; }
 
 .belt-card {
   background: var(--charcoal);
@@ -140,11 +104,7 @@
 
 .belt-card:hover { border-color: var(--gold); }
 
-.belt-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+.belt-card__header { display: flex; justify-content: space-between; align-items: flex-start; }
 
 .belt-card__header h3 {
   font-family: var(--font-display);
@@ -154,41 +114,17 @@
   margin-top: 0.3rem;
 }
 
-.belt-card__price {
-  font-family: var(--font-display);
-  font-size: 1.65rem;
-  color: var(--gold-light);
-  white-space: nowrap;
-}
-
-.belt-card__note {
-  margin-top: 1rem;
-  font-size: 0.825rem;
-  font-style: italic;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-}
+.belt-card__price { font-family: var(--font-display); font-size: 1.65rem; color: var(--gold-light); white-space: nowrap; }
+.belt-card__note { margin-top: 1rem; font-size: 0.825rem; font-style: italic; color: var(--text-muted); letter-spacing: 0.05em; }
 
 /* ─── SECTION INTRO ─────────────────────────── */
-.section-intro {
-  max-width: 620px;
-  margin-bottom: 3rem;
-}
+.section-intro { max-width: 620px; margin-bottom: 3rem; }
 
 /* ─── PAGE CTA ──────────────────────────────── */
-.page-cta {
-  margin-top: 5rem;
-  padding-top: 4rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
+.page-cta { margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border); text-align: center; }
 
 /* ─── STORY ─────────────────────────────────── */
-.story-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
+.story-body { display: flex; flex-direction: column; gap: 0; }
 
 .story-founding {
   display: grid;
@@ -204,9 +140,7 @@
   filter: saturate(0.6) brightness(0.85);
 }
 
-.story-guarantee {
-  max-width: 720px;
-}
+.story-guarantee { max-width: 720px; }
 
 .story-contact-strip {
   display: flex;
@@ -214,17 +148,9 @@
   align-items: center;
   gap: 3rem;
   padding: 3rem;
-  background: var(--charcoal);
-  border: 1px solid var(--border);
-  margin-top: 0;
 }
 
-.story-link {
-  color: var(--gold);
-  transition: color 0.2s ease;
-  font-size: 1.1rem;
-}
-
+.story-link { color: var(--gold); transition: color 0.2s ease; font-size: 1.1rem; }
 .story-link:hover { color: var(--gold-light); }
 
 /* ─── RESPONSIVE ────────────────────────────── */
@@ -234,18 +160,14 @@
   .story-founding    { grid-template-columns: 1fr; gap: 2.5rem; }
   .pricing-row       { flex-direction: column; gap: 0.3rem; }
   .story-contact-strip { flex-direction: column; text-align: center; padding: 2rem; }
-}
-
-@media (max-width: 768px) {
-  .inner-hero { height: 50vh; min-height: 320px; }
-  .inner-hero--tall { height: 60vh; }
+  .inner-hero        { height: 50vh; min-height: 320px; }
+  .inner-hero--tall  { height: 60vh; }
   .inner-hero--short { height: 40vh; }
   .inner-hero__content { padding-bottom: 2.5rem; }
   .inner-hero__content .display { font-size: clamp(2.5rem, 10vw, 4rem); }
   .belt-card__header { flex-direction: column; gap: 0.5rem; }
-  .page-cta { margin-top: 3rem; padding-top: 3rem; }
-  .story-contact-strip { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .page-cta          { margin-top: 3rem; padding-top: 3rem; }
   .two-col__image img { aspect-ratio: 4/3; }
-  .belt-card__price { font-size: 1.32rem; }
-  .pricing-label { font-size: 0.88rem; }
+  .belt-card__price  { font-size: 1.32rem; }
+  .pricing-label     { font-size: 0.88rem; }
 }

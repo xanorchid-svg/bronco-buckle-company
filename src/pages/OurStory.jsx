@@ -12,10 +12,7 @@ export default function OurStory() {
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/4b221421-a6d2-49ff-9e46-55b8a166ea8f/bronson-boys.jpg"
-            alt="The Bronson Boys"
-          />
+          <img src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/4b221421-a6d2-49ff-9e46-55b8a166ea8f/bronson-boys.jpg" alt="The Bronson Boys" />
           <div className="inner-hero__overlay" />
         </div>
         <div className="inner-hero__content container">
@@ -27,8 +24,8 @@ export default function OurStory() {
       <div className="section container">
         <div className="story-body">
 
-          {/* FOUNDING — cream */}
-          <div className="section--cream story-founding" style={{ margin: '0 -2rem', padding: '4rem 2rem' }}>
+          {/* FOUNDING — steel light */}
+          <div className="section--steel-light story-founding">
             <div className="story-founding__text">
               <p className="overline">The Beginning</p>
               <h2 className="headline">A father and his two sons.</h2>
@@ -46,15 +43,12 @@ export default function OurStory() {
               </p>
             </div>
             <div className="story-founding__image">
-              <img
-                src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/4b221421-a6d2-49ff-9e46-55b8a166ea8f/bronson-boys.jpg"
-                alt="The founding family"
-              />
+              <img src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/4b221421-a6d2-49ff-9e46-55b8a166ea8f/bronson-boys.jpg" alt="The founding family" />
             </div>
           </div>
 
           {/* GUARANTEE — dark */}
-          <div className="story-guarantee" style={{ padding: '4rem 0' }}>
+          <div className="story-guarantee" style={{ padding: '5rem 0' }}>
             <p className="overline">Our Promise</p>
             <h2 className="headline" style={{ marginTop: '0.5rem' }}>We keep your pants on.</h2>
             <div className="divider" />
@@ -71,8 +65,8 @@ export default function OurStory() {
             </p>
           </div>
 
-          {/* CONTACT STRIP — dark charcoal */}
-          <div className="story-contact-strip">
+          {/* CONTACT STRIP — steel mid */}
+          <div className="section--steel-mid story-contact-strip">
             <div>
               <p className="overline">Reach Us</p>
               <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
@@ -81,9 +75,7 @@ export default function OurStory() {
                 <a href="mailto:Stocker@BroncoBuckleCompany.com" className="body-text story-link">Stocker@BroncoBuckleCompany.com</a>
               </div>
             </div>
-            <Link to="/contact" className="btn">
-              <span>Get In Touch</span>
-            </Link>
+            <Link to="/contact" className="btn"><span>Get In Touch</span></Link>
           </div>
 
         </div>
