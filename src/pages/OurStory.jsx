@@ -27,7 +27,8 @@ export default function OurStory() {
       <div className="section container">
         <div className="story-body">
 
-          <div className="story-founding">
+          {/* FOUNDING — cream */}
+          <div className="section--cream story-founding" style={{ margin: '0 -2rem', padding: '4rem 2rem' }}>
             <div className="story-founding__text">
               <p className="overline">The Beginning</p>
               <h2 className="headline">A father and his two sons.</h2>
@@ -52,7 +53,8 @@ export default function OurStory() {
             </div>
           </div>
 
-          <div className="story-guarantee">
+          {/* GUARANTEE — dark */}
+          <div className="story-guarantee" style={{ padding: '4rem 0' }}>
             <p className="overline">Our Promise</p>
             <h2 className="headline" style={{ marginTop: '0.5rem' }}>We keep your pants on.</h2>
             <div className="divider" />
@@ -69,6 +71,7 @@ export default function OurStory() {
             </p>
           </div>
 
+          {/* CONTACT STRIP — dark charcoal */}
           <div className="story-contact-strip">
             <div>
               <p className="overline">Reach Us</p>

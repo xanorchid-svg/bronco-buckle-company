@@ -15,15 +15,15 @@ const faqs = [
   },
   {
     q: "What does the buckle cost?",
-    a: "Standard buckles with block initials are $1,275. Special orders — logos, brands, custom designs — are typically approximately $125 extra. All prices are plus applicable sales tax."
+    a: "Standard buckles with block initials are $895. Special orders — logos, brands, custom designs — are $1,425. Custom engraving on the back is an additional $50. All prices are plus applicable sales tax."
   },
   {
     q: "What belt options are available?",
-    a: "We offer American Alligator ($625), Cowhide ($150–$450 depending on style), and Condensed Bull Hide (special order). Each is made to pair with your Bronco Buckles buckle and sized to your specifications."
+    a: "We offer American Alligator ($525–$675), Cowhide ($150–$350 depending on style), and Condensed Bull Hide ($475). Each is made to pair with your Bronco Buckles buckle and sized to your specifications."
   },
   {
     q: "Can I order a buckle with a logo or brand instead of initials?",
-    a: "Absolutely. Custom logos, ranch brands, and special designs are available for approximately $125 above the standard price. Reach out and we'll discuss what you have in mind."
+    a: "Absolutely. Custom logos, ranch brands, and special designs are available at the special order price of $1,425. Reach out and we'll discuss what you have in mind."
   },
   {
     q: "What is 'Run2theRoar' and why is it on the buckle?",
@@ -86,24 +86,28 @@ export default function FAQ() {
       </div>
 
       <div className="section container">
-        <div className="faq-layout">
-          <div className="faq-intro">
-            <p className="overline">Everything You Need to Know</p>
-            <h2 className="headline">We have an endless supply of answers.</h2>
-            <div className="divider" />
-            <p className="body-text">
-              Can't find what you're looking for? We also have an endless supply
-              of unsolicited advice on most any question. Give it a try.
-            </p>
-            <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}>
-              <span>Ask Us Directly</span>
-            </Link>
-          </div>
+        {/* FAQ INTRO — cream */}
+        <div className="section--cream faq-intro-wrap" style={{ margin: '0 -2rem', padding: '4rem 2rem', marginBottom: '0' }}>
+          <div className="faq-layout">
+            <div className="faq-intro">
+              <p className="overline">Everything You Need to Know</p>
+              <h2 className="headline">We have an endless supply of answers.</h2>
+              <div className="divider" />
+              <p className="body-text">
+                Can't find what you're looking for? We also have an endless supply
+                of unsolicited advice on most any question. Give it a try.
+              </p>
+              <Link to="/contact" className="btn" style={{ marginTop: '2rem', borderColor: 'var(--gold)', color: 'var(--gold)' }}>
+                <span>Ask Us Directly</span>
+              </Link>
+            </div>
 
-          <div className="faq-list">
-            {faqs.map((item, i) => (
-              <FAQItem key={i} q={item.q} a={item.a} index={i} />
-            ))}
+            {/* FAQ LIST — sits on cream background */}
+            <div className="faq-list">
+              {faqs.map((item, i) => (
+                <FAQItem key={i} q={item.q} a={item.a} index={i} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

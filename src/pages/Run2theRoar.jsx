@@ -17,7 +17,7 @@ export default function Run2theRoar() {
             alt="Run2theRoar"
             style={{ objectPosition: 'center 80%' }}
           />
-          <div className="inner-hero__overlay inner-hero__overlay--deep" />
+          <div className="inner-hero__overlay inner-hero__overlay--lighter" />
         </div>
         <div className="inner-hero__content inner-hero__content--center container">
           <p className="overline">Stamped on Every Buckle</p>
@@ -28,12 +28,13 @@ export default function Run2theRoar() {
       <div className="section container" style={{ paddingTop: '1.5rem' }}>
         <div className="roar-body">
 
-          <div className="roar-opening">
+          {/* OPENING — cream */}
+          <div className="section--cream roar-opening">
             <p className="roar-hero-sub" style={{ textAlign: 'center' }}>
               A quiet encouragement for the man who dresses with purpose.
             </p>
             <p className="body-text roar-lead">
-              On the back of each Bronco Buckles buckle is stamped a single phrase: <em>Run2theRoar.</em>
+              On the back of each Bronco Buckles buckle is stamped a single phrase: <em>Run<span className="roar-numeral roar-numeral--inline">2</span>theRoar.</em>
             </p>
             <p className="body-text">
               We share this expression to encourage every Bronco Buckles owner — when he dresses
@@ -48,6 +49,7 @@ export default function Run2theRoar() {
             </p>
           </div>
 
+          {/* PARABLE — dark */}
           <div className="roar-parable">
             <div className="roar-parable__label">
               <p className="overline">The Parable</p>
@@ -74,7 +76,8 @@ export default function Run2theRoar() {
             </div>
           </div>
 
-          <div className="roar-closing">
+          {/* CLOSING — cream */}
+          <div className="section--cream roar-closing">
             <p className="display roar-closing__words"><em>"Run<br />to the<br />Roar."</em></p>
             <div className="roar-closing__text">
               <p className="body-text">
@@ -85,7 +88,7 @@ export default function Run2theRoar() {
                 So it is our wish that our buckles quietly whisper and remind men, every time
                 they dress, every time they face a challenge, every time the day roars at them:
               </p>
-              <p className="roar-whisper"><em>Run2theRoar.</em></p>
+              <p className="roar-whisper"><em>Run<span className="roar-numeral roar-numeral--inline">2</span>theRoar.</em></p>
             </div>
           </div>
 
