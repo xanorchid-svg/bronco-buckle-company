@@ -33,7 +33,11 @@ export default function TheBelt() {
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">
-          <img src="/belt-hero-new.png" alt="The Belt" />
+          <img
+            src="/belt-hero-new.png"
+            alt="The Belt"
+            style={{ objectPosition: 'center 70%' }}
+          />
           <div className="inner-hero__overlay" />
         </div>
         <div className="inner-hero__content container">
@@ -44,7 +48,6 @@ export default function TheBelt() {
 
       <div className="section container">
 
-        {/* INTRO — steel light */}
         <div className="section--steel-light two-col" style={{ alignItems: 'center' }}>
           <div>
             <p className="overline">The Foundation</p>
@@ -61,7 +64,6 @@ export default function TheBelt() {
           </div>
         </div>
 
-        {/* BELT CARDS — dark charcoal */}
         <div style={{ padding: '4rem 0' }}>
           <div className="belt-grid">
             {belts.map((belt, i) => (

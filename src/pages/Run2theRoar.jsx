@@ -28,8 +28,8 @@ export default function Run2theRoar() {
       <div className="section container" style={{ paddingTop: '1.5rem' }}>
         <div className="roar-body">
 
-          {/* OPENING — steel light */}
-          <div className="section--steel-light roar-opening">
+          {/* OPENING — plain dark navy, no box */}
+          <div className="roar-opening">
             <p className="roar-hero-sub" style={{ textAlign: 'center' }}>
               A quiet encouragement for the man who dresses with purpose.
             </p>
@@ -49,7 +49,7 @@ export default function Run2theRoar() {
             </p>
           </div>
 
-          {/* PARABLE — dark blue-mid */}
+          {/* PARABLE — dark blue-mid box */}
           <div className="roar-parable">
             <div className="roar-parable__label">
               <p className="overline">The Parable</p>
@@ -76,8 +76,8 @@ export default function Run2theRoar() {
             </div>
           </div>
 
-          {/* CLOSING — steel mid */}
-          <div className="section--steel-mid roar-closing">
+          {/* CLOSING — plain dark navy, no box */}
+          <div className="roar-closing">
             <p className="display roar-closing__words"><em>"Run<br />to the<br />Roar."</em></p>
             <div className="roar-closing__text">
               <p className="body-text">

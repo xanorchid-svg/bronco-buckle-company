@@ -26,7 +26,7 @@ export default function Home() {
     <div className="page home">
       <SEO
         title="Hand-Crafted Sterling Silver Belt Buckles"
-        description="Bronco Buckles Company crafts hand-made sterling silver belt buckles and belts in Dallas, Texas. Custom initials, logos, and designs. From $1,275. Run2theRoar."
+        description="Bronco Buckles Company crafts hand-made sterling silver belt buckles and belts in Dallas, Texas. Custom initials, logos, and designs. From $895. Run2theRoar."
         path="/"
       />
 
@@ -41,24 +41,18 @@ export default function Home() {
         </div>
         <div className="home-hero__content">
           <div style={{ paddingLeft: '2rem', maxWidth: '680px' }}>
-          <p className="overline">Dallas, Texas · Est. 2024</p>
-          <h1 className="display home-hero__title">
-            Hand-Crafted<br />
-            <em>Sterling Silver</em><br />
-            Buckles & Belts
-          </h1>
-          <div className="divider" />
-          <p className="home-hero__sub">
-            For the man who dresses with intention.
-          </p>
-          <Link to="/contact" className="btn">
-            <span>Begin Your Order</span>
-          </Link>
+            <p className="overline">Dallas, Texas · Est. 2024</p>
+            <h1 className="display home-hero__title">
+              Hand-Crafted<br />
+              <em>Sterling Silver</em><br />
+              Buckles & Belts
+            </h1>
+            <div className="divider" />
+            <p className="home-hero__sub">For the man who dresses with intention.</p>
+            <Link to="/contact" className="btn"><span>Begin Your Order</span></Link>
           </div>
         </div>
-        <div className="home-hero__scroll">
-          <span />
-        </div>
+        <div className="home-hero__scroll"><span /></div>
       </section>
 
       {/* Brand Statement */}
@@ -98,9 +92,7 @@ export default function Home() {
             On the back of every buckle, a quiet reminder. Be fearless, assertive, and
             intentional when facing the roar of the day. Not from it — toward it.
           </p>
-          <Link to="/run2theroar" className="btn btn--light">
-            <span>Read the Story</span>
-          </Link>
+          <Link to="/run2theroar" className="btn btn--light"><span>Read the Story</span></Link>
         </div>
       </section>
 
@@ -127,8 +119,9 @@ export default function Home() {
             <Link to="/the-belt" className="home-product-card">
               <div className="home-product-card__image">
                 <img
-                  src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg"
+                  src="/belt-home.jpg"
                   alt="The Belt"
+                  style={{ objectPosition: 'center 40%' }}
                 />
               </div>
               <div className="home-product-card__text">
@@ -172,9 +165,7 @@ export default function Home() {
               Custom buckles take 4–6 weeks from start to finish.<br />Reach out and we'll guide you through every step.
             </p>
           </div>
-          <Link to="/contact" className="btn">
-            <span>Get In Touch</span>
-          </Link>
+          <Link to="/contact" className="btn"><span>Get In Touch</span></Link>
         </div>
       </section>
 
