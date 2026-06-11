@@ -16,9 +16,8 @@
 }
 
 .nav__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
+  padding: 0 3rem;
   height: 72px;
   display: flex;
   align-items: center;
@@ -54,15 +53,14 @@
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
 }
 
 .nav__links a {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--silver-light);
   text-decoration: none;
   position: relative;
@@ -94,10 +92,13 @@
 .nav__cta {
   background: var(--gold);
   color: var(--blue-deep) !important;
-  padding: 0.55rem 1.2rem;
+  padding: 0.5rem 1.3rem;
   border-radius: 3px;
+  font-family: var(--font-body) !important;
+  font-size: 0.82rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
   transition: background 0.2s !important;
 }
 
@@ -150,6 +151,10 @@
 
 /* ── Mobile ──────────────────────────────────────── */
 @media (max-width: 768px) {
+  .nav__inner {
+    padding: 0 1.5rem;
+  }
+
   .nav__burger {
     display: flex;
   }
@@ -174,7 +179,7 @@
   }
 
   .nav__links a {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
   }
 
   .nav__logo {
