@@ -1,12 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Nav.css';
 
 export default function Nav() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const touchStartY = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -15,108 +13,46 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
 
-  useEffect(() => {
-    setMenuOpen(false);
-    window.scrollTo(0, 0);
-  }, [location]);
-
-  function handleTouchStart(e) {
-    touchStartY.current = e.touches[0].clientY;
-  }
-
-  function handleTouchEnd(e) {
-    if (touchStartY.current === null) return;
-    const diff = touchStartY.current - e.changedTouches[0].clientY;
-    if (diff > 50) setMenuOpen(false);
-    touchStartY.current = null;
-  }
-
-  const links = [
-    { to: '/the-buckle', label: 'The Buckle' },
-    { to: '/the-belt', label: 'The Belt' },
-    { to: '/run2theroar', label: 'Run2theRoar' },
-    { to: '/our-story', label: 'Our Story' },
-    { to: '/faq', label: 'FAQ' },
-    { to: '/contact', label: 'Inquire' },
-  ];
-
-  const LogoIcon = () => (
-    <img
-      src="/BB_logoe.svg"
-      alt="BB"
-      className="nav__logo-icon"
-      style={{ height: '66px', width: 'auto', mixBlendMode: 'screen' }}
-    />
-  );
+  const close = () => setOpen(false);
 
   return (
-    <>
-      <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-        <div className="nav__inner">
-          <button
-            className={`nav__hamburger ${menuOpen ? 'nav__hamburger--open' : ''}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span /><span /><span />
-          </button>
+    <header className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+      <div className="nav__inner">
+        <Link to="/" className="nav__logo-link" onClick={close}>
+          <span className="nav__logo-pill">
+            <img
+              src="/BB_logoe.svg"
+              alt="Bronco Buckles"
+              className="nav__logo"
+            />
+          </span>
+        </Link>
 
-          <Link to="/" className="nav__logo">
-            <LogoIcon />
-            <span className="nav__logo-text">
-              <span className="nav__logo-name">Bronco Buckles</span>
-              <span className="nav__logo-sub">Company</span>
-            </span>
-          </Link>
+        <nav className={`nav__links${open ? ' nav__links--open' : ''}`}>
+          <NavLink to="/" end onClick={close}>Home</NavLink>
+          <NavLink to="/the-buckle" onClick={close}>The Buckle</NavLink>
+          <NavLink to="/the-belt" onClick={close}>The Belt</NavLink>
+          <NavLink to="/run2theroar" onClick={close}>Run2theRoar</NavLink>
+          <NavLink to="/our-story" onClick={close}>Our Story</NavLink>
+          <NavLink to="/faq" onClick={close}>FAQ</NavLink>
+          <NavLink to="/contact" onClick={close} className="nav__cta">Inquire</NavLink>
+        </nav>
 
-          <div className="nav__links--desktop">
-            {links.map(link => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`nav__link ${location.pathname === link.to ? 'nav__link--active' : ''} ${link.to === '/contact' ? 'nav__link--cta' : ''}`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="nav__spacer" />
-        </div>
-      </nav>
-
-      {menuOpen && (
-        <div
-          className="nav__mobile-overlay"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+        <button
+          className={`nav__burger${open ? ' nav__burger--open' : ''}`}
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
         >
-          <button
-            className="nav__mobile-close"
-            onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            ✕
-          </button>
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
 
-          <div className="nav__mobile-links">
-            {links.map(link => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`nav__mobile-link ${link.to === '/contact' ? 'nav__mobile-link--cta' : ''}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </>
+      {open && <div className="nav__backdrop" onClick={close} />}
+    </header>
   );
 }
