@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer__brand">
           <span className="footer__logo-pill">
             <img
-              src="/BB_logoe.svg"
+              src="/bblogo.png"
               alt="Bronco Buckles"
               className="footer__logo"
             />

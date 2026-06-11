@@ -24,7 +24,7 @@ export default function Nav() {
         <Link to="/" className="nav__logo-link" onClick={close}>
           <span className="nav__logo-pill">
             <img
-              src="/BB_logoe.svg"
+              src="/bblogo.png"
               alt="Bronco Buckles"
               className="nav__logo"
             />

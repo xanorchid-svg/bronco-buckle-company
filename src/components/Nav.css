@@ -37,7 +37,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #f2ede4;
+  background: #94aade;
   border: 1.5px solid var(--gold);
   border-radius: 8px;
   padding: 6px 12px;
@@ -48,7 +48,6 @@
   height: 44px;
   width: auto;
   display: block;
-  /* Remove mix-blend-mode — logo sits on cream background now */
 }
 
 /* ── Links ───────────────────────────────────────── */
