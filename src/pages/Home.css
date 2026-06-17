@@ -22,7 +22,7 @@
   height: 100%;
   object-fit: cover;
   /* Shift image to the right so buckle sits on right, text breathes on left */
-  object-position: 10% center;
+  object-position: 0% center;
 }
 
 /* Left-to-right gradient: dark on left (text area), transparent on right (photo area) */
@@ -44,7 +44,7 @@
   z-index: 1;
   padding-top: 90px;
   padding-bottom: 5rem;
-  max-width: 55%;
+  max-width: 40%;
 }
 
 .home-hero__content .overline {
@@ -264,7 +264,7 @@
 
   /* On mobile, keep image centered */
   .home-hero__bg img {
-    object-position: 10% center;
+    object-position: 0% center;
   }
 
   .home-hero__overlay {
