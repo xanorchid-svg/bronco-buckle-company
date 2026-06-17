@@ -39,11 +39,12 @@
 }
 
 .home-hero__content {
+  padding-left: 3rem;
   position: relative;
   z-index: 1;
   padding-top: 90px;
   padding-bottom: 5rem;
-  max-width: 56%;
+  max-width: 55%;
 }
 
 .home-hero__content .overline {
@@ -249,13 +250,14 @@
   color: var(--silver);
   margin-bottom: 2.5rem;
   max-width: 500px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .home-hero__content {
+  padding-left: 3rem;
     max-width: 100%;
     padding-top: 100px;
   }
