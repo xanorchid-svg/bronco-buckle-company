@@ -289,3 +289,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.home-hero .container {
+  margin-left: 0 !important;
+  padding-left: 4rem !important;
+  max-width: 100% !important;
+}
