@@ -22,7 +22,7 @@
   height: 100%;
   object-fit: cover;
   /* Shift image to the right so buckle sits on right, text breathes on left */
-  object-position: 10% center;
+  object-position: 60% center;
 }
 
 /* Left-to-right gradient: dark on left (text area), transparent on right (photo area) */
