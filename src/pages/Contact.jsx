@@ -31,7 +31,7 @@ function Calculator({ onBuildOrder }) {
   const [beltQty,      setBeltQty]      = useState(1);
   const [engraving,    setEngraving]    = useState(false);
   const [applyTax,     setApplyTax]     = useState(false);
-  const [promoCode,    setPromoCode]    = useState(');
+  const [promoCode,    setPromoCode]    = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
   const [promoError,   setPromoError]   = useState(false);
 
