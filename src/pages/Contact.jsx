@@ -31,13 +31,17 @@ function Calculator({ onBuildOrder }) {
   const [beltQty,      setBeltQty]      = useState(1);
   const [engraving,    setEngraving]    = useState(false);
   const [applyTax,     setApplyTax]     = useState(false);
+  const [promoCode,    setPromoCode]    = useState(');
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoError,   setPromoError]   = useState(false);
 
   const belt = PRICES.belts.find(b => b.id === beltId);
   const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
-  const buckleTotal  = buckleQty * buckleUnitPrice;
+  const buckleTotal    = buckleQty * buckleUnitPrice;
+  const promoSavings   = promoApplied ? Math.round(buckleTotal * 0.22) : 0;
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
   const engravingTotal = engraving ? PRICES.engraving : 0;
-  const subtotal     = buckleTotal + beltTotal + engravingTotal;
+  const subtotal     = buckleTotal - promoSavings + beltTotal + engravingTotal;
   const tax          = applyTax ? subtotal * PRICES.taxRate : 0;
   const total        = subtotal + tax;
 
@@ -45,6 +49,7 @@ function Calculator({ onBuildOrder }) {
     const lines = [];
     lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
+    if (promoApplied) lines.push(`Promo "broncobuddy" — Buckle discount: -${formatCurrency(promoSavings)}`);
     if (engraving) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
     lines.push(`Estimated Total: ${formatCurrency(total)}`);
@@ -110,6 +115,12 @@ function Calculator({ onBuildOrder }) {
             </button>
           ))}
         </div>
+        {promoApplied && (
+          <div className="calc__total-row" style={{ color: "var(--gold)" }}>
+            <span>Promo discount (broncobuddy)</span>
+            <span>-{formatCurrency(promoSavings)}</span>
+          </div>
+        )}
         {beltId !== 'none' && (
           <div className="calc__row" style={{ marginTop: '1.25rem' }}>
             <label>Belt Quantity</label>
@@ -158,12 +169,37 @@ function Calculator({ onBuildOrder }) {
         </div>
       </div>
 
+      {/* PROMO CODE */}
+      <div className="calc__row" style={{ marginTop: "1rem" }}>
+        <label>Promo Code</label>
+        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          <input
+            type="text"
+            value={promoCode}
+            onChange={e => { setPromoCode(e.target.value); setPromoError(false); }}
+            placeholder="Enter code"
+            style={{ padding: "0.4rem 0.75rem", background: "var(--charcoal)", border: "1px solid var(--gold)", color: "var(--silver-light)", fontFamily: "var(--font-body)", width: "160px" }}
+          />
+          <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { if (promoCode.trim().toLowerCase() === "broncobuddy") { setPromoApplied(true); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
+            <span>Apply</span>
+          </button>
+          {promoApplied && <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>✓ 22% off buckles</span>}
+          {promoError && <span style={{ color: "#e07070", fontSize: "0.85rem" }}>Invalid code</span>}
+        </div>
+      </div>
+
       {/* TOTALS */}
       <div className="calc__totals">
         <div className="calc__total-row">
           <span>Buckles ({buckleQty})</span>
           <span>{formatCurrency(buckleTotal)}</span>
         </div>
+        {promoApplied && (
+          <div className="calc__total-row" style={{ color: "var(--gold)" }}>
+            <span>Promo discount (broncobuddy)</span>
+            <span>-{formatCurrency(promoSavings)}</span>
+          </div>
+        )}
         {beltId !== 'none' && (
           <div className="calc__total-row">
             <span>Belts ({beltQty})</span>
