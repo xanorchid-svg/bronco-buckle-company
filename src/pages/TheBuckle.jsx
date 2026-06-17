@@ -6,152 +6,132 @@ export default function TheBuckle() {
   return (
     <div className="page inner-page">
       <SEO
-        title="The Buckle — Custom Sterling Silver Belt Buckles"
-        description="Custom sterling silver belt buckles handcrafted in Dallas, Texas. Your initials, your design, built to last a lifetime. From $1,275."
+        title="The Buckle — Sterling Silver Belt Buckles"
+        description="Each Bronco Buckles buckle is hand-crafted in .925 sterling silver with your custom block initials or logo. Inspired by the Kalo Silver Shop. From $1,275. Dallas, Texas."
         path="/the-buckle"
       />
-
-      {/* ── Hero ── */}
       <div className="inner-hero">
         <div className="inner-hero__bg">
-          <img
-            src="/buckle-hero.png"
-            alt="Bronco Buckles sterling silver belt buckle"
-            style={{ objectPosition: 'center 60%' }}
-          />
+          <img src="/buckle-hero.png" alt="The Bronco Buckles Buckle on a cowhide belt" style={{ objectPosition: 'center 60%' }} />
           <div className="inner-hero__overlay" />
         </div>
         <div className="inner-hero__content container">
-          <p className="overline">Sterling Silver · Dallas, Texas</p>
+          <p className="overline">Hand-Crafted · Sterling Silver</p>
           <h1 className="display">The Buckle</h1>
         </div>
       </div>
 
       <div className="section container">
 
-        {/* ── Craft Section ── */}
-        <div className="section--steel-light" style={{ padding: '3rem', margin: '0 -2rem 3rem' }}>
-          <p className="overline">The Craft</p>
-          <h2 className="headline">Cast in .925 sterling silver.<br />Built to outlast you.</h2>
-          <div className="divider" />
-          <p className="body-text" style={{ maxWidth: '680px' }}>
-            Each Bronco Buckles buckle is cast from solid .925 sterling silver — not plated,
-            not filled, not simulated. Your initials or monogram are placed on the front.
-            The Run2theRoar phrase is stamped on the back. Custom engraving is available
-            for an additional fee. This is a piece that carries meaning.
-          </p>
+        {/* CRAFT — steel light */}
+        <div className="section--steel-light two-col">
+          <div className="two-col__text">
+            <p className="overline">The Craft</p>
+            <h2 className="headline">Made to your specifications.</h2>
+            <div className="divider" />
+            <p className="body-text">
+              Each Bronco Buckles buckle is hand-crafted in sterling silver by a 3rd generation
+              silversmith, made entirely to your specifications. The design draws from the legacy
+              of the Kalo Silver Shop — the premier silversmith of early 20th century Chicago —
+              and carries that tradition forward into a piece built for the modern gentleman.
+            </p>
+            <p className="body-text" style={{ marginTop: '1rem' }}>
+              A light Western motif, refined for versatility. Wear it with denim. Wear it
+              with a suit. The block initials give this piece an ageless quality — personal
+              without being precious. Masculine without being loud.
+            </p>
+          </div>
+          <div className="two-col__image">
+            <img src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/ebf145c7-c0c9-4a4a-a397-9cdfcd8db0c6/_DSF3499.jpeg" alt="Buckle detail" />
+          </div>
         </div>
 
-        {/* ── Spec Grid ── */}
-        <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem 3rem' }}>
-          <p className="overline">Specifications</p>
-          <h2 className="headline" style={{ marginBottom: '2rem' }}>What's included</h2>
+        {/* SPEC GRID — dark steel */}
+        <div className="section--steel" style={{ padding: '3rem', margin: '0 -2rem' }}>
           <div className="spec-grid">
             <div className="spec-item">
-              <span className="spec-label">Material</span>
-              <span className="spec-value">.925 Sterling Silver</span>
+              <p className="overline">Material</p>
+              <h3>Sterling Silver</h3>
+              <p className="body-text">Pure .925 sterling, polished to a warm, lasting finish.</p>
             </div>
             <div className="spec-item">
-              <span className="spec-label">Front</span>
-              <span className="spec-value">Custom monogram or initials placed on front</span>
+              <p className="overline">Personalization</p>
+              <h3>Block Initials</h3>
+              <p className="body-text">Your initials placed on the front of the buckle. Custom logos and brands also available.</p>
             </div>
             <div className="spec-item">
-              <span className="spec-label">Back</span>
-              <span className="spec-value">Run2theRoar stamped on back</span>
+              <p className="overline">Philosophy</p>
+              <h3>Run2theRoar</h3>
+              <p className="body-text">Stamped on the back of every buckle — a quiet reminder to face the day with courage and intention.</p>
             </div>
             <div className="spec-item">
-              <span className="spec-label">Standard Price</span>
-              <span className="spec-value">$1,275</span>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Special Order</span>
-              <span className="spec-value">$1,425 — unique designs, non-standard dimensions</span>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Lead Time</span>
-              <span className="spec-value">8–12 weeks from confirmed order</span>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Sizing</span>
-              <span className="spec-value">Standard western (1.5") — discuss at inquiry</span>
-            </div>
-            <div className="spec-item">
-              <span className="spec-label">Finish</span>
-              <span className="spec-value">Polished sterling — no black oxidation by default</span>
+              <p className="overline">Timing</p>
+              <h3>4–6 Weeks</h3>
+              <p className="body-text">Custom work takes time. We'll help you plan to meet your occasion.</p>
             </div>
           </div>
         </div>
 
-        {/* ── Engraving ── */}
-        <div className="section--steel-mid" style={{ padding: '3rem', margin: '0 -2rem 3rem' }}>
-          <div className="two-col" style={{ alignItems: 'center', gap: '3rem' }}>
-            <div>
-              <p className="overline">Optional Add-On</p>
-              <h2 className="headline">Custom Engraving</h2>
-              <div className="divider" />
-              <p className="body-text">
-                Add custom engraving to your buckle — a phrase, a date, a name, or a mark
-                that means something to you. Engraving is done by hand and adds depth and
-                permanence to the piece.
-              </p>
-              <p className="body-text" style={{ marginTop: '1rem' }}>
-                <strong style={{ color: 'var(--gold-light)' }}>+ $50</strong> added to your buckle order.
-                Discuss specifics at the time of inquiry.
-              </p>
+        {/* PRICING — charcoal dark */}
+        <div style={{ padding: '4rem 0' }}>
+          <div className="pricing-block">
+            <p className="overline">Pricing</p>
+            <div className="pricing-row">
+              <span className="pricing-label">Standard Buckle (with initials)</span>
+              <span className="pricing-price">$1,275</span>
             </div>
-            <div>
-              <img
-                src="/buckle-engraving-back.png"
-                alt="Custom engraving on back of Bronco Buckles buckle"
-                style={{ width: '100%', display: 'block' }}
-              />
+            <div className="pricing-row">
+              <span className="pricing-label">Special Order (logos, brands, custom designs)</span>
+              <span className="pricing-price">$1,425</span>
             </div>
+            <div className="pricing-row">
+              <span className="pricing-label">Custom Engraving (back of buckle)</span>
+              <span className="pricing-price">+$50</span>
+            </div>
+            <p className="pricing-note">Plus applicable sales tax.</p>
           </div>
         </div>
 
-        {/* ── Gallery ── */}
-        <div style={{ padding: '3rem 0', marginBottom: '3rem', background: 'var(--blue-deep)' }}>
-          <p className="overline" style={{ textAlign: 'center', marginBottom: '0.5rem' }}>The Work</p>
-          <h2 className="headline" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            Recent buckles
-          </h2>
-          <div className="gallery-grid">
-            <img src="/buckle-texas-2025.png" alt="Texas 2025 Bronco Buckle" />
-            <img src="/buckle-brass-initials.png" alt="Brass monogram buckles" />
-            <img src="/buckle-jj-silver.png" alt="JS monogram silver buckle" />
-            <img src="/buckle-gallery-4.png" alt="WHB buckle on belt" />
+        {/* ENGRAVING — steel mid */}
+        <div className="section--steel-mid two-col" style={{ alignItems: 'flex-start' }}>
+          <div className="two-col__text">
+            <p className="overline">Personal Touch</p>
+            <h2 className="headline">The Engraving</h2>
+            <div className="divider" />
+            <p className="body-text">
+              Many — if not most — of the people who buy these buckles make them even more
+              personal with a custom engraving on the back. A celebration, an exclamation,
+              a bible verse, a name, a date. Whatever carries meaning.
+            </p>
+            <p className="body-text" style={{ marginTop: '1rem' }}>
+              The shorter the better. Four lines maximum. The engraving is the final step
+              of the making process — the last thing our silversmith does before the buckle
+              leaves his hands.
+            </p>
+            <p className="body-text" style={{ marginTop: '1rem', color: 'var(--gold)' }}>
+              Additional $50 for engraving.
+            </p>
+          </div>
+          <div className="two-col__image">
+            <img src="/buckle-engraving-back.png" alt="Run2theRoar engraving on the back of a Bronco Buckles buckle" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
 
-        {/* ── Pricing Block ── */}
-        <div className="pricing-block" style={{ marginBottom: '3rem' }}>
-          <p className="overline">Pricing</p>
-          <h2 className="headline" style={{ marginBottom: '1.5rem' }}>Investment</h2>
-          <div className="pricing-row">
-            <span>Standard Buckle</span>
-            <span>$1,275</span>
+        {/* GALLERY — dark */}
+        <div style={{ padding: '4rem 0' }}>
+          <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+            <div><img src="/buckle-texas-2025.png" alt="Texas 2025 buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-brass-initials.png" alt="Brass initials buckles" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-jj-silver.png" alt="JJS custom sterling silver buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+            <div><img src="/buckle-gallery-4.png" alt="WHB buckle on cowhide belt" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
           </div>
-          <div className="pricing-row">
-            <span>Special Order</span>
-            <span>$1,425</span>
-          </div>
-          <div className="pricing-row">
-            <span>Custom Engraving</span>
-            <span>+ $50</span>
-          </div>
-          <p className="pricing-note" style={{ marginTop: '1.5rem' }}>
-            All prices plus applicable sales tax. Belt sold separately.
-            Payment due at time of order. No refunds — each piece is made to order.
-          </p>
         </div>
 
-        {/* ── CTA ── */}
         <div className="page-cta">
           <p className="overline">Ready to Start?</p>
-          <h2 className="headline">Your initials. Sterling silver.<br />Made for you.</h2>
-          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}>
-            <span>Inquire Now</span>
-          </Link>
+          <h2 className="headline">Let's build your buckle.</h2>
+          <Link to="/contact" className="btn" style={{ marginTop: '2rem' }}><span>Begin Your Order</span></Link>
         </div>
 
       </div>
