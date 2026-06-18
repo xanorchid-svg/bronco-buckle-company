@@ -48,8 +48,9 @@ export default function TheBelt() {
 
       <div className="section container">
 
-        <div className="section--steel-light two-col" style={{ alignItems: 'center' }}>
-          <div>
+        {/* Foundation intro — text and image, two col */}
+        <div className="section--steel-light two-col belt-intro-section" style={{ alignItems: 'center' }}>
+          <div className="belt-intro-text">
             <p className="overline">The Foundation</p>
             <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
             <div className="divider" />

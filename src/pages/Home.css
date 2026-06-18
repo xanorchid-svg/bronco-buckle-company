@@ -21,20 +21,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Shift image to the right so buckle sits on right, text breathes on left */
+  /* Desktop: shift image right so buckle shows on right side */
   object-position: -20% center;
 }
 
-/* Left-to-right gradient: dark on left (text area), transparent on right (photo area) */
+/* Desktop overlay — lighter so the buckle photo reads through */
 .home-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(15, 23, 32, 0.92) 0%,
-    rgba(15, 23, 32, 0.75) 42%,
-    rgba(15, 23, 32, 0.30) 65%,
-    rgba(15, 23, 32, 0.05) 100%
+    rgba(15, 23, 32, 0.88) 0%,
+    rgba(15, 23, 32, 0.65) 38%,
+    rgba(15, 23, 32, 0.18) 62%,
+    rgba(15, 23, 32, 0.02) 100%
   );
 }
 
@@ -239,41 +239,67 @@
   border-top: 1px solid rgba(184, 146, 74, 0.25);
 }
 
+.home-cta .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .home-cta h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--silver-light);
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .home-cta p {
   color: var(--silver);
   margin-bottom: 2.5rem;
   max-width: 500px;
-  margin-left: 0;
-  margin-right: auto;
+  text-align: center;
+}
+
+/* ── Desktop ── */
+.home-hero .container {
+  margin-left: 0 !important;
+  padding-left: 4rem !important;
+  max-width: 100% !important;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .home-hero__content {
+    max-width: 55%;
+  }
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .home-hero__content {
-  padding-left: 0;
+    padding-left: 0;
     max-width: 100%;
     padding-top: 100px;
   }
 
-  /* On mobile, keep image centered */
+  /* Mobile: image fills the whole screen, centered on buckle */
   .home-hero__bg img {
-    object-position: -20% center;
+    object-position: center center;
   }
 
+  /* Mobile: full dark overlay since text goes full width */
   .home-hero__overlay {
     background: linear-gradient(
-      to right,
-      rgba(15, 23, 32, 0.88) 0%,
-      rgba(15, 23, 32, 0.70) 60%,
-      rgba(15, 23, 32, 0.50) 100%
+      to bottom,
+      rgba(15, 23, 32, 0.55) 0%,
+      rgba(15, 23, 32, 0.75) 50%,
+      rgba(15, 23, 32, 0.92) 100%
     );
+  }
+
+  .home-hero .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
 
   .home-brand .two-col {
@@ -288,10 +314,8 @@
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
-}
 
-.home-hero .container {
-  margin-left: 0 !important;
-  padding-left: 4rem !important;
-  max-width: 100% !important;
+  .home-cta h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
 }

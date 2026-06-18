@@ -4,6 +4,8 @@ import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
 
+const CONTACT_EMAIL = 'stocker@broncobuckles.com';
+
 // ─── PRICING DATA ────────────────────────────
 const PRICES = {
   buckle: 1275,
@@ -172,13 +174,13 @@ function Calculator({ onBuildOrder }) {
       {/* PROMO CODE */}
       <div className="calc__row" style={{ marginTop: "1rem" }}>
         <label>Promo Code</label>
-        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
           <input
             type="text"
             value={promoCode}
             onChange={e => { setPromoCode(e.target.value); setPromoError(false); }}
             placeholder="Enter code"
-            style={{ padding: "0.4rem 0.75rem", background: "var(--charcoal)", border: "1px solid var(--gold)", color: "var(--silver-light)", fontFamily: "var(--font-body)", width: "160px" }}
+            style={{ padding: "0.4rem 0.75rem", background: "var(--charcoal)", border: "1px solid var(--gold)", color: "var(--silver-light)", fontFamily: "var(--font-body)", width: "140px" }}
           />
           <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { if (promoCode.trim().toLowerCase() === "broncobuddy") { setPromoApplied(true); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
             <span>Apply</span>
@@ -191,24 +193,24 @@ function Calculator({ onBuildOrder }) {
       {/* TOTALS */}
       <div className="calc__totals">
         <div className="calc__total-row">
-          <span>Buckles ({buckleQty})</span>
+          <span>Buckles ({buckleQty}× {formatCurrency(buckleUnitPrice)})</span>
           <span>{formatCurrency(buckleTotal)}</span>
         </div>
         {promoApplied && (
           <div className="calc__total-row" style={{ color: "var(--gold)" }}>
-            <span>Promo discount (broncobuddy)</span>
+            <span>Promo "broncobuddy" — 22% off buckles</span>
             <span>-{formatCurrency(promoSavings)}</span>
           </div>
         )}
         {beltId !== 'none' && (
           <div className="calc__total-row">
-            <span>Belts ({beltQty})</span>
+            <span>Belt ({beltQty}× {belt.label})</span>
             <span>{formatCurrency(beltTotal)}</span>
           </div>
         )}
         {engraving && (
           <div className="calc__total-row">
-            <span>Engraving</span>
+            <span>Custom Engraving</span>
             <span>{formatCurrency(engravingTotal)}</span>
           </div>
         )}
@@ -235,48 +237,46 @@ function Calculator({ onBuildOrder }) {
 }
 
 
-// ─── CONTACT FORM ────────────────────────────
+// ─── CONTACT FORM (mailto-based — no backend needed) ────────────────────────────
 function ContactForm({ prefill }) {
-  const [status, setStatus] = useState('idle');
   const [form, setForm] = useState({
     name: '', email: '', phone: '', interest: '', message: prefill || '',
   });
+  const [launched, setLaunched] = useState(false);
 
+  // Keep message in sync if prefill changes (user hits "Start My Order")
   const handleChange = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setStatus('sending');
-    try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
-      });
-      setStatus(res.ok ? 'success' : 'error');
-      if (res.ok) setForm({ name: '', email: '', phone: '', interest: '', message: '' });
-    } catch { setStatus('error'); }
-  };
+  function handleSend() {
+    const subject = encodeURIComponent(
+      `Bronco Buckles Inquiry${form.name ? ' — ' + form.name : ''}${form.interest ? ' (' + form.interest + ')' : ''}`
+    );
 
-  if (status === 'success') return (
-    <div className="contact-success">
-      <p className="overline">Message Received</p>
-      <h3 className="headline">We'll be in touch.</h3>
-      <div className="divider" />
-      <p className="body-text">Thank you for reaching out. We typically respond within one business day.</p>
-    </div>
-  );
+    const body = encodeURIComponent(
+      [
+        form.name    ? `Name: ${form.name}`    : '',
+        form.email   ? `Email: ${form.email}`  : '',
+        form.phone   ? `Phone: ${form.phone}`  : '',
+        form.interest ? `Interested in: ${form.interest}` : '',
+        '',
+        form.message || '',
+      ].filter(l => l !== undefined).join('\n').trim()
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    setLaunched(true);
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form">
+    <div className="contact-form">
       <div className="form-field">
         <label htmlFor="name">Your Name</label>
-        <input id="name" name="name" type="text" required value={form.name} onChange={handleChange} placeholder="First and last name" />
+        <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="First and last name" />
       </div>
       <div className="form-row">
         <div className="form-field">
-          <label htmlFor="email">Email</label>
-          <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="your@email.com" />
+          <label htmlFor="email">Your Email</label>
+          <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" />
         </div>
         <div className="form-field">
           <label htmlFor="phone">Phone (optional)</label>
@@ -285,7 +285,7 @@ function ContactForm({ prefill }) {
       </div>
       <div className="form-field">
         <label htmlFor="interest">I'm interested in</label>
-        <select id="interest" name="interest" value={form.interest} onChange={handleChange} required>
+        <select id="interest" name="interest" value={form.interest} onChange={handleChange}>
           <option value="">Select one</option>
           <option>Buckle only</option>
           <option>Belt only</option>
@@ -299,11 +299,25 @@ function ContactForm({ prefill }) {
         <label htmlFor="message">Order details / message</label>
         <textarea id="message" name="message" rows={6} value={form.message} onChange={handleChange} placeholder="Any occasion, timeline, or details…" />
       </div>
-      <button type="submit" className="btn" disabled={status === 'sending'}>
-        <span>{status === 'sending' ? 'Sending…' : 'Send Inquiry'}</span>
+
+      <button type="button" className="btn" onClick={handleSend}>
+        <span>Send Inquiry →</span>
       </button>
-      {status === 'error' && <p className="form-error">Something went wrong. Please email us directly.</p>}
-    </form>
+
+      {launched && (
+        <p style={{ marginTop: '1rem', color: 'var(--gold)', fontSize: '0.9rem' }}>
+          Your email app should have opened with this inquiry pre-filled. If it didn't,{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: 'var(--gold-light)' }}>
+            email us directly
+          </a>.
+        </p>
+      )}
+
+      <p style={{ marginTop: '1.5rem', fontSize: '0.8rem', color: 'var(--silver)', lineHeight: 1.5 }}>
+        Clicking "Send Inquiry" opens your email app with this message pre-filled.
+        Hit send from there — your email, your inbox.
+      </p>
+    </div>
   );
 }
 
@@ -396,7 +410,7 @@ export default function Contact() {
           <div className="contact-direct-links">
             <a href="tel:2142065060">(214) 206-5060</a>
             <span>·</span>
-            <a href="mailto:Stocker@BroncoBuckleCompany.com">Stocker@BroncoBuckleCompany.com</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
         </div>
 
