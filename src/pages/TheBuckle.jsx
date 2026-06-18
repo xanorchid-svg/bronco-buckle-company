@@ -119,12 +119,19 @@ export default function TheBuckle() {
 
         {/* GALLERY — dark */}
         <div style={{ padding: '4rem 0' }}>
-          <p className="overline" style={{ marginBottom: '1.5rem' }}>The Collection</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
-            <div><img src="/buckle-texas-2025.png" alt="Texas 2025 buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
-            <div><img src="/buckle-brass-initials.png" alt="Brass initials buckles" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
-            <div><img src="/buckle-jj-silver.png" alt="JJS custom sterling silver buckle" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
-            <div><img src="/buckle-gallery-4.png" alt="WHB buckle on cowhide belt" style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', background: 'var(--charcoal)' }} /></div>
+          <p className="overline" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>The Collection</p>
+          <div className="buckle-gallery">
+            {[
+              { src: '/buckle-texas-2025.png',     alt: 'Texas 2025 engraved buckle',           label: 'Engraving' },
+              { src: '/buckle-brass-initials.png',  alt: 'Brass and silver buckle comparison',   label: 'Comparison' },
+              { src: '/buckle-jsc-walnut.png',      alt: 'JSC sterling silver buckle on walnut', label: 'No Black Background' },
+              { src: '/buckle-gallery-4.png',       alt: 'WHB buckle on cowhide belt',           label: 'Black Background' },
+            ].map(({ src, alt, label }) => (
+              <div key={src} className="buckle-gallery__item">
+                <img src={src} alt={alt} />
+                <p className="buckle-gallery__label">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -116,3 +116,8 @@
   .roar-closing { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 2rem; }
   .roar-closing__words { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
 }
+
+/* Tighten overline-to-title gap to match other page heroes visually */
+.inner-hero__content--center .overline {
+  margin-bottom: 0.5rem;
+}

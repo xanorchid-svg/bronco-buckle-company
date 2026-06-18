@@ -191,3 +191,40 @@
   .belt-card__price  { font-size: 1.32rem; }
   .pricing-label     { font-size: 0.88rem; }
 }
+
+/* ─── BUCKLE GALLERY ─────────────────────────── */
+.buckle-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.buckle-gallery__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.buckle-gallery__item img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  background: var(--charcoal);
+  display: block;
+}
+
+.buckle-gallery__label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .buckle-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
