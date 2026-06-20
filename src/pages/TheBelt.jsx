@@ -52,7 +52,7 @@ export default function TheBelt() {
         <div className="section--steel-light two-col belt-intro-section" style={{ alignItems: 'center' }}>
           <div className="belt-intro-text">
             <p className="overline">The Foundation</p>
-            <h2 className="headline">A buckle isn't much use<br />without a belt.</h2>
+            <h2 className="headline belt-intro-headline">A buckle isn't much use<br />without a belt.</h2>
             <div className="divider" />
             <p className="body-text">
               We offer several belt options to pair with your Bronco Buckles buckle — each selected

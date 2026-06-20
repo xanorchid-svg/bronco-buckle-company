@@ -36,6 +36,7 @@ function Calculator({ onBuildOrder }) {
   const [promoCode,    setPromoCode]    = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
   const [promoError,   setPromoError]   = useState(false);
+  const [finish,       setFinish]       = useState('classic'); // 'classic' | 'elegante'
 
   const belt = PRICES.belts.find(b => b.id === beltId);
   const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
@@ -49,7 +50,8 @@ function Calculator({ onBuildOrder }) {
 
   function buildSummary() {
     const lines = [];
-    lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'} — ${formatCurrency(buckleTotal)}`);
+    const finishLabel = finish === 'elegante' ? 'Elegante (No Black Background)' : 'Classic (Black Background)';
+    lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'}, ${finishLabel} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
     if (promoApplied) lines.push(`Promo "broncobuddy" — Buckle discount: -${formatCurrency(promoSavings)}`);
     if (engraving) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
@@ -77,6 +79,22 @@ function Calculator({ onBuildOrder }) {
             <button onClick={() => setBuckleQty(Math.max(1, buckleQty - 1))}>−</button>
             <span>{buckleQty}</span>
             <button onClick={() => setBuckleQty(buckleQty + 1)}>+</button>
+          </div>
+        </div>
+        <div className="calc__row">
+          <div>
+            <label>Finish</label>
+            <p className="calc__hint">Classic · Black Background &nbsp;|&nbsp; Elegante · No Black Background</p>
+          </div>
+          <div className="calc__toggle-group">
+            <button
+              className={`calc__toggle ${finish === 'classic' ? 'calc__toggle--active' : ''}`}
+              onClick={() => setFinish('classic')}
+            >Classic</button>
+            <button
+              className={`calc__toggle ${finish === 'elegante' ? 'calc__toggle--active' : ''}`}
+              onClick={() => setFinish('elegante')}
+            >Elegante</button>
           </div>
         </div>
         <div className="calc__row">

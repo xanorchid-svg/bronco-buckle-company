@@ -124,8 +124,8 @@ export default function TheBuckle() {
             {[
               { src: '/buckle-texas-2025.png',     alt: 'Texas 2025 engraved buckle',           label: 'Engraving' },
               { src: '/buckle-brass-initials.png',  alt: 'Brass and silver buckle comparison',   label: 'Comparison' },
-              { src: '/buckle-jsc-walnut.png',      alt: 'JSC sterling silver buckle on walnut', label: 'No Black Background' },
-              { src: '/buckle-gallery-4.png',       alt: 'WHB buckle on cowhide belt',           label: 'Black Background' },
+              { src: '/buckle-jsc-walnut.png',      alt: 'JSC sterling silver buckle on walnut', label: 'Elegante — No Black Background' },
+              { src: '/buckle-gallery-4.png',       alt: 'WHB buckle on cowhide belt',           label: 'Classic — Black Background' },
             ].map(({ src, alt, label }) => (
               <div key={src} className="buckle-gallery__item">
                 <img src={src} alt={alt} />

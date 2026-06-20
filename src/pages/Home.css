@@ -21,8 +21,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Desktop: shift image right so buckle shows on right side */
-  object-position: -20% center;
+  /* Desktop: center the buckle photo */
+  object-position: center center;
 }
 
 /* Desktop overlay — lighter so the buckle photo reads through */
@@ -282,9 +282,9 @@
     padding-top: 100px;
   }
 
-  /* Mobile: image fills the whole screen, centered on buckle */
+  /* Mobile: fill screen, show buckle */
   .home-hero__bg img {
-    object-position: center center;
+    object-position: center 30%;
   }
 
   /* Mobile: full dark overlay since text goes full width */

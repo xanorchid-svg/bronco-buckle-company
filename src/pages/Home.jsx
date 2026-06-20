@@ -15,7 +15,7 @@ export default function Home() {
       <section className="home-hero">
         <div className="home-hero__bg">
           <img
-            src="https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg"
+            src="/hero-home-new.jpg"
             alt="Bronco Buckles sterling silver belt buckle"
           />
           <div className="home-hero__overlay" />

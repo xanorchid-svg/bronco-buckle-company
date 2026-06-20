@@ -228,3 +228,14 @@
     gap: 1rem;
   }
 }
+
+/* ─── BELT INTRO HEADLINE — force 2 lines on desktop ── */
+.belt-intro-headline {
+  max-width: 14ch;
+}
+
+@media (max-width: 768px) {
+  .belt-intro-headline {
+    max-width: 100%;
+  }
+}
