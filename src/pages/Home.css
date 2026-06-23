@@ -103,11 +103,11 @@
 
 /* ── Run2theRoar Strip ── */
 .home-roar-strip {
-  background: var(--blue-mid);
+  background: linear-gradient(to right, #0f1720 0%, #1a2535 40%, #8a6830 80%, #b8924a 100%);
   padding: 3rem 0;
   text-align: center;
-  border-top: 1px solid rgba(184, 146, 74, 0.25);
-  border-bottom: 1px solid rgba(184, 146, 74, 0.25);
+  border-top: none;
+  border-bottom: none;
 }
 
 .home-roar-strip h2 {
@@ -233,10 +233,10 @@
 
 /* ── CTA Strip ── */
 .home-cta {
-  background: var(--blue-mid);
+  background: linear-gradient(to left, #0f1720 0%, #1a2535 40%, #8a6830 80%, #b8924a 100%);
   padding: 5rem 0;
   text-align: center;
-  border-top: 1px solid rgba(184, 146, 74, 0.25);
+  border-top: none;
 }
 
 .home-cta .container {
