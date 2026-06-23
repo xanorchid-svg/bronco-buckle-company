@@ -5,7 +5,7 @@
 /* ── Hero ── */
 .home-hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -21,8 +21,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Desktop: center the buckle photo */
-  object-position: center center;
+  /* Desktop: show buckles in center-right */
+  object-position: 60% center;
 }
 
 /* Desktop overlay — lighter so the buckle photo reads through */
@@ -282,9 +282,9 @@
     padding-top: 100px;
   }
 
-  /* Mobile: fill screen, show buckle */
+  /* Mobile: fill screen, center on buckles */
   .home-hero__bg img {
-    object-position: center 30%;
+    object-position: 65% center;
   }
 
   /* Mobile: full dark overlay since text goes full width */
