@@ -2,6 +2,39 @@ import { Link } from 'react-router-dom';
 import './PageStyles.css';
 import SEO from '../components/SEO';
 
+
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Custom Sterling Silver Belt Buckle',
+    description: 'Hand-crafted .925 sterling silver belt buckle with custom block initials or logo. Classic or Elegante finish. Run2theRoar stamped on the back. 4-6 week lead time. Made in Dallas, Texas.',
+    brand: { '@type': 'Brand', name: 'Bronco Buckles Company' },
+    material: 'Sterling Silver .925',
+    color: 'Silver',
+    image: 'https://www.broncobucklecompany.com/buckle-texas-2025.png',
+    sku: 'BBC-BUCKLE-STD',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Standard Buckle',
+        price: '1275.00',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'Bronco Buckles Company' },
+      },
+      {
+        '@type': 'Offer',
+        name: 'Special Order Buckle',
+        price: '1425.00',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        seller: { '@type': 'Organization', name: 'Bronco Buckles Company' },
+      },
+    ],
+  };
+
 export default function TheBuckle() {
   return (
     <div className="page inner-page">
@@ -9,6 +42,8 @@ export default function TheBuckle() {
         title="The Buckle — Sterling Silver Belt Buckles"
         description="Each Bronco Buckles buckle is hand-crafted in .925 sterling silver with your custom block initials or logo. Inspired by the Kalo Silver Shop. From $1,275. Dallas, Texas."
         path="/the-buckle"
+        schema={productSchema}
+        keywords="sterling silver belt buckle, custom monogram buckle, personalized silver buckle, hand crafted buckle Dallas, western silver buckle, custom initial belt buckle, sterling silver western buckle, buy custom belt buckle Texas"
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">

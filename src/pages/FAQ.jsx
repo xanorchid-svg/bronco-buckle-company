@@ -7,7 +7,7 @@ import './FAQ.css';
 const faqs = [
   { q: "How do I order a buckle?", a: "Simply reach out to us via our inquiry form or give us a call. We'll walk you through the process — initials, style preferences, and belt options — and get your order started from there. No complicated forms or online checkout. Just a conversation." },
   { q: "How long does it take to receive my buckle and belt?", a: "The custom buckle and belt typically take approximately four to six weeks from start to finish. If you have a specific occasion or deadline in mind, let us know when you reach out and we'll do our best to plan accordingly." },
-  { q: "What does the buckle cost?", a: "Standard buckles with block initials are $895. Special orders — logos, brands, custom designs — are $1,425. Custom engraving on the back is an additional $50. All prices are plus applicable sales tax." },
+  { q: "What does the buckle cost?", a: "Standard buckles with block initials are $1,275. Special orders — logos, brands, custom designs — are $1,425. Custom engraving on the back is an additional $50. All prices are plus applicable sales tax." },
   { q: "What belt options are available?", a: "We offer American Alligator ($525–$675), Cowhide ($150–$350 depending on style), and Condensed Bull Hide ($475). Each is made to pair with your Bronco Buckles buckle and sized to your specifications." },
   { q: "Can I order a buckle with a logo or brand instead of initials?", a: "Absolutely. Custom logos, ranch brands, and special designs are available at the special order price of $1,425. Reach out and we'll discuss what you have in mind." },
   { q: "What is 'Run2theRoar' and why is it on the buckle?", a: "Run2theRoar is our motto — stamped on the back of every buckle. It's a reminder to face the day with fearlessness and intention, to run toward challenges rather than away from them. You can read the full story on our Run2theRoar page." },
@@ -33,13 +33,29 @@ function FAQItem({ q, a, index }) {
   );
 }
 
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
+
 export default function FAQ() {
   return (
     <div className="page inner-page">
       <SEO
-        title="FAQ — Frequently Asked Questions"
-        description="How to order a Bronco Buckles sterling silver belt buckle. Pricing, lead times, belt options, customization, and shipping. Everything you need to know."
+        title="FAQ — Sterling Silver Belt Buckle Questions Answered"
+        description="How to order a Bronco Buckles sterling silver belt buckle. Pricing from $1,275, 4-6 week lead times, belt options, custom monograms, engraving, and shipping. Everything you need to know."
         path="/faq"
+        schema={faqSchema}
+        keywords="custom belt buckle FAQ, how to order silver buckle, sterling silver buckle price, belt buckle lead time, custom monogram buckle questions, Bronco Buckles FAQ"
       />
       <div className="inner-hero inner-hero--short">
         <div className="inner-hero__bg">

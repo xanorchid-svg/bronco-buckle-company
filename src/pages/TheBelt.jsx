@@ -23,6 +23,40 @@ const belts = [
   },
 ];
 
+
+const beltSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Premium Leather Belt',
+  description: 'Premium leather belts hand-crafted to pair with Bronco Buckles sterling silver buckles. Available in American alligator, cowhide, and condensed bull hide. Made to your size specifications.',
+  brand: { '@type': 'Brand', name: 'Bronco Buckles Company' },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'American Alligator Belt',
+      lowPrice: '525.00',
+      highPrice: '675.00',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Cowhide Belt',
+      lowPrice: '150.00',
+      highPrice: '350.00',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Condensed Bull Hide Belt',
+      price: '475.00',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+  ],
+};
+
 export default function TheBelt() {
   return (
     <div className="page inner-page">
@@ -30,6 +64,8 @@ export default function TheBelt() {
         title="The Belt — American Alligator, Cowhide & Bull Hide"
         description="Pair your Bronco Buckles sterling silver buckle with an American alligator, cowhide, or condensed bull hide belt. Made to your specifications. Dallas, Texas."
         path="/the-belt"
+        schema={beltSchema}
+        keywords="leather belt Dallas Texas, american alligator belt, custom leather belt, cowhide belt, bull hide belt, western leather belt, belt to match silver buckle, premium leather belt Texas"
       />
       <div className="inner-hero">
         <div className="inner-hero__bg">
