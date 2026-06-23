@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://www.broncobucklecompany.com';
+const SITE_URL = 'https://www.broncobuckles.com';
 const SITE_NAME = 'Bronco Buckles Company';
 const DEFAULT_IMAGE = 'https://images.squarespace-cdn.com/content/v1/66b2a6d245284578268d3713/6796795d-7074-4af8-a557-dff021ccad24/_DSF3492.jpeg';
 const DEFAULT_IMAGE_ALT = 'Bronco Buckles Company — Hand-Crafted Sterling Silver Belt Buckles, Dallas Texas';
