@@ -103,7 +103,7 @@
 
 /* ── Run2theRoar Strip ── */
 .home-roar-strip {
-  background: linear-gradient(to right, #0f1720 0%, #1a2535 40%, #8a6830 80%, #b8924a 100%);
+  background: linear-gradient(to right, #0f1720 0%, #1a2535 60%, #1e2d42 85%, rgba(184,146,74,0.18) 100%);
   padding: 3rem 0;
   text-align: center;
   border-top: none;
@@ -233,7 +233,7 @@
 
 /* ── CTA Strip ── */
 .home-cta {
-  background: linear-gradient(to left, #0f1720 0%, #1a2535 40%, #8a6830 80%, #b8924a 100%);
+  background: linear-gradient(to left, #0f1720 0%, #1a2535 60%, #1e2d42 85%, rgba(184,146,74,0.18) 100%);
   padding: 5rem 0;
   text-align: center;
   border-top: none;
