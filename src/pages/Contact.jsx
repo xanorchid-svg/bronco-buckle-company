@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
+import DiscountPopup from '../components/DiscountPopup';
 
 const CONTACT_EMAIL = 'stocker@broncobuckles.com';
 
@@ -41,7 +42,8 @@ function Calculator({ onBuildOrder }) {
   const belt = PRICES.belts.find(b => b.id === beltId);
   const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
   const buckleTotal    = buckleQty * buckleUnitPrice;
-  const promoSavings   = promoApplied ? Math.round(buckleTotal * 0.22) : 0;
+  const promoRate     = promoApplied === "friends&family" ? 0.20 : promoApplied === "fall2026" ? 0.30 : promoApplied ? 0.22 : 0;
+  const promoSavings   = promoRate ? Math.round(buckleTotal * promoRate) : 0;
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
   const engravingTotal = engraving ? PRICES.engraving : 0;
   const subtotal     = buckleTotal - promoSavings + beltTotal + engravingTotal;
@@ -53,7 +55,7 @@ function Calculator({ onBuildOrder }) {
     const finishLabel = finish === 'elegante' ? 'Elegante (No Black Background)' : 'Classic (Black Background)';
     lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'}, ${finishLabel} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
-    if (promoApplied) lines.push(`Promo "broncobuddy" — Buckle discount: -${formatCurrency(promoSavings)}`);
+    if (promoApplied) lines.push(`Promo "${promoCode}" — Buckle discount: -${formatCurrency(promoSavings)}`);
     if (engraving) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
     lines.push(`Estimated Total: ${formatCurrency(total)}`);
@@ -137,7 +139,7 @@ function Calculator({ onBuildOrder }) {
         </div>
         {promoApplied && (
           <div className="calc__total-row" style={{ color: "var(--gold)" }}>
-            <span>Promo discount (broncobuddy)</span>
+            <span>Promo discount ({promoCode})</span>
             <span>-{formatCurrency(promoSavings)}</span>
           </div>
         )}
@@ -200,10 +202,10 @@ function Calculator({ onBuildOrder }) {
             placeholder="Enter code"
             style={{ padding: "0.4rem 0.75rem", background: "var(--charcoal)", border: "1px solid var(--gold)", color: "var(--silver-light)", fontFamily: "var(--font-body)", width: "140px" }}
           />
-          <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { if (promoCode.trim().toLowerCase() === "broncobuddy") { setPromoApplied(true); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
+          <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { const c = promoCode.trim().toLowerCase(); if (c === "running2theroar!") { setPromoApplied("running2theroar!"); setPromoError(false); } else if (c === "friends&family") { setPromoApplied("friends&family"); setPromoError(false); } else if (c === "fall2026") { setPromoApplied("fall2026"); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
             <span>Apply</span>
           </button>
-          {promoApplied && <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>✓ 22% off buckles</span>}
+          {promoApplied && <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>✓ {promoApplied === "friends&family" ? "20%" : promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>}
           {promoError && <span style={{ color: "#e07070", fontSize: "0.85rem" }}>Invalid code</span>}
         </div>
       </div>
@@ -216,7 +218,7 @@ function Calculator({ onBuildOrder }) {
         </div>
         {promoApplied && (
           <div className="calc__total-row" style={{ color: "var(--gold)" }}>
-            <span>Promo "broncobuddy" — 22% off buckles</span>
+            <span>Promo "{promoCode}" — {promoApplied === "friends&family" ? "20%" : promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>
             <span>-{formatCurrency(promoSavings)}</span>
           </div>
         )}
@@ -354,6 +356,7 @@ export default function Contact() {
 
   return (
     <div className="page inner-page">
+      <DiscountPopup />
       <SEO
         title="Inquire — Start Your Custom Order"
         description="Ready to order your Bronco Buckles sterling silver belt buckle? Use our price calculator and send an inquiry. Custom buckles take 4-6 weeks. Dallas, Texas."

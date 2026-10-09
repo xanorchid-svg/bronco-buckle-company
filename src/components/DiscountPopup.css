@@ -1,0 +1,264 @@
+/* ── Discount Popup — Inquire page ───────────────────────── */
+
+.bb-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* above the fixed nav */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(8, 12, 18, 0.74);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: bbPopupFade 0.5s ease both;
+}
+
+.bb-popup {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  width: 100%;
+  max-width: 840px;
+  background: var(--blue-deep);
+  border: 1px solid var(--gold);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  animation: bbPopupRise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Inset hairline — a quiet second frame inside the gold border */
+.bb-popup::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 146, 74, 0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Image side ── */
+.bb-popup__image {
+  position: relative;
+  min-height: 460px;
+}
+
+.bb-popup__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
+
+/* soft fade from photo into the navy panel */
+.bb-popup__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(15, 23, 32, 0) 55%, rgba(15, 23, 32, 0.9) 100%);
+}
+
+/* ── Content side ── */
+.bb-popup__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 3rem 3rem;
+  background: linear-gradient(160deg, #0f1720 0%, #1a2535 70%, rgba(184, 146, 74, 0.12) 130%);
+}
+
+.bb-popup__overline {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--blue-steel);
+  margin: 0 0 1rem;
+}
+
+.bb-popup__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.8rem, 8vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--gold-light);
+  margin: 0;
+}
+
+.bb-popup__divider {
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.6rem auto;
+}
+
+.bb-popup__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: var(--silver-light);
+  max-width: 22ch;
+  margin: 0 0 2rem;
+}
+
+/* ── Call button ── */
+.bb-popup__call {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1rem 2rem;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  color: var(--blue-deep);
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.bb-popup__call:hover,
+.bb-popup__call:focus-visible {
+  background: transparent;
+  color: var(--gold-light);
+}
+
+.bb-popup__call-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.bb-popup__call-number {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ── Dismiss link ── */
+.bb-popup__dismiss {
+  margin-top: 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: 0.2rem 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--silver);
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.bb-popup__dismiss:hover {
+  color: var(--silver-light);
+  border-bottom-color: var(--blue-steel);
+}
+
+/* ── Close X ── */
+.bb-popup__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--silver);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.bb-popup__close:hover {
+  color: var(--gold-light);
+}
+
+.bb-popup__close:focus { outline: none; }
+.bb-popup__close:focus-visible {
+  outline: 1px solid rgba(184, 146, 74, 0.6);
+  outline-offset: 2px;
+}
+
+/* ── Animations ── */
+@keyframes bbPopupFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes bbPopupRise {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-popup-backdrop,
+  .bb-popup { animation: none; }
+}
+
+/* ── Mobile: photo banner on top, text below ── */
+@media (max-width: 700px) {
+  .bb-popup-backdrop {
+    padding: 1rem;
+  }
+
+  .bb-popup {
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+
+  .bb-popup__image {
+    min-height: 0;
+    height: 190px;
+  }
+
+  .bb-popup__image::after {
+    background: linear-gradient(to bottom, rgba(15, 23, 32, 0) 50%, rgba(15, 23, 32, 0.95) 100%);
+  }
+
+  .bb-popup__content {
+    padding: 1.6rem 1.5rem 2rem;
+  }
+
+  .bb-popup__title {
+    font-size: 3.6rem;
+  }
+
+  .bb-popup__divider {
+    margin: 1.1rem auto;
+  }
+
+  .bb-popup__text {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bb-popup__call {
+    width: 100%;
+  }
+
+  /* close X sits on the photo — give it a dark disc so it stays visible */
+  .bb-popup__close {
+    top: 10px;
+    right: 10px;
+    background: rgba(15, 23, 32, 0.7);
+    border-radius: 50%;
+    color: var(--silver-light);
+  }
+}
