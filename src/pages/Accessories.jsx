@@ -77,9 +77,9 @@ export default function Accessories() {
       <div className="inner-hero">
         <div className="inner-hero__bg">
           <img
-            src="/accessories-money-clip-leather.jpg"
-            alt="Sterling silver money clip with initials on a leather wallet"
-            style={{ objectPosition: 'center 55%' }}
+            src="/accessories-hero.jpg"
+            alt="Bronco Buckles sterling silver money clip and initial key chains"
+            style={{ objectPosition: 'center 50%' }}
           />
           <div className="inner-hero__overlay" />
         </div>
