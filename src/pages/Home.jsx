@@ -133,6 +133,28 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+            {/* Accessories Card */}
+            <div className="product-card">
+              <div className="product-card__image">
+                <img
+                  src="/accessories-money-clip-cash.jpg"
+                  alt="Bronco Buckles sterling silver money clip with initials"
+                  style={{ objectPosition: 'center 45%' }}
+                />
+              </div>
+              <div className="product-card__body">
+                <p className="overline">Sterling Silver</p>
+                <h3>Accessories</h3>
+                <p>
+                  The money clip and key chain. Your three initials in sterling
+                  silver, carried every day. Made to give.
+                </p>
+                <span className="product-card__price">Inquire for price</span>
+                <Link to="/accessories" className="btn">
+                  <span>Learn More</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

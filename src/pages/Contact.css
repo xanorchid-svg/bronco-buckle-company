@@ -445,3 +445,62 @@
 
   .contact-tabs { overflow-x: auto; }
 }
+
+/* ─── ACCESSORIES (calculator) ──────────────── */
+.calc__base-price--inquire {
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.calc__link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(184, 146, 74, 0.4);
+}
+.calc__link:hover { color: var(--gold-light); }
+
+.calc__acc-detail {
+  padding: 0.25rem 0 1.25rem;
+}
+
+.calc__acc-detail > label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.calc__initials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.calc__initials input {
+  width: 5.5rem;
+  padding: 0.55rem 0.5rem;
+  background: var(--blue-deep);
+  border: 1px solid var(--border);
+  color: var(--silver-light);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.3em;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.calc__initials input::placeholder { color: var(--border); }
+.calc__initials input:focus { border-color: var(--gold); }
+
+.calc__row--flush {
+  margin-top: 0.75rem;
+}
+
+.calc__inquire {
+  font-style: italic;
+  color: var(--gold-light);
+}

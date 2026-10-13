@@ -35,6 +35,7 @@ export default function Nav() {
           <NavLink to="/" end onClick={close}>Home</NavLink>
           <NavLink to="/the-buckle" onClick={close}>The Buckle</NavLink>
           <NavLink to="/the-belt" onClick={close}>The Belt</NavLink>
+          <NavLink to="/accessories" onClick={close}>Accessories</NavLink>
           <NavLink to="/run2theroar" onClick={close}>Run2theRoar</NavLink>
           <NavLink to="/our-story" onClick={close}>Our Story</NavLink>
           <NavLink to="/faq" onClick={close}>FAQ</NavLink>

@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import TheBuckle from './pages/TheBuckle';
 import TheBelt from './pages/TheBelt';
+import Accessories from './pages/Accessories';
 import Run2theRoar from './pages/Run2theRoar';
 import OurStory from './pages/OurStory';
 import Contact from './pages/Contact';
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/the-buckle" element={<TheBuckle />} />
             <Route path="/the-belt" element={<TheBelt />} />
+            <Route path="/accessories" element={<Accessories />} />
             <Route path="/run2theroar" element={<Run2theRoar />} />
             <Route path="/our-story" element={<OurStory />} />
             <Route path="/contact" element={<Contact />} />

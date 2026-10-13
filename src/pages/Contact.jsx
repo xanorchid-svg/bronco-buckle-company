@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './PageStyles.css';
 import './Contact.css';
@@ -23,12 +23,52 @@ const PRICES = {
   taxRate: 0.0825,
 };
 
+// Accessories — priced at inquiry until pricing is confirmed.
+// When prices are set, add a `price` here and the totals will pick it up.
+const ACCESSORIES = [
+  { id: 'money-clip', label: 'Money Clip', fullLabel: 'Sterling Silver Money Clip', engraving: true,  fontChoice: true  },
+  { id: 'key-chain',  label: 'Key Chain',  fullLabel: 'Sterling Silver Key Chain',  engraving: false, fontChoice: false },
+];
+
 function formatCurrency(n) {
   return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
 
-function Calculator({ onBuildOrder }) {
-  const [buckleQty,    setBuckleQty]    = useState(1);
+// Three-letter initials inputs — one per piece
+function InitialsInputs({ qty, values, onChange, itemLabel }) {
+  return (
+    <div className="calc__initials">
+      {Array.from({ length: qty }).map((_, i) => (
+        <input
+          key={i}
+          type="text"
+          inputMode="text"
+          autoComplete="off"
+          maxLength={3}
+          value={values[i] || ''}
+          placeholder="ABC"
+          aria-label={`${itemLabel} ${i + 1} initials`}
+          onChange={e => {
+            const next = [...values];
+            next[i] = e.target.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
+            onChange(next);
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Calculator({ onBuildOrder, initialItem }) {
+  const startsWithAccessory = ACCESSORIES.some(a => a.id === initialItem);
+  const [buckleQty,    setBuckleQty]    = useState(startsWithAccessory ? 0 : 1);
+  const [accQty,       setAccQty]       = useState(() =>
+    Object.fromEntries(ACCESSORIES.map(a => [a.id, a.id === initialItem ? 1 : 0]))
+  );
+  const [accInitials,  setAccInitials]  = useState(() =>
+    Object.fromEntries(ACCESSORIES.map(a => [a.id, []]))
+  );
+  const [clipEngraving, setClipEngraving] = useState(false);
   const [specialOrder, setSpecialOrder] = useState(false);
   const [beltId,       setBeltId]       = useState('none');
   const [beltQty,      setBeltQty]      = useState(1);
@@ -45,7 +85,13 @@ function Calculator({ onBuildOrder }) {
   const promoRate     = promoApplied === "friends&family" ? 0.20 : promoApplied === "fall2026" ? 0.30 : promoApplied ? 0.22 : 0;
   const promoSavings   = promoRate ? Math.round(buckleTotal * promoRate) : 0;
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
-  const engravingTotal = engraving ? PRICES.engraving : 0;
+  const engravingTotal = engraving && buckleQty > 0 ? PRICES.engraving : 0;
+  const hasAccessories = ACCESSORIES.some(a => accQty[a.id] > 0);
+  const nothingSelected = buckleQty === 0 && beltId === 'none' && !hasAccessories;
+
+  function setQty(id, qty) {
+    setAccQty(prev => ({ ...prev, [id]: Math.max(0, qty) }));
+  }
   const subtotal     = buckleTotal - promoSavings + beltTotal + engravingTotal;
   const tax          = applyTax ? subtotal * PRICES.taxRate : 0;
   const total        = subtotal + tax;
@@ -53,12 +99,25 @@ function Calculator({ onBuildOrder }) {
   function buildSummary() {
     const lines = [];
     const finishLabel = finish === 'elegante' ? 'Elegante (No Black Background)' : 'Classic (Black Background)';
-    lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'}, ${finishLabel} — ${formatCurrency(buckleTotal)}`);
+    if (buckleQty > 0) lines.push(`${buckleQty}x Buckle${specialOrder ? ' (special order)' : ' (standard)'}, ${finishLabel} — ${formatCurrency(buckleTotal)}`);
     if (beltId !== 'none') lines.push(`${beltQty}x ${belt.label} Belt — ${formatCurrency(beltTotal)}`);
     if (promoApplied) lines.push(`Promo "${promoCode}" — Buckle discount: -${formatCurrency(promoSavings)}`);
-    if (engraving) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
+    if (engravingTotal) lines.push(`Custom Engraving — ${formatCurrency(engravingTotal)}`);
+    ACCESSORIES.forEach(a => {
+      const qty = accQty[a.id];
+      if (!qty) return;
+      const initials = Array.from({ length: qty }, (_, i) => {
+        const v = accInitials[a.id][i];
+        return v && v.length === 3 ? v : 'TBD';
+      });
+      const extras = [`initials: ${initials.join(', ')}`];
+      if (a.fontChoice) extras.push('font to discuss');
+      if (a.engraving && clipEngraving) extras.push('engraving requested');
+      lines.push(`${qty}x ${a.fullLabel} (${extras.join('; ')}) — price on inquiry`);
+    });
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
-    lines.push(`Estimated Total: ${formatCurrency(total)}`);
+    if (total > 0) lines.push(`Estimated Total${hasAccessories ? ' (excl. accessories)' : ''}: ${formatCurrency(total)}`);
+    else if (hasAccessories) lines.push('Pricing for accessories confirmed at inquiry');
     return lines.join('\n');
   }
 
@@ -78,11 +137,12 @@ function Calculator({ onBuildOrder }) {
         <div className="calc__row">
           <label>Quantity</label>
           <div className="calc__stepper">
-            <button onClick={() => setBuckleQty(Math.max(1, buckleQty - 1))}>−</button>
+            <button onClick={() => setBuckleQty(Math.max(0, buckleQty - 1))}>−</button>
             <span>{buckleQty}</span>
             <button onClick={() => setBuckleQty(buckleQty + 1)}>+</button>
           </div>
         </div>
+        {buckleQty > 0 && (<>
         <div className="calc__row">
           <div>
             <label>Finish</label>
@@ -115,6 +175,10 @@ function Calculator({ onBuildOrder }) {
             >Special Order</button>
           </div>
         </div>
+        </>)}
+        {buckleQty === 0 && (
+          <p className="calc__hint" style={{ paddingTop: '0.5rem' }}>No buckle selected — tap + to add one.</p>
+        )}
       </div>
 
       {/* BELT */}
@@ -155,11 +219,67 @@ function Calculator({ onBuildOrder }) {
         )}
       </div>
 
-      {/* ENGRAVING */}
+      {/* ACCESSORIES */}
+      <div className="calc__section">
+        <div className="calc__section-header">
+          <div>
+            <h3 className="calc__label">Accessories</h3>
+            <p className="calc__sublabel">Sterling silver · three initials · <Link to="/accessories" className="calc__link">see the pieces</Link></p>
+          </div>
+          <span className="calc__base-price calc__base-price--inquire">Inquire for price</span>
+        </div>
+        {ACCESSORIES.map(a => (
+          <div key={a.id} className="calc__acc">
+            <div className="calc__row">
+              <div>
+                <label>{a.label}</label>
+                <p className="calc__hint">{a.fontChoice ? 'Three initials · font of your choice' : 'Three initials'}</p>
+              </div>
+              <div className="calc__stepper">
+                <button onClick={() => setQty(a.id, accQty[a.id] - 1)} aria-label={`Fewer ${a.label}s`}>−</button>
+                <span>{accQty[a.id]}</span>
+                <button onClick={() => setQty(a.id, accQty[a.id] + 1)} aria-label={`More ${a.label}s`}>+</button>
+              </div>
+            </div>
+            {accQty[a.id] > 0 && (
+              <div className="calc__acc-detail">
+                <label>Initials{accQty[a.id] > 1 ? ' — one set per piece' : ''}</label>
+                <InitialsInputs
+                  qty={accQty[a.id]}
+                  values={accInitials[a.id]}
+                  itemLabel={a.label}
+                  onChange={vals => setAccInitials(prev => ({ ...prev, [a.id]: vals }))}
+                />
+                {a.fontChoice && (
+                  <p className="calc__hint">We'll walk through font options with you on your call.</p>
+                )}
+                {a.engraving && (
+                  <div className="calc__row calc__row--flush">
+                    <div>
+                      <label>Add Engraving</label>
+                      <p className="calc__hint">A date, name, or message · priced at inquiry</p>
+                    </div>
+                    <button
+                      className={`calc__tax-toggle ${clipEngraving ? 'calc__tax-toggle--on' : ''}`}
+                      onClick={() => setClipEngraving(!clipEngraving)}
+                      aria-label="Toggle money clip engraving"
+                    >
+                      <span />
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* ENGRAVING (buckle) */}
+      {buckleQty > 0 && (
       <div className="calc__section">
         <div className="calc__row">
           <div>
-            <label>Custom Engraving</label>
+            <label>Buckle Engraving</label>
             <p className="calc__hint">Inscription on back of buckle · +{formatCurrency(PRICES.engraving)} each</p>
           </div>
           <button
@@ -176,6 +296,7 @@ function Calculator({ onBuildOrder }) {
           </div>
         )}
       </div>
+      )}
 
       {/* TAX */}
       <div className="calc__section calc__section--slim">
@@ -212,10 +333,12 @@ function Calculator({ onBuildOrder }) {
 
       {/* TOTALS */}
       <div className="calc__totals">
+        {buckleQty > 0 && (
         <div className="calc__total-row">
           <span>Buckles ({buckleQty}× {formatCurrency(buckleUnitPrice)})</span>
           <span>{formatCurrency(buckleTotal)}</span>
         </div>
+        )}
         {promoApplied && (
           <div className="calc__total-row" style={{ color: "var(--gold)" }}>
             <span>Promo "{promoCode}" — {promoApplied === "friends&family" ? "20%" : promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>
@@ -228,9 +351,15 @@ function Calculator({ onBuildOrder }) {
             <span>{formatCurrency(beltTotal)}</span>
           </div>
         )}
-        {engraving && (
+        {ACCESSORIES.filter(a => accQty[a.id] > 0).map(a => (
+          <div key={a.id} className="calc__total-row">
+            <span>{a.label} ({accQty[a.id]}×){a.engraving && clipEngraving ? ' + engraving' : ''}</span>
+            <span className="calc__inquire">Price on inquiry</span>
+          </div>
+        ))}
+        {engravingTotal > 0 && (
           <div className="calc__total-row">
-            <span>Custom Engraving</span>
+            <span>Buckle Engraving</span>
             <span>{formatCurrency(engravingTotal)}</span>
           </div>
         )}
@@ -241,17 +370,25 @@ function Calculator({ onBuildOrder }) {
           </div>
         )}
         <div className="calc__total-row calc__total-row--final">
-          <span>Estimated Total</span>
-          <span>{formatCurrency(total)}</span>
+          <span>Estimated Total{hasAccessories && total > 0 ? ' (excl. accessories)' : ''}</span>
+          <span>{total === 0 && hasAccessories ? 'On inquiry' : formatCurrency(total)}</span>
         </div>
         <p className="calc__disclaimer">
           Prices are estimates. Final quote confirmed at inquiry. Lead time: 4–6 weeks.
         </p>
       </div>
 
-      <button className="btn calc__cta" onClick={() => onBuildOrder(buildSummary())}>
+      <button
+        className="btn calc__cta"
+        onClick={() => onBuildOrder(buildSummary())}
+        disabled={nothingSelected}
+        style={nothingSelected ? { opacity: 0.45, cursor: 'not-allowed' } : undefined}
+      >
         <span>Start My Order →</span>
       </button>
+      {nothingSelected && (
+        <p className="calc__hint" style={{ marginTop: '0.75rem' }}>Add a buckle, belt, or accessory to start your order.</p>
+      )}
     </div>
   );
 }
@@ -310,6 +447,7 @@ function ContactForm({ prefill }) {
           <option>Buckle only</option>
           <option>Belt only</option>
           <option>Buckle and Belt</option>
+          <option>Money Clip / Key Chain</option>
           <option>Gift / Special Occasion</option>
           <option>Corporate / Custom Logo</option>
           <option>Just have questions</option>
@@ -343,6 +481,8 @@ function ContactForm({ prefill }) {
 
 // ─── PAGE ────────────────────────────────────
 export default function Contact() {
+  const [searchParams] = useSearchParams();
+  const initialItem = searchParams.get('item');
   const [formPrefill, setFormPrefill] = useState('');
   const [activeTab, setActiveTab] = useState('calculator'); // 'calculator' | 'form'
 
@@ -359,7 +499,7 @@ export default function Contact() {
       <DiscountPopup />
       <SEO
         title="Inquire — Start Your Custom Order"
-        description="Ready to order your Bronco Buckles sterling silver belt buckle? Use our price calculator and send an inquiry. Custom buckles take 4-6 weeks. Dallas, Texas."
+        description="Ready to order your Bronco Buckles sterling silver belt buckle, money clip, or key chain? Use our price calculator and send an inquiry. Custom pieces take 4-6 weeks. Dallas, Texas."
         path="/contact"
       />
       <div className="inner-hero inner-hero--short">
@@ -407,7 +547,7 @@ export default function Contact() {
 
         <div className="contact-panel">
           {activeTab === 'calculator'
-            ? <Calculator onBuildOrder={handleBuildOrder} />
+            ? <Calculator onBuildOrder={handleBuildOrder} initialItem={initialItem} />
             : (
               <div className="contact-form-wrap">
                 {formPrefill && (
