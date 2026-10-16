@@ -149,7 +149,7 @@ export default function Home() {
                   The money clip and key chain. Your three initials in sterling
                   silver, carried every day. Made to give.
                 </p>
-                <span className="product-card__price">Inquire for price</span>
+                <span className="product-card__price">From $185</span>
                 <Link to="/accessories" className="btn">
                   <span>Learn More</span>
                 </Link>

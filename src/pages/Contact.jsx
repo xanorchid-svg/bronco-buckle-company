@@ -23,11 +23,10 @@ const PRICES = {
   taxRate: 0.0825,
 };
 
-// Accessories — priced at inquiry until pricing is confirmed.
-// When prices are set, add a `price` here and the totals will pick it up.
+// Accessories — sterling silver, three initials. Money clip engraving is quoted at inquiry.
 const ACCESSORIES = [
-  { id: 'money-clip', label: 'Money Clip', fullLabel: 'Sterling Silver Money Clip', engraving: true,  fontChoice: true  },
-  { id: 'key-chain',  label: 'Key Chain',  fullLabel: 'Sterling Silver Key Chain',  engraving: false, fontChoice: false },
+  { id: 'money-clip', label: 'Money Clip', fullLabel: 'Sterling Silver Money Clip', price: 525, engraving: true,  fontChoice: true  },
+  { id: 'key-chain',  label: 'Key Chain',  fullLabel: 'Sterling Silver Key Chain',  price: 185, engraving: false, fontChoice: false },
 ];
 
 function formatCurrency(n) {
@@ -87,12 +86,14 @@ function Calculator({ onBuildOrder, initialItem }) {
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
   const engravingTotal = engraving && buckleQty > 0 ? PRICES.engraving : 0;
   const hasAccessories = ACCESSORIES.some(a => accQty[a.id] > 0);
+  const clipEngravingRequested = clipEngraving && accQty['money-clip'] > 0;
   const nothingSelected = buckleQty === 0 && beltId === 'none' && !hasAccessories;
 
   function setQty(id, qty) {
     setAccQty(prev => ({ ...prev, [id]: Math.max(0, qty) }));
   }
-  const subtotal     = buckleTotal - promoSavings + beltTotal + engravingTotal;
+  const accTotal     = ACCESSORIES.reduce((sum, a) => sum + accQty[a.id] * a.price, 0);
+  const subtotal     = buckleTotal - promoSavings + beltTotal + engravingTotal + accTotal;
   const tax          = applyTax ? subtotal * PRICES.taxRate : 0;
   const total        = subtotal + tax;
 
@@ -113,11 +114,10 @@ function Calculator({ onBuildOrder, initialItem }) {
       const extras = [`initials: ${initials.join(', ')}`];
       if (a.fontChoice) extras.push('font to discuss');
       if (a.engraving && clipEngraving) extras.push('engraving requested');
-      lines.push(`${qty}x ${a.fullLabel} (${extras.join('; ')}) — price on inquiry`);
+      lines.push(`${qty}x ${a.fullLabel} (${extras.join('; ')}) — ${formatCurrency(qty * a.price)}`);
     });
     if (applyTax) lines.push(`Texas Sales Tax (8.25%) — ${formatCurrency(tax)}`);
-    if (total > 0) lines.push(`Estimated Total${hasAccessories ? ' (excl. accessories)' : ''}: ${formatCurrency(total)}`);
-    else if (hasAccessories) lines.push('Pricing for accessories confirmed at inquiry');
+    lines.push(`Estimated Total${clipEngravingRequested ? ' (excl. money clip engraving)' : ''}: ${formatCurrency(total)}`);
     return lines.join('\n');
   }
 
@@ -226,14 +226,13 @@ function Calculator({ onBuildOrder, initialItem }) {
             <h3 className="calc__label">Accessories</h3>
             <p className="calc__sublabel">Sterling silver · three initials · <Link to="/accessories" className="calc__link">see the pieces</Link></p>
           </div>
-          <span className="calc__base-price calc__base-price--inquire">Inquire for price</span>
         </div>
         {ACCESSORIES.map(a => (
           <div key={a.id} className="calc__acc">
             <div className="calc__row">
               <div>
                 <label>{a.label}</label>
-                <p className="calc__hint">{a.fontChoice ? 'Three initials · font of your choice' : 'Three initials'}</p>
+                <p className="calc__hint">{formatCurrency(a.price)} ea. · {a.fontChoice ? 'three initials · font of your choice' : 'three initials'}</p>
               </div>
               <div className="calc__stepper">
                 <button onClick={() => setQty(a.id, accQty[a.id] - 1)} aria-label={`Fewer ${a.label}s`}>−</button>
@@ -353,10 +352,16 @@ function Calculator({ onBuildOrder, initialItem }) {
         )}
         {ACCESSORIES.filter(a => accQty[a.id] > 0).map(a => (
           <div key={a.id} className="calc__total-row">
-            <span>{a.label} ({accQty[a.id]}×){a.engraving && clipEngraving ? ' + engraving' : ''}</span>
-            <span className="calc__inquire">Price on inquiry</span>
+            <span>{a.label} ({accQty[a.id]}× {formatCurrency(a.price)})</span>
+            <span>{formatCurrency(accQty[a.id] * a.price)}</span>
           </div>
         ))}
+        {clipEngravingRequested && (
+          <div className="calc__total-row">
+            <span>Money Clip Engraving</span>
+            <span className="calc__inquire">Quoted at inquiry</span>
+          </div>
+        )}
         {engravingTotal > 0 && (
           <div className="calc__total-row">
             <span>Buckle Engraving</span>
@@ -370,8 +375,8 @@ function Calculator({ onBuildOrder, initialItem }) {
           </div>
         )}
         <div className="calc__total-row calc__total-row--final">
-          <span>Estimated Total{hasAccessories && total > 0 ? ' (excl. accessories)' : ''}</span>
-          <span>{total === 0 && hasAccessories ? 'On inquiry' : formatCurrency(total)}</span>
+          <span>Estimated Total</span>
+          <span>{formatCurrency(total)}</span>
         </div>
         <p className="calc__disclaimer">
           Prices are estimates. Final quote confirmed at inquiry. Lead time: 4–6 weeks.

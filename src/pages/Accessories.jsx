@@ -8,6 +8,7 @@ const accessories = [
     id: 'money-clip',
     overline: 'Sterling Silver',
     name: 'The Money Clip',
+    price: 525,
     image: '/accessories-money-clip-cash.jpg',
     imageAlt: 'Bronco Buckles sterling silver money clip with three initials, holding folded bills and cards',
     paragraphs: [
@@ -25,6 +26,7 @@ const accessories = [
     id: 'key-chain',
     overline: 'Sterling Silver',
     name: 'The Key Chain',
+    price: 185,
     image: '/accessories-keychains.jpg',
     imageAlt: 'Two Bronco Buckles sterling silver key chains with three linked initials',
     paragraphs: [
@@ -58,6 +60,12 @@ const accessoriesSchema = {
       description: a.paragraphs[0],
       image: `https://www.broncobuckles.com${a.image}`,
       material: 'Sterling Silver',
+      offers: {
+        '@type': 'Offer',
+        price: `${a.price}.00`,
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
       brand: { '@type': 'Brand', name: 'Bronco Buckles Company' },
     },
   })),
@@ -128,7 +136,7 @@ export default function Accessories() {
                 ))}
                 <div className="accessory-details__row accessory-details__row--price">
                   <dt>Price</dt>
-                  <dd>Inquire for price</dd>
+                  <dd>${a.price.toLocaleString('en-US')}</dd>
                 </div>
               </dl>
 
