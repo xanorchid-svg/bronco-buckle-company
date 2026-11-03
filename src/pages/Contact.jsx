@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './PageStyles.css';
@@ -6,6 +6,10 @@ import './Contact.css';
 import DiscountPopup from '../components/DiscountPopup';
 
 const CONTACT_EMAIL = 'stocker@broncobuckles.com';
+
+// Friends&Family works through Nov 15, 2026, Dallas time (ends midnight CST = 06:00 UTC Nov 16)
+const FRIENDS_FAMILY_ENDS = Date.UTC(2026, 10, 16, 6, 0, 0);
+const isPromoExpired = code => code === 'friends&family' && Date.now() >= FRIENDS_FAMILY_ENDS;
 
 // ─── PRICING DATA ────────────────────────────
 const PRICES = {
@@ -74,14 +78,22 @@ function Calculator({ onBuildOrder, initialItem }) {
   const [engraving,    setEngraving]    = useState(false);
   const [applyTax,     setApplyTax]     = useState(false);
   const [promoCode,    setPromoCode]    = useState('');
-  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoState,   setPromoApplied] = useState(false);
+  const promoApplied = isPromoExpired(promoState) ? false : promoState;
   const [promoError,   setPromoError]   = useState(false);
   const [finish,       setFinish]       = useState('classic'); // 'classic' | 'elegante'
+
+  // Removes the discount from a page left open past the deadline
+  useEffect(() => {
+    if (promoState !== 'friends&family') return;
+    const t = setTimeout(() => setPromoApplied(false), Math.max(0, FRIENDS_FAMILY_ENDS - Date.now()));
+    return () => clearTimeout(t);
+  }, [promoState]);
 
   const belt = PRICES.belts.find(b => b.id === beltId);
   const buckleUnitPrice = specialOrder ? 1425 : PRICES.buckle;
   const buckleTotal    = buckleQty * buckleUnitPrice;
-  const promoRate     = promoApplied === "friends&family" ? 0.20 : promoApplied === "fall2026" ? 0.30 : promoApplied ? 0.22 : 0;
+  const promoRate     = promoApplied === "friends&family" || promoApplied === "fall2026" ? 0.30 : promoApplied ? 0.22 : 0;
   const promoSavings   = promoRate ? Math.round(buckleTotal * promoRate) : 0;
   const beltTotal    = beltId !== 'none' ? beltQty * belt.price : 0;
   const engravingTotal = engraving && buckleQty > 0 ? PRICES.engraving : 0;
@@ -322,10 +334,10 @@ function Calculator({ onBuildOrder, initialItem }) {
             placeholder="Enter code"
             style={{ padding: "0.4rem 0.75rem", background: "var(--charcoal)", border: "1px solid var(--gold)", color: "var(--silver-light)", fontFamily: "var(--font-body)", width: "140px" }}
           />
-          <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { const c = promoCode.trim().toLowerCase(); if (c === "running2theroar!") { setPromoApplied("running2theroar!"); setPromoError(false); } else if (c === "friends&family") { setPromoApplied("friends&family"); setPromoError(false); } else if (c === "fall2026") { setPromoApplied("fall2026"); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
+          <button className="btn" style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }} onClick={() => { const c = promoCode.trim().toLowerCase(); if (c === "running2theroar!") { setPromoApplied("running2theroar!"); setPromoError(false); } else if (c === "friends&family" && !isPromoExpired(c)) { setPromoApplied("friends&family"); setPromoError(false); } else if (c === "fall2026") { setPromoApplied("fall2026"); setPromoError(false); } else { setPromoError(true); setPromoApplied(false); } }}>
             <span>Apply</span>
           </button>
-          {promoApplied && <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>✓ {promoApplied === "friends&family" ? "20%" : promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>}
+          {promoApplied && <span style={{ color: "var(--gold)", fontSize: "0.85rem" }}>✓ {promoApplied === "friends&family" || promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>}
           {promoError && <span style={{ color: "#e07070", fontSize: "0.85rem" }}>Invalid code</span>}
         </div>
       </div>
@@ -340,7 +352,7 @@ function Calculator({ onBuildOrder, initialItem }) {
         )}
         {promoApplied && (
           <div className="calc__total-row" style={{ color: "var(--gold)" }}>
-            <span>Promo "{promoCode}" — {promoApplied === "friends&family" ? "20%" : promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>
+            <span>Promo "{promoCode}" — {promoApplied === "friends&family" || promoApplied === "fall2026" ? "30%" : "22%"} off buckles</span>
             <span>-{formatCurrency(promoSavings)}</span>
           </div>
         )}
