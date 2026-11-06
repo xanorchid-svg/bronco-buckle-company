@@ -8,6 +8,12 @@ const IMAGE = '/buckle-hero.png';
 const DELAY_MS = 800;              // wait before the popup appears
 const SHOW_ONCE_PER_SESSION = true; // false = show every time the page opens
 const STORAGE_KEY = 'bb_discount_popup_seen';
+
+// Holiday offer: 30% through Nov 15, 2026 (Dallas time — ends midnight CST = 06:00 UTC Nov 16),
+// then the popup automatically goes back to 20%.
+const PROMO_ENDS = Date.UTC(2026, 10, 16, 6, 0, 0);
+const PROMO_PERCENT = 30;
+const DEFAULT_PERCENT = 20;
 // ───────────────────────────────────────────────────────────
 
 function markSeen() {
@@ -22,6 +28,7 @@ function alreadySeen() {
 export default function DiscountPopup() {
   const [open, setOpen] = useState(false);
   const closeBtnRef = useRef(null);
+  const percent = Date.now() < PROMO_ENDS ? PROMO_PERCENT : DEFAULT_PERCENT;
 
   // Open after a short delay (unless already seen this session)
   useEffect(() => {
@@ -75,10 +82,10 @@ export default function DiscountPopup() {
 
         <div className="bb-popup__content">
           <p className="bb-popup__overline">By Invitation</p>
-          <h2 id="bb-popup-title" className="bb-popup__title">20% OFF</h2>
+          <h2 id="bb-popup-title" className="bb-popup__title">{percent}% OFF</h2>
           <div className="bb-popup__divider" />
           <p className="bb-popup__text">
-            Call to see if you qualify for 20% off&nbsp;— or more.
+            Call to see if you qualify for {percent}% off&nbsp;— or more.
           </p>
 
           <a href={PHONE_HREF} className="bb-popup__call" onClick={markSeen}>
